@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import passy.prog.db.EntityPassword
 
-class ViewModelPassword(application: Application) : AndroidViewModel(application) {
+open class ViewModelPassword(application: Application) : AndroidViewModel(application) {
 
     private val repositorioFromViewModel: Repositorio = Repositorio(application)
 
@@ -17,11 +17,11 @@ class ViewModelPassword(application: Application) : AndroidViewModel(application
             repositorioFromViewModel.insetPasswordFromRepo(entityPassword)
         }
 
-    val lista: LiveData<List<EntityPassword>> = repositorioFromViewModel.stampaTUTToRepo
+    val lista: LiveData<MutableList<EntityPassword>> = repositorioFromViewModel.stampaTUTToRepo
 
 
-    suspend fun cancellaTutto(entityPassword: EntityPassword) {
-        repositorioFromViewModel.cancellaPAsswordFromRepo(entityPassword = entityPassword)
+    fun cancellaTutto(entityPassword: EntityPassword) {
+        repositorioFromViewModel.cancellaPAsswordFromRepo(entityPassword)
     }
 
 

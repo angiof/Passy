@@ -7,13 +7,14 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="215dp"
-        android:layout_height="166dp"
+        android:id="@+id/materialCardVIew"
+        android:layout_width="320dp"
+        android:layout_height="230dp"
         android:background="#00000000"
         android:padding="3dp"
         app:cardCornerRadius="22dp"
-        app:circularflow_radiusInDP="8dp"
 
+        app:circularflow_radiusInDP="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,37 +22,47 @@
         app:strokeColor="@color/black"
         app:strokeWidth="8dp">
 
-        <androidx.constraintlayout.motion.widget.MotionLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutDescription="@xml/ly_lista_items_xml_constraintlayout7_scene">
 
             <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/iv_avatar"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_fakeiv"
+                app:layout_constraintBottom_toTopOf="@+id/textInputLayout8"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:srcCompat="@color/purple_500" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="203dp"
+                android:layout_height="54dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView">
+                app:layout_constraintStart_toStartOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="wrap_content"
+                    android:id="@+id/label_loghin"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="LOGIN" />
             </com.google.android.material.textfield.TextInputLayout>
 
-        </androidx.constraintlayout.motion.widget.MotionLayout>
+            <Button
+                android:id="@+id/btn_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </com.google.android.material.card.MaterialCardView>

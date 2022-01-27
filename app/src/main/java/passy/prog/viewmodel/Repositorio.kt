@@ -14,7 +14,7 @@ class Repositorio(context: Context) {
         DbPAssword.getDatabse(context).passwordDaos()
 
     //liveData collegata alla querry scelta che stampa tutte le tabelle del db
-    val stampaTUTToRepo: LiveData<List<EntityPassword>> =
+    val stampaTUTToRepo: LiveData<MutableList<EntityPassword>> =
         daoPasswordsRepositorio.getAllPAsswordFromDb()
 
 

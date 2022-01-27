@@ -1,32 +1,59 @@
 package passy.prog.views
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import passy.prog.R
+import passy.prog.databinding.FragmentContainerBinding
+import passy.prog.db.EntityPassword
+import passy.prog.viewmodel.ViewModelPassword
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class FragmentContainer : Fragment(R.layout.fragment_container) {
+    private var dataSet: MutableList<EntityPassword> = arrayListOf()
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FragmentContainer.newInstance] factory method to
- * create an instance of this fragment.
- */
-class FragmentContainer : Fragment() {
+    private lateinit var viewModel: ViewModelPassword
+    private lateinit var binding: FragmentContainerBinding
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+       val adapter = MyAdapter(object :MyAdapter.OnCardButtonsClick{
+           override suspend fun onDelateCard(entityPassword: EntityPassword) {
+               GlobalScope.launch {
+                   viewModel.cancellaTutto(entityPassword)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_container, container, false)
+               }
+           }
+       })
+        viewModel = ViewModelProvider(this)[ViewModelPassword::class.java]
+        binding = FragmentContainerBinding.bind(view)
+        binding.recyclerView.apply {
+            this.adapter = adapter
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+        }
+        viewModel.lista.observe(requireActivity()) {
+
+            adapter.submitList(it)
+        }
+        inseriemento()
     }
 
+    private fun inseriemento() {
+        binding.fbFrag.apply {
+            setOnClickListener {
+                GlobalScope.launch {
+                    viewModel.insertPasswordViewModel(EntityPassword(0, "surace", "persa"))
+                }
+            }
+        }
+    }
 
+    private  fun remove(){
+
+    }
 }

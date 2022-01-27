@@ -15,6 +15,6 @@ interface DaoPasswords {
     fun updatePassword(entityPassword: EntityPassword)
 
     @Query("select * from passList order by loghin asc")
-    fun getAllPAsswordFromDb(): LiveData<List<EntityPassword>>
+    fun getAllPAsswordFromDb(): LiveData<MutableList<EntityPassword>>
 
 }
