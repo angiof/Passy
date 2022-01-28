@@ -1,24 +1,36 @@
 package passy.prog.views
 
+import android.annotation.SuppressLint
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import passy.prog.R
 import passy.prog.databinding.LyListaItemsBinding
 import passy.prog.db.EntityPassword
 
 class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
     ListAdapter<EntityPassword, MyAdapter.PasswordViewHolder>(DiffCallBack()) {
-    private var dataSet: MutableList<EntityPassword> = mutableListOf()
 
     inner class PasswordViewHolder(private val binding: LyListaItemsBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @RequiresApi(Build.VERSION_CODES.M)
+        @SuppressLint("ResourceAsColor")
         fun binder(entityPassword: EntityPassword) {
             binding.apply {
                 binding.labelLoghin.setText(entityPassword.loghin)
+
+                when (entityPassword.color) {
+                    "n" -> binding.viewLayout.setBackgroundColor(R.color.cardview_shadow_start_color)
+                    "g" -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.design_default_color_secondary_variant))
+                    "r" ->  binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.redsoft))
+                    null->binding.viewLayout.setBackgroundColor(R.color.softGreen)
+                }
             }
             binding.btnCard.setOnClickListener {
                 GlobalScope.launch {
@@ -36,6 +48,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
         return PasswordViewHolder(binding)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: PasswordViewHolder, position: Int) {
         val currentItem = getItem(position)
         holder.binder(currentItem)

@@ -9,6 +9,7 @@ data class EntityPassword(
 
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo(name = "loghin") val loghin: String?,
-    @ColumnInfo(name = "password") val password: String?
+    @ColumnInfo(name = "password") val password: String?,
+    @ColumnInfo(name = "color") val color: String?=null
 
 )

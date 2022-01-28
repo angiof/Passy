@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="5dp"
-    android:layout_width="wrap_content"
+    android:padding="10dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
@@ -23,7 +23,7 @@
         app:strokeWidth="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout7"
+            android:id="@+id/view_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutDescription="@xml/ly_lista_items_xml_constraintlayout7_scene">
@@ -32,8 +32,10 @@
                 android:id="@+id/iv_avatar"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_margin="10dp"
+                android:layout_margin="16dp"
                 android:src="@drawable/ic_fakeiv"
+                app:circularflow_defaultRadius="12dp"
+                app:circularflow_radiusInDP="12dp"
                 app:layout_constraintBottom_toTopOf="@+id/textInputLayout8"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

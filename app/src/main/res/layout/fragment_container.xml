@@ -24,20 +24,17 @@
             android:id="@+id/recyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view"
-            app:layout_constraintVertical_bias="1.0"
             tools:ignore="SpeakableTextPresentCheck"
-            tools:listitem="@layout/ly_lista_items"
-            >
+            tools:listitem="@layout/ly_lista_items">
 
         </androidx.recyclerview.widget.RecyclerView>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:visibility="gone"
             android:id="@+id/textInputLayout2"
             android:layout_width="409dp"
             android:layout_height="wrap_content"
@@ -62,9 +59,21 @@
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="24dp"
             android:clickable="true"
-            android:src="@android:drawable/btn_star"
+            android:src="@drawable/ic_pencilbig"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            android:visibility="gone"
+            android:src="@android:mipmap/sym_def_app_icon"
+            app:layout_constraintBottom_toTopOf="@+id/fb_frag"
+            app:layout_constraintEnd_toEndOf="@+id/fb_frag"
+            app:layout_constraintStart_toStartOf="@+id/fb_frag" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

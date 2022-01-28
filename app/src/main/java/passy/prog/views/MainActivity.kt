@@ -19,8 +19,6 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[ViewModelPassword::class.java]
 
     }
-    suspend fun cancella(entityPassword: EntityPassword) {
-        viewModel.cancellaTutto(entityPassword)
-    }
+
 
 }
