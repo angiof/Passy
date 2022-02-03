@@ -2,4 +2,24 @@
     <string name="app_name">Passy</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="insertitle">\t\tINSERIRE NUOVA PASSWORD</string>
+
+
+        <string-array name="colori_spinner">
+            <item>Panna</item>
+            <item>Rosso</item>
+            <item>Grigio</item>
+            <item>Verde</item>
+        </string-array>
+
+    <string-array name="avatar_password">
+        <item>Lavoro</item>
+        <item>Uso_Personale</item>
+        <item>Giochi</item>
+        <item>Importante</item>
+        <item>Posta</item>
+    </string-array>
+
+
 </resources>

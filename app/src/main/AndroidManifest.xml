@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Passy">
         <activity
+            android:name=".views.MainActivity2"
+            android:exported="false"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/Theme.Passy.NoActionBar" />
+        <activity
             android:name=".views.MainActivity"
             android:exported="true">
             <intent-filter>
