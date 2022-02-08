@@ -5,9 +5,26 @@
     android:background="#E7F3FF"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:padding="26dp"
+    android:padding="30dp"
     android:layout_height="match_parent">
 
+
+    <androidx.appcompat.widget.AppCompatImageView
+
+        android:id="@+id/iv_red"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="4dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/cerchio"
+        android:cropToPadding="false"
+        android:paddingHorizontal="0dp"
+        android:paddingVertical="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_Green"
+        app:srcCompat="@drawable/cerchio" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_avatar_sheet"
@@ -83,5 +100,20 @@
             android:textSize="24sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+
+        android:id="@+id/iv_Green"
+        android:layout_height="120dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/cerchio"
+        android:cropToPadding="false"
+        android:paddingHorizontal="0dp"
+        android:paddingVertical="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
+        app:srcCompat="@drawable/cerchio"
+        android:layout_width="wrap_content"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

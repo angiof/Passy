@@ -6,9 +6,9 @@ import androidx.lifecycle.LiveData
 import passy.prog.db.DaoPasswords
 import passy.prog.db.DbPAssword
 import passy.prog.db.EntityPassword
+import javax.inject.Inject
 
 class Repositorio(context: Context) {
-
     //instanzia la dao qui nella repo con tutte le sue funzini
     private var daoPasswordsRepositorio: DaoPasswords =
         DbPAssword.getDatabse(context).passwordDaos()
