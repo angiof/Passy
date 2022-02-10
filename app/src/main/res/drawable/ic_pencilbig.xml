@@ -2,6 +2,7 @@
     android:width="100dp"
     android:height="100dp"
     android:viewportWidth="100"
+    android:tint="#d1d9ff"
     android:viewportHeight="100">
   <path
       android:pathData="M69.646,10.784C70.728,9.713 72.352,8.106 74.516,5.964C78.806,1.718 85.709,1.667 89.933,5.847L94.829,10.693C99.054,14.874 99.002,21.704 94.711,25.95C92.447,28.191 90.749,29.871 89.617,30.992"

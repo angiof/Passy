@@ -1,8 +1,13 @@
 package passy.prog.views
 
 import android.content.Context
+import android.hardware.biometrics.BiometricPrompt
+import android.os.Build
+import android.os.CancellationSignal
+import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -28,8 +33,9 @@ constructor( @ApplicationContext
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
-    fun setViewModes(): ViewModel {
-        return ViewModelProvider(fragment)[ViewModelPassword::class.java]
-    }
+
+
+
+
 
 }

@@ -10,12 +10,12 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import passy.prog.R
-import passy.prog.databinding.FragmentContainerBinding
 import passy.prog.databinding.LyListaItemsBinding
 import passy.prog.db.EntityPassword
-import java.util.zip.Inflater
 import kotlin.system.measureTimeMillis
 
 class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
@@ -37,15 +37,27 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
                     "r" -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.redsoft))
                     null -> binding.viewLayout.setBackgroundColor(R.color.softGreen)
                 }
+                when (entityPassword.tipologia) {
+                    "Lavoro" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_jobs)
+
+                    "Giochi" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_baseline_videogame_asset_24)
+
+                    "Importante" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_baseline_error_outline_24_viola)
+
+                    else -> binding.ivAvatar.setBackgroundResource(R.drawable.cerchio2)
+
+
+                }
                 this.materialCardVIew.setOnClickListener {
                     jobPadres.launch {
                         val timepo = measureTimeMillis {
-                          //  onCardButtonsClick.OpenShowSheetButon(entityPassword)
+                            //  onCardButtonsClick.OpenShowSheetButon(entityPassword)
 
                         }
                         Log.d(TAG, timepo.toString())
                     }
                 }
+
 
             }
         }
@@ -54,7 +66,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PasswordViewHolder {
         val binding =
             LyListaItemsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return PasswordViewHolder(binding)
+        return PasswordViewHolder(binding )
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -72,7 +84,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
     }
 
     interface OnCardButtonsClick {
-     //   suspend fun onDelateCard(entityPassword: EntityPassword)
+        //   suspend fun onDelateCard(entityPassword: EntityPassword)
         suspend fun OpenShowSheetButon(entityPassword: EntityPassword)
     }
 }

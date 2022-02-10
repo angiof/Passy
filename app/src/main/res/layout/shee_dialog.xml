@@ -1,119 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/layoutsheet"
-    android:background="#E7F3FF"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutsheet"
+    android:background="#757de8"
     android:layout_width="match_parent"
-    android:padding="30dp"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:padding="5dp">
 
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <androidx.constraintlayout.widget.ConstraintLayout
 
-        android:id="@+id/iv_red"
-        android:layout_width="wrap_content"
-        android:layout_height="120dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="4dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/cerchio"
-        android:cropToPadding="false"
-        android:paddingHorizontal="0dp"
-        android:paddingVertical="0dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_Green"
-        app:srcCompat="@drawable/cerchio" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/iv_avatar_sheet"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_pencilbig"
-        app:layout_constraintEnd_toEndOf="@+id/spinner"
-
-        app:layout_constraintStart_toStartOf="@+id/spinner"
-        app:layout_constraintTop_toBottomOf="@+id/spinner"
-        app:shapeAppearanceOverlay="@style/roundedImageView">
-
-
-    </com.google.android.material.imageview.ShapeableImageView>
-
-
-
-    <Spinner
-        android:id="@+id/spinner"
-        style="@style/Widget.AppCompat.Spinner.Underlined"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/avatar_password"
-        android:scrollbarSize="8dp"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:background="#E7F3FF">
 
-    </Spinner>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:onClick="onclik"
+            android:id="@+id/iv_red"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:layout_marginTop="12dp"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            android:paddingHorizontal="0dp"
+            android:paddingVertical="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toStartOf="@+id/iv_Green"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/iv_red2"
+            app:layout_constraintTop_toBottomOf="@+id/txt_pass"
+            app:srcCompat="@drawable/cerchio3" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="122dp"
-        app:boxStrokeWidth="8dp"
-        android:background="@drawable/bg_text_finder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_red2"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            android:paddingHorizontal="0dp"
+            android:paddingVertical="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_red"
+            app:layout_constraintEnd_toStartOf="@+id/iv_red"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_red"
+            app:srcCompat="@drawable/cerchia4" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password_input"
+        <ImageButton
+            android:id="@+id/iv_avatar_sheet"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/spinner"
+            app:layout_constraintStart_toStartOf="@+id/spinner"
+            app:layout_constraintTop_toBottomOf="@+id/spinner"
+            app:shapeAppearanceOverlay="@style/roundedImageView"
+            tools:visibility="gone">
+
+
+        </ImageButton>
+
+
+        <Spinner
+            android:id="@+id/spinner"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="digitare password"
-            android:password="true"
-            android:textColorHint="#C7BDBD"
-            android:textSize="24sp" />
+            android:entries="@array/avatar_password"
+            android:scrollbarSize="8dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </com.google.android.material.textfield.TextInputLayout>
+        </Spinner>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        app:boxStrokeWidth="4dp"
-        app:circularflow_radiusInDP="4dp"
-        app:boxStrokeColor="@color/black"
-        android:background="@drawable/bg_text_finder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txt_loghin"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="inserire user loghin"
-            android:password="true"
-            android:textColorHint="#C7BDBD"
-            android:textSize="24sp" />
+            android:background="@drawable/bg_text_finder"
+            app:boxStrokeWidth="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_avatar_sheet">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="digitare password"
+                android:password="true"
+                android:textColorHint="#C7BDBD"
+                android:textSize="24sp" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+        </com.google.android.material.textfield.TextInputLayout>
 
-        android:id="@+id/iv_Green"
-        android:layout_height="120dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/cerchio"
-        android:cropToPadding="false"
-        android:paddingHorizontal="0dp"
-        android:paddingVertical="0dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
-        app:srcCompat="@drawable/cerchio"
-        android:layout_width="wrap_content"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txt_pass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/bg_text_finder"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeWidth="4dp"
+            app:circularflow_radiusInDP="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_loghin">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="inserire user loghin"
+                android:password="true"
+                android:textColorHint="#C7BDBD"
+                android:textSize="24sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:onClick="onclick"
+            android:id="@+id/iv_Green"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/cerchio"
+            android:cropToPadding="false"
+            android:paddingHorizontal="0dp"
+            android:paddingVertical="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_red"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/iv_red"
+            app:layout_constraintTop_toTopOf="@+id/iv_red"
+            app:srcCompat="@drawable/cerchio2" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:cornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/iv_Green"
+            app:layout_constraintStart_toStartOf="@+id/iv_red2"
+            app:layout_constraintTop_toBottomOf="@+id/iv_red"
+            app:strokeColor="#582370"
+            app:strokeWidth="4dp"></com.google.android.material.button.MaterialButton>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
