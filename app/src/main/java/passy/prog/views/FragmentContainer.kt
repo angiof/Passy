@@ -24,6 +24,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class FragmentContainer : Fragment(R.layout.fragment_container) {
+    val fragment:FragError=FragError()
     @Inject
     lateinit var dependencesHilt: DependencesHilt
     //curoines

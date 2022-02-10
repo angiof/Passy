@@ -12,6 +12,8 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import dagger.hilt.android.AndroidEntryPoint
 import passy.prog.R
@@ -20,6 +22,7 @@ import passy.prog.viewmodel.ViewModelPassword
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     val fragVisibility: View? by lazy { findViewById(R.id.fragmentContainerView2) }
+
     var cancellationSignal: CancellationSignal? = null
     val auteticationCallback: BiometricPrompt.AuthenticationCallback
         get() =
@@ -28,7 +31,7 @@ class MainActivity : AppCompatActivity() {
                     override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult?) {
                         super.onAuthenticationSucceeded(result)
                         Toast.makeText(this@MainActivity, "un cazzo ", Toast.LENGTH_SHORT).show()
-                        fragVisibility?.visibility = View.VISIBLE
+                        restoreFrag()
 
 
                     }
@@ -40,6 +43,7 @@ class MainActivity : AppCompatActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
 
+                        replace()
                         super.onAuthenticationError(errorCode, errString)
 
                     }
@@ -54,6 +58,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         this.hideToolbarAndStatusBar(this)
         viewModel = ViewModelProvider(this)[ViewModelPassword::class.java]
+        //
+
+
 
     }
 
@@ -80,11 +87,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getCancelTIonSignal(): CancellationSignal {
+
         cancellationSignal = CancellationSignal()
         cancellationSignal?.setOnCancelListener {
-
+            replace()
         }
         return cancellationSignal as CancellationSignal
+
     }
 
     @RequiresApi(Build.VERSION_CODES.P)
@@ -93,14 +102,38 @@ class MainActivity : AppCompatActivity() {
             title = "identificatore  impronte "
             it.setTitle("titlo")
             it.setDescription("cerchiamo di prottegerre i tuoi dati")
-            it.setNegativeButton("cancel", this.mainExecutor, { dialog, which ->
+            it.setNegativeButton("cancellare", this.mainExecutor, { _, _ ->
                 Toast.makeText(this, "cancellao da te", Toast.LENGTH_SHORT).show()
                 fragVisibility?.visibility = View.GONE
-
             })
             it.build()
         }
         biometricPrompt.authenticate(getCancelTIonSignal(), mainExecutor, auteticationCallback)
+
+    }
+
+    private fun replace(){
+        val f: Fragment = FragError();
+        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction();
+
+// Replace whatever is in the fragment_container view with this fragment,
+// and add the transaction to the back stack if needed
+        transaction.replace(R.id.fragmentContainerView2, f);
+        transaction.addToBackStack(null);
+// Commit the transaction
+        transaction.commit();
+    }
+
+    private fun restoreFrag(){
+        val f: Fragment = FragmentContainer();
+        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction();
+
+// Replace whatever is in the fragment_container view with this fragment,
+// and add the transaction to the back stack if needed
+        transaction.replace(R.id.fragmentContainerView2, f);
+        transaction.addToBackStack(null);
+// Commit the transaction
+        transaction.commit();
     }
 
 

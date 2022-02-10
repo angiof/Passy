@@ -6,12 +6,12 @@
     <string name="insertitle">\t\tINSERIRE NUOVA PASSWORD</string>
 
 
-        <string-array name="colori_spinner">
-            <item>Panna</item>
-            <item>Rosso</item>
-            <item>Grigio</item>
-            <item>Verde</item>
-        </string-array>
+    <string-array name="colori_spinner">
+        <item>Panna</item>
+        <item>Rosso</item>
+        <item>Grigio</item>
+        <item>Verde</item>
+    </string-array>
 
     <string-array name="avatar_password">
         <item>Lavoro</item>
