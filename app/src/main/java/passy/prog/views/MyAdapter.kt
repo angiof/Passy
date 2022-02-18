@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
@@ -40,15 +39,19 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
                 when (entityPassword.tipologia) {
                     "Lavoro" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_jobs)
 
-                    "Giochi" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_baseline_videogame_asset_24)
+                    "Giochi" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_jositick_inset)
 
-                    "Importante" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_baseline_error_outline_24_viola)
+                    "Importante" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_imm)
 
-                    else -> binding.ivAvatar.setBackgroundResource(R.drawable.cerchio2)
+                    "Uso_Personale" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_prifile2)
+                    "Posta" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_email)
+
+                    else -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_lock)
 
 
                 }
-                this.materialCardVIew.setOnClickListener {
+                this.materialCardVIew.setOnClickListener { card ->
+
                     jobPadres.launch {
                         val timepo = measureTimeMillis {
                             //  onCardButtonsClick.OpenShowSheetButon(entityPassword)
@@ -66,7 +69,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PasswordViewHolder {
         val binding =
             LyListaItemsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return PasswordViewHolder(binding )
+        return PasswordViewHolder(binding)
     }
 
     @RequiresApi(Build.VERSION_CODES.M)

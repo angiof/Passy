@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.LinearLayout
-import androidx.compose.ui.Alignment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -14,7 +13,9 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
 import passy.prog.R
 import passy.prog.databinding.FragmentContainerBinding
 import passy.prog.databinding.SheeDialogBinding
@@ -22,11 +23,14 @@ import passy.prog.db.EntityPassword
 import passy.prog.viewmodel.ViewModelPassword
 import javax.inject.Inject
 
+
 @AndroidEntryPoint
 class FragmentContainer : Fragment(R.layout.fragment_container) {
-    val fragment:FragError=FragError()
+    val fragment: FragError = FragError()
+
     @Inject
     lateinit var dependencesHilt: DependencesHilt
+
     //curoines
     private val coroutineScopeInsert: CoroutineScope by lazy { CoroutineScope(Dispatchers.Default) }
     private lateinit var viewModel: ViewModelPassword
@@ -56,7 +60,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
 
         binding = FragmentContainerBinding.bind(view)
         binding.recyclerView.apply {
-            val decorationSpan=DividerItemDecoration(requireContext(),LinearLayout.VERTICAL)
+            val decorationSpan = DividerItemDecoration(requireContext(), LinearLayout.VERTICAL)
             addItemDecoration(decorationSpan)
             this.adapter = adapter
             layoutManager = LinearLayoutManager(requireContext())
@@ -115,19 +119,19 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
                                     bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_jobss)
                                 }
                                 1 -> {
-                                    bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_baseline_error_outline_24_viola)
+                                    bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_prifile2)
                                     bindSheetLayout.ivAvatarSheet.visibility = View.VISIBLE
                                 }
                                 2 -> {
-                                    bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_baseline_videogame_asset_24)
+                                    bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_jositick_inset)
                                     bindSheetLayout.ivAvatarSheet.visibility = View.VISIBLE
                                 }
                                 3 -> {
-                                    bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_baseline_error_outline_24)
+                                    bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_imm)
                                     bindSheetLayout.ivAvatarSheet.visibility = View.VISIBLE
                                 }
                                 4 -> {
-                                    bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_baseline_email_24)
+                                    bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_g5)
                                     bindSheetLayout.ivAvatarSheet.visibility = View.VISIBLE
                                 }
                                 else -> bindSheetLayout.ivAvatarSheet.visibility = View.GONE
@@ -142,13 +146,11 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
                     }
 
                 bindSheetLayout.ivGreen.setOnClickListener {
-                    colors="g"
+                    colors = "g"
                 }
                 bindSheetLayout.ivRed.setOnClickListener {
-                    colors="r"
+                    colors = "r"
                 }
-
-
 
                 bindSheetLayout.btnSave.setOnClickListener {
 
@@ -166,19 +168,17 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
                             )
                         )
                     }
+                    dismiss()
                 }
             }
         }
     }
 
     private fun fabInsert() {
-
         binding.fbFrag.setOnClickListener {
             showSheet()
-
         }
     }
-
 }
 
 
