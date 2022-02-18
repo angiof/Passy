@@ -10,20 +10,22 @@
     android:padding="5dp">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
 
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E7F3FF">
+        android:background="#E7F3FF"
+        app:layoutDescription="@xml/yy_xml_constraintlayout_scene">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:onClick="onclik"
             android:id="@+id/iv_red"
             android:layout_width="wrap_content"
             android:layout_height="120dp"
             android:layout_marginTop="12dp"
             android:adjustViewBounds="true"
             android:cropToPadding="false"
+            android:onClick="onclik"
             android:paddingHorizontal="0dp"
             android:paddingVertical="0dp"
             android:scaleType="centerCrop"
@@ -59,7 +61,7 @@
             app:layout_constraintStart_toStartOf="@+id/spinner"
             app:layout_constraintTop_toBottomOf="@+id/spinner"
             app:shapeAppearanceOverlay="@style/roundedImageView"
-            tools:visibility="gone">
+            tools:visibility="visible">
 
 
         </ImageButton>
@@ -125,13 +127,13 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:onClick="onclick"
             android:id="@+id/iv_Green"
             android:layout_width="wrap_content"
             android:layout_height="120dp"
             android:adjustViewBounds="true"
             android:background="@drawable/cerchio"
             android:cropToPadding="false"
+            android:onClick="onclick"
             android:paddingHorizontal="0dp"
             android:paddingVertical="0dp"
             android:scaleType="centerCrop"
@@ -159,5 +161,5 @@
             app:strokeColor="#582370"
             app:strokeWidth="4dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </androidx.core.widget.NestedScrollView>

@@ -18,6 +18,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import passy.prog.R
 import passy.prog.databinding.FragmentContainerBinding
+import passy.prog.databinding.LyListaItemsBinding
 import passy.prog.databinding.SheeDialogBinding
 import passy.prog.db.EntityPassword
 import passy.prog.viewmodel.ViewModelPassword
@@ -113,24 +114,26 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
                         ) {
                             ic_signature = tipologia[position]
                             when (position) {
-
                                 0 -> {
+                                }
+
+                                1 -> {
                                     bindSheetLayout.ivAvatarSheet.visibility = View.VISIBLE
                                     bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_jobss)
                                 }
-                                1 -> {
+                                2 -> {
                                     bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_prifile2)
                                     bindSheetLayout.ivAvatarSheet.visibility = View.VISIBLE
                                 }
-                                2 -> {
+                                3 -> {
                                     bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_jositick_inset)
                                     bindSheetLayout.ivAvatarSheet.visibility = View.VISIBLE
                                 }
-                                3 -> {
+                                4-> {
                                     bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_imm)
                                     bindSheetLayout.ivAvatarSheet.visibility = View.VISIBLE
                                 }
-                                4 -> {
+                                5 -> {
                                     bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_g5)
                                     bindSheetLayout.ivAvatarSheet.visibility = View.VISIBLE
                                 }
