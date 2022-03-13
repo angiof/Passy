@@ -53,14 +53,11 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fb_frag"
-            android:backgroundTint="#6C63FF"
-            android:background="#6C63FF"
+            style="@style/overlay"
             android:layout_width="80dp"
-            android:layout_height="67dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="24dp"
-            app:elevation="4dp"
+            android:layout_height="68dp"
             android:clickable="true"
+            app:elevation="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -70,8 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:clickable="true"
+            style="@style/overlay"
             android:visibility="gone"
-            android:src="@android:mipmap/sym_def_app_icon"
             app:layout_constraintBottom_toTopOf="@+id/fb_frag"
             app:layout_constraintEnd_toEndOf="@+id/fb_frag"
             app:layout_constraintStart_toStartOf="@+id/fb_frag" />

@@ -1,4 +1,4 @@
-package passy.prog.views
+package passy.prog.hilt
 
 import android.content.Context
 import android.hardware.biometrics.BiometricPrompt

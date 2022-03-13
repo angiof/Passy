@@ -1,4 +1,4 @@
-package passy.prog.views
+package passy.prog.views.adapter
 
 import android.annotation.SuppressLint
 import android.os.Build

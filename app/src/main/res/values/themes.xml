@@ -40,4 +40,38 @@
         <item name="cornerRadius">30dp</item>
     </style>
 
+
+    <style name="sheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="background">@android:color/holo_red_dark</item>
+        <item name="backgroundTint">@android:color/holo_red_dark</item>
+
+
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+        <item name="android:background">@drawable/shapebgsheet</item>
+    </style>
+
+    <style name="aab" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+
+    </style>
+
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="shapestyle" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">0%</item>
+        <item name="cornerSizeTopLeft">80%</item>
+        <item name="cornerFamilyBottomLeft">cut</item>
+        <item name="cornerFamilyTopLeft">rounded</item>
+    </style>
+
+    <style name="overlay" parent="Widget.Design.FloatingActionButton">
+        <item name="shapeAppearanceOverlay">@style/shapestyle</item>
+    </style>
+
 </resources>

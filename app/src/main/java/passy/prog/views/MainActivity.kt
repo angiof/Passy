@@ -1,6 +1,5 @@
 package passy.prog.views
 
-import android.app.ActionBar
 import android.app.KeyguardManager
 import android.content.Context
 import android.content.pm.PackageManager
@@ -8,9 +7,7 @@ import android.hardware.biometrics.BiometricPrompt
 import android.os.Build
 import android.os.Bundle
 import android.os.CancellationSignal
-import android.view.Display.FLAG_SECURE
 import android.view.View
-import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -34,7 +31,7 @@ class MainActivity : AppCompatActivity() {
                     override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult?) {
                         super.onAuthenticationSucceeded(result)
                         Toast.makeText(this@MainActivity, "un cazzo ", Toast.LENGTH_SHORT).show()
-                       restoreFrag()
+                        restoreFrag()
 
 
                     }
@@ -58,13 +55,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: ViewModelPassword
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_SECURE,
+            WindowManager.LayoutParams.FLAG_SECURE
+        );
 
         setContentView(R.layout.activity_main)
         this.hideToolbarAndStatusBar(this)
         viewModel = ViewModelProvider(this)[ViewModelPassword::class.java]
         //
-
 
 
     }
@@ -107,19 +106,19 @@ class MainActivity : AppCompatActivity() {
             title = "identificatore  impronte "
             it.setTitle("titlo")
             it.setDescription("cerchiamo di prottegerre i tuoi dati")
-            it.setNegativeButton("cancellare", this.mainExecutor, { _, _ ->
+            it.setNegativeButton("cancellare", this.mainExecutor) { _, _ ->
 
                 Toast.makeText(this, "cancellao da te", Toast.LENGTH_SHORT).show()
                 replace()
                 //fragVisibility?.visibility = View.GONE
-            })
+            }
             it.build()
         }
         biometricPrompt.authenticate(getCancelTIonSignal(), mainExecutor, auteticationCallback)
 
     }
 
-    private fun replace(){
+    private fun replace() {
         val f: Fragment = FragError();
         val transaction: FragmentTransaction = supportFragmentManager.beginTransaction();
 
@@ -131,7 +130,7 @@ class MainActivity : AppCompatActivity() {
         transaction.commit();
     }
 
-    private fun restoreFrag(){
+    private fun restoreFrag() {
         val f: Fragment = FragmentContainer();
         val transaction: FragmentTransaction = supportFragmentManager.beginTransaction();
 
@@ -142,9 +141,4 @@ class MainActivity : AppCompatActivity() {
 // Commit the transaction
         transaction.commit();
     }
-
-
-
-
-
 }

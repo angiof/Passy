@@ -1,6 +1,8 @@
 package passy.prog.viewmodel
 
 import android.app.Application
+import android.content.Context
+import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -19,10 +21,23 @@ open class ViewModelPassword(application: Application) : AndroidViewModel(applic
 
     val lista: LiveData<MutableList<EntityPassword>> = repositorioFromViewModel.stampaTUTToRepo
 
+    fun hidebtnFRomRepo(view: View) {
+
+        repositorioFromViewModel.hidebtn(view)
+    }
+
 
     fun cancellaTutto(entityPassword: EntityPassword) {
         repositorioFromViewModel.cancellaPAsswordFromRepo(entityPassword)
     }
 
 
+    fun btnhide2(context: Context) {
+
+        repositorioFromViewModel.viess(context)
+    }
 }
+
+
+
+

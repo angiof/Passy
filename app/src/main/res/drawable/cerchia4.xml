@@ -6,11 +6,11 @@
     android:viewportHeight="640">
 
     <path
-        android:fillColor="#582370"
+        android:fillColor="@color/white"
         android:strokeWidth="1"
         android:pathData="M465.28 323.25C465.28 403.15 400.18 468.02 320 468.02C239.82 468.02 174.72 403.15 174.72 323.25C174.72 243.35 239.82 178.49 320 178.49C400.18 178.49 465.28 243.35 465.28 323.25Z" />
     <path
-        android:fillColor="#6f79a8"
+        android:fillColor="#3F51B5"
         android:strokeWidth="4"
         android:pathData="M428.57 322.19C429.14 380.15 380.95 427.68 321.02 428.27C261.1 428.85 211.99 382.27 211.43 324.31C210.86 266.35 259.05 218.83 318.98 218.24C378.9 217.66 428.01 264.24 428.57 322.19Z" />
 

@@ -1,22 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutsheet"
-    android:background="#757de8"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:padding="5dp">
+    android:background="@drawable/shapebgsheet"
+    android:padding="5dp"
+    app:circularflow_radiusInDP="8dp">
 
 
-    <androidx.constraintlayout.motion.widget.MotionLayout
-
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E7F3FF"
         app:layoutDescription="@xml/shee_dialog_xml_constraintlayout3_scene">
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/up"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></com.google.android.material.imageview.ShapeableImageView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text0"
+            android:layout_width="176dp"
+            android:layout_height="86dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/roboto_bold"
+            android:letterSpacing="0.1"
+            android:text="CREATE AN ACCOUNT"
+            android:textAlignment="textStart"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/up">
+
+        </com.google.android.material.textview.MaterialTextView>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="177dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/roboto_bold"
+            android:letterSpacing="0.1"
+            android:text="save account"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_save"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_save"></com.google.android.material.textview.MaterialTextView>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_red"
@@ -54,31 +96,30 @@
             android:id="@+id/iv_avatar_sheet"
             android:layout_width="179dp"
             android:layout_height="183dp"
-            android:layout_marginTop="16dp"
-            android:visibility="visible"
+            app:circularflow_radiusInDP="22dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner"
-            app:shapeAppearanceOverlay="@style/roundedImageView"
-            tools:visibility="gone">
+            app:layout_constraintTop_toBottomOf="@+id/text0"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent">
 
 
         </ImageButton>
 
         <Spinner
             android:id="@+id/spinner"
-            android:prompt="@string/spintitle"
-            android:background="@drawable/spin"
             style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_width="wrap_content"
-            android:textDirection="firstStrong"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:background="@drawable/spin"
             android:entries="@array/avatar_password"
+            android:prompt="@string/spintitle"
             android:scrollbarSize="8dp"
-            android:textSize="20sp"
             android:spinnerMode="dropdown"
             android:textAlignment="center"
+            android:textDirection="firstStrong"
+            android:textSize="20sp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -94,15 +135,23 @@
             app:boxStrokeWidth="8dp"
             app:layout_constraintEnd_toEndOf="@+id/iv_avatar_sheet"
             app:layout_constraintStart_toStartOf="@+id/iv_avatar_sheet"
-            app:layout_constraintTop_toBottomOf="@+id/iv_avatar_sheet">
+            app:layout_constraintTop_toBottomOf="@+id/iv_avatar_sheet"
+            app:startIconDrawable="@drawable/ic_user">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_text_finder"
                 android:fontFamily="@font/roboto_bold"
                 android:hint="inserire nick"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:letterSpacing="0.1"
+                android:nextFocusForward="@id/txt_pass"
                 android:textAlignment="center"
+                android:textColor="#FF4B26"
+
                 android:textColorHint="#C7BDBD"
                 android:textSize="24sp" />
 
@@ -113,25 +162,29 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_text_finder"
-            app:boxStrokeColor="@color/black"
-            app:boxStrokeWidth="4dp"
-            app:circularflow_radiusInDP="4dp"
+            app:circularflow_radiusInDP="6dp"
             app:layout_constraintEnd_toEndOf="@+id/txt_loghin"
-
             app:layout_constraintStart_toStartOf="@+id/txt_loghin"
-            app:layout_constraintTop_toBottomOf="@+id/txt_loghin">
+
+            app:layout_constraintTop_toBottomOf="@+id/txt_loghin"
+            app:startIconDrawable="@drawable/ic_cancello"
+
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_password"
-                android:fontFamily="@font/roboto_bold"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/bg_text_finder"
+
+                android:fontFamily="@font/roboto_bold"
                 android:hint="inserire password"
+                android:imeOptions="actionDone"
                 android:letterSpacing="0.5"
-                android:textAlignment="center"
+                android:maxLines="1"
                 android:password="true"
+                android:textAlignment="center"
                 android:textColorHint="#C7BDBD"
                 android:textSize="24sp" />
 
@@ -140,10 +193,12 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_Green"
             android:layout_width="wrap_content"
+
             android:layout_height="120dp"
             android:adjustViewBounds="true"
             android:background="@drawable/cerchio"
             android:cropToPadding="false"
+            android:imeOptions="actionDone"
             android:onClick="onclick"
             android:paddingHorizontal="0dp"
             android:paddingVertical="0dp"
@@ -154,24 +209,15 @@
             app:layout_constraintTop_toTopOf="@+id/iv_red"
             app:srcCompat="@drawable/cerchio2" />
 
-        <com.google.android.material.button.MaterialButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_save"
-            android:layout_width="0dp"
-            android:layout_height="96dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="@font/roboto_bold"
-            android:text="save"
-            android:textSize="24sp"
-            android:textColor="@android:color/darker_gray"
-            app:cornerRadius="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:backgroundTint="#FF4B26"
+            android:src="@drawable/ic_freccia"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/txt_pass"
-            app:layout_constraintStart_toStartOf="@+id/txt_pass"
-            app:layout_constraintTop_toBottomOf="@+id/iv_red"
-            app:strokeColor="@android:color/darker_gray"
-            app:strokeWidth="4dp"
-            app:sub_btn_duration="3000" />
-
-    </androidx.constraintlayout.motion.widget.MotionLayout>
+            app:layout_constraintEnd_toEndOf="@+id/iv_Green"
+            app:layout_constraintStart_toStartOf="@+id/iv_Green"
+            app:layout_constraintTop_toBottomOf="@+id/iv_Green" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
