@@ -16,7 +16,6 @@ import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -80,7 +79,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
         }
 
         hideFabs()
-        //fabInsert()
+        fabInsert()
 
     }
 
@@ -126,78 +125,10 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
 
             with(bindSheetLayout.spinner) {
                 this.prompt = getString(R.string.app_name)
-                onItemSelectedListener =
-                    object : AdapterView.OnItemSelectedListener {
-                        override fun onItemSelected(
-                            parent: AdapterView<*>?,
-                            view: View?,
-                            position: Int,
-                            id: Long
-                        ) {
-                            ic_signature = tipologia[position]
-                            when (position) {
-                                0 -> {
-                                    bindSheetLayout.ivAvatarSheet.visibility = View.INVISIBLE
-                                    bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_lock)
-
-                                }
-
-                                1 -> {
-                                    bindSheetLayout.ivAvatarSheet.visibility = View.VISIBLE
-                                    bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_jobss)
-                                }
-                                2 -> {
-                                    bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_prifile2)
-                                    bindSheetLayout.ivAvatarSheet.visibility = View.VISIBLE
-                                }
-                                3 -> {
-                                    bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_jositick_inset)
-                                    bindSheetLayout.ivAvatarSheet.visibility = View.VISIBLE
-                                }
-                                4 -> {
-                                    bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_imm)
-                                    bindSheetLayout.ivAvatarSheet.visibility = View.VISIBLE
-                                }
-                                5 -> {
-                                    bindSheetLayout.ivAvatarSheet.setBackgroundResource(R.drawable.ic_g5)
-                                    bindSheetLayout.ivAvatarSheet.visibility = View.VISIBLE
-                                }
-                                else -> bindSheetLayout.ivAvatarSheet.visibility = View.GONE
-                            }
 
 
-                        }
 
-                        override fun onNothingSelected(parent: AdapterView<*>?) {
-                            TODO("Not yet implemented")
-                        }
-                    }
 
-                bindSheetLayout.ivGreen.setOnClickListener {
-                    colors = "g"
-                    bindSheetLayout.btnSave.setBackgroundColor(context.getColor(R.color.softGreen))
-
-                }
-                bindSheetLayout.ivRed.setOnClickListener {
-                    colors = "r"
-                    bindSheetLayout.btnSave.setBackgroundColor(context.getColor(R.color.purple_200))
-                }
-
-                bindSheetLayout.btnSave.setOnClickListener {
-
-                    val user: String = bindSheetLayout.txtUser.text.toString()
-                    val password: String = bindSheetLayout.txtPassword.text.toString()
-
-                    basePerformances.DBInsertOptimizer(
-                        viewModel,
-                        user,
-                        password,
-                        colors,
-                        ic_signature
-                    )
-                    dismiss()
-
-                }
             }
         }
     }
@@ -206,7 +137,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
     private fun fabInsert() {
         binding.fbFrag.setOnClickListener { v ->
             val sheet2: BTnSheetDialogFragment = BTnSheetDialogFragment()
-            sheet2.show(requireActivity().supportFragmentManager,"sheet")
+            sheet2.show(requireActivity().supportFragmentManager, "sheet")
 
         }
     }
@@ -216,15 +147,6 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
         super.onResume()
         fabInsert()
     }
-}
-
-private fun MaterialDialog.show(func: MaterialDialog.(Any?) -> Unit) {
-    TODO("Not yet implemented")
-}
-
-fun testSheet() {
-
-
 }
 
 

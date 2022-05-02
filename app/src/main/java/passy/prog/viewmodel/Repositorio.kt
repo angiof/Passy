@@ -1,10 +1,10 @@
 package passy.prog.viewmodel
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
@@ -17,14 +17,12 @@ import passy.prog.db.EntityPassword
 class Repositorio(context: Context) {
 
 
-
     //instanzia la dao qui nella repo con tutte le sue funzini
     private var daoPasswordsRepositorio: DaoPasswords =
         DbPAssword.getDatabse(context).passwordDaos()
 
-    fun mostraToas(activity: Activity) {
-        val toas3 = Toast.makeText(activity, "premutoooo", Toast.LENGTH_SHORT).show()
-
+    fun mostraToas(activity: Activity, messaggio: String) {
+        val toas3 = Toast.makeText(activity, messaggio, Toast.LENGTH_SHORT).show()
     }
 
 
@@ -47,15 +45,15 @@ class Repositorio(context: Context) {
 
 
     fun hidebtn(view: View) {
-
         view.visibility = View.GONE
     }
 
 
+    @SuppressLint("InflateParams")
     fun viess(context: Context) {
-        val view =LayoutInflater.from(context).inflate(R.layout.fragment_container,null,false)
-        val btn =view.findViewById<FloatingActionButton>(R.id.fb_frag)
-        btn.visibility=View.GONE
+        val view = LayoutInflater.from(context).inflate(R.layout.fragment_container, null, false)
+        val btn = view.findViewById<FloatingActionButton>(R.id.fb_frag)
+        btn.visibility = View.GONE
     }
 
 

@@ -2,6 +2,7 @@
 
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutsheet"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -29,8 +30,8 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text0"
-            android:layout_width="176dp"
-            android:layout_height="86dp"
+            android:layout_width="161dp"
+            android:layout_height="81dp"
             android:layout_marginStart="6dp"
             android:layout_marginTop="2dp"
             android:fontFamily="@font/roboto_bold"
@@ -93,9 +94,11 @@
 
 
         <ImageButton
-            android:id="@+id/iv_avatar_sheet"
+            android:id="@+id/iv_avatar_sheet_n"
             android:layout_width="179dp"
             android:layout_height="183dp"
+            android:src="@drawable/ic_email"
+            android:visibility="gone"
             app:circularflow_radiusInDP="22dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -104,6 +107,21 @@
 
 
         </ImageButton>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bnt_insert_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF4B26"
+            android:text="Category"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:cornerRadius="6dp"
+            app:elevation="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/text0"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        </com.google.android.material.button.MaterialButton>
 
         <Spinner
             android:id="@+id/spinner"
@@ -133,9 +151,9 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_text_finder"
             app:boxStrokeWidth="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/iv_avatar_sheet"
-            app:layout_constraintStart_toStartOf="@+id/iv_avatar_sheet"
-            app:layout_constraintTop_toBottomOf="@+id/iv_avatar_sheet"
+            app:layout_constraintEnd_toEndOf="@+id/iv_avatar_sheet_n"
+            app:layout_constraintStart_toStartOf="@+id/iv_avatar_sheet_n"
+            app:layout_constraintTop_toBottomOf="@+id/iv_avatar_sheet_n"
             app:startIconDrawable="@drawable/ic_user">
 
             <com.google.android.material.textfield.TextInputEditText

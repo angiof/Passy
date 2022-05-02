@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/personale"
+        android:icon="@drawable/cerchio"
+        android:title="gone"
+        app:showAsAction="always|withText"
+        tools:ignore="AppCompatResource"/>
+    <item
+        android:id="@+id/spento"
+        android:icon="@drawable/cerchio"
+        android:title="spento"
+        tools:ignore="AppCompatResource" />
+</menu>
+
+
+

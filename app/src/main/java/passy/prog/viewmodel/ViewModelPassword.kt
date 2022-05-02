@@ -1,5 +1,6 @@
 package passy.prog.viewmodel
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.view.View
@@ -18,23 +19,22 @@ open class ViewModelPassword(application: Application) : AndroidViewModel(applic
         viewModelScope.launch {
             repositorioFromViewModel.insetPasswordFromRepo(entityPassword)
         }
-
     val lista: LiveData<MutableList<EntityPassword>> = repositorioFromViewModel.stampaTUTToRepo
 
     fun hidebtnFRomRepo(view: View) {
-
         repositorioFromViewModel.hidebtn(view)
     }
-
 
     fun cancellaTutto(entityPassword: EntityPassword) {
         repositorioFromViewModel.cancellaPAsswordFromRepo(entityPassword)
     }
 
-
     fun btnhide2(context: Context) {
-
         repositorioFromViewModel.viess(context)
+    }
+
+    fun mostraToas(activity: Activity,messaggio: String){
+        repositorioFromViewModel.mostraToas(activity ,messaggio)
     }
 }
 

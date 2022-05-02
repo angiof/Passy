@@ -9,7 +9,7 @@
         motion:duration="1000">
        <KeyFrameSet>
        </KeyFrameSet>
-        <OnClick motion:targetId="@+id/iv_avatar_sheet" />
+        <OnClick motion:targetId="@+id/iv_avatar_sheet_n" />
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
@@ -23,7 +23,7 @@
             android:visibility="visible"
             motion:layout_constraintTop_toBottomOf="@+id/spinner"
             motion:layout_constraintStart_toStartOf="@+id/spinner"
-            android:id="@+id/iv_avatar_sheet"
+            android:id="@+id/iv_avatar_sheet_n"
             motion:layout_editor_absoluteX="23dp" />
     </ConstraintSet>
 </MotionScene>

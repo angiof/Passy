@@ -9,7 +9,7 @@
         motion:duration="1000">
        <KeyFrameSet>
        </KeyFrameSet>
-        <OnClick motion:targetId="@+id/iv_avatar_sheet" />
+        <OnClick motion:targetId="@+id/iv_avatar_sheet_n" />
         <OnClick motion:targetId="@+id/txt_loghin" />
     </Transition>
 
@@ -25,7 +25,7 @@
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="274dp"
             motion:layout_constraintTop_toBottomOf="@+id/spinner"
-            android:id="@+id/iv_avatar_sheet" />
+            android:id="@+id/iv_avatar_sheet_n" />
         <Constraint
             motion:layout_constraintVertical_bias="0.0"
             android:layout_height="96dp"
