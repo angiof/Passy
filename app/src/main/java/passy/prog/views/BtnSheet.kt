@@ -1,6 +1,7 @@
 package passy.prog.views
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.annotation.MenuRes
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import passy.prog.R
@@ -24,6 +26,7 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
         )
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -41,12 +44,26 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
         }
 
     }
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun saveClick() {
 
         bindingFragSheet.btnSave.setOnClickListener {
             val loghin = bindingFragSheet.txtUser.text.toString()
             val password = bindingFragSheet.txtPassword.text.toString()
-            viewModel.insertPasswordViewModel(EntityPassword(0, "null", "password", null, null))
+            bindingFragSheet.ivGreen.setOnClickListener {
+                colors = "g"
+                bindingFragSheet.btnSave.setBackgroundColor(requireContext().getColor(R.color.softGreen))
+            }
+            bindingFragSheet.ivRed.setOnClickListener {
+                colors = "r"
+                bindingFragSheet.btnSave.setBackgroundColor(requireActivity().getColor(R.color.redsoft))
+            }
+            bindingFragSheet.ivGreen.setOnClickListener {
+                colors = "n"
+                bindingFragSheet.btnSave.setBackgroundColor(requireActivity().getColor(R.color.purple_200))
+            }
+
+            viewModel.insertPasswordViewModel(EntityPassword(0, "null", "password", colors, null))
             viewModel.mostraToas(requireActivity(), loghin + password)
         }
     }

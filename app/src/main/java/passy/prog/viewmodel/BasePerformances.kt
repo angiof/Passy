@@ -6,7 +6,7 @@ import kotlinx.coroutines.newSingleThreadContext
 import kotlinx.coroutines.runBlocking
 import passy.prog.db.EntityPassword
 
-class BasePerformances {
+open class BasePerformances {
     val DB_KEY: String = "db_Key"
 
     companion object {

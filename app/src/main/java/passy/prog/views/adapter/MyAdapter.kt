@@ -31,7 +31,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
                 binding.labelLoghin.setText(entityPassword.loghin)
 
                 when (entityPassword.color) {
-                    "n" -> binding.viewLayout.setBackgroundColor(R.color.cardview_shadow_start_color)
+                    "n" -> binding.viewLayout.setBackgroundColor(R.color.purple_200)
                     "g" -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.design_default_color_secondary_variant))
                     "r" -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.redsoft))
                     null -> binding.viewLayout.setBackgroundColor(R.color.softGreen)
