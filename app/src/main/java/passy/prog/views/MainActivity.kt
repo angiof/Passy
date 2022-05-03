@@ -7,7 +7,6 @@ import android.hardware.biometrics.BiometricPrompt
 import android.os.Build
 import android.os.Bundle
 import android.os.CancellationSignal
-import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -21,8 +20,7 @@ import passy.prog.R
 import passy.prog.viewmodel.ViewModelPassword
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
-    private val fragVisibility: View? by lazy { findViewById(R.id.fragmentContainerView2) }
+open class MainActivity : AppCompatActivity() {
     private var cancellationSignal: CancellationSignal? = null
     private val auteticationCallback: BiometricPrompt.AuthenticationCallback
         get() =
@@ -75,7 +73,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun checkBiometriSUpport(): Boolean {
+    @RequiresApi(Build.VERSION_CODES.M)
+    open fun checkBiometriSUpport(): Boolean {
         val keyWardManger = getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
         if (!keyWardManger.isKeyguardSecure) {
             Toast.makeText(this, "non è sato abilitato ", Toast.LENGTH_SHORT).show()
@@ -87,7 +86,11 @@ class MainActivity : AppCompatActivity() {
             return false
         }
 
-        return packageManager.hasSystemFeature(PackageManager.FEATURE_FINGERPRINT)
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            packageManager.hasSystemFeature(PackageManager.FEATURE_FACE)
+        } else {
+            TODO("VERSION.SDK_INT < Q")
+        }
     }
 
     private fun getCancelTIonSignal(): CancellationSignal {
@@ -101,7 +104,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.P)
-    private fun idFInger() {
+    open fun idFInger() {
         val biometricPrompt = BiometricPrompt.Builder(this).let {
             title = "identificatore  impronte "
             it.setTitle("titlo")
@@ -121,7 +124,6 @@ class MainActivity : AppCompatActivity() {
     private fun replace() {
         val f: Fragment = FragError();
         val transaction: FragmentTransaction = supportFragmentManager.beginTransaction();
-
 // Replace whatever is in the fragment_container view with this fragment,
 // and add the transaction to the back stack if needed
         transaction.replace(R.id.fragmentContainerView2, f);
@@ -133,7 +135,6 @@ class MainActivity : AppCompatActivity() {
     private fun restoreFrag() {
         val f: Fragment = FragmentContainer();
         val transaction: FragmentTransaction = supportFragmentManager.beginTransaction();
-
 // Replace whatever is in the fragment_container view with this fragment,
 // and add the transaction to the back stack if needed
         transaction.replace(R.id.fragmentContainerView2, f);

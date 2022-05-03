@@ -2,11 +2,13 @@ package passy.prog.views
 
 import android.app.Activity
 import android.content.Context
+import android.hardware.biometrics.BiometricPrompt
+import android.os.Build
+import android.os.CancellationSignal
+import android.text.TextUtils.replace
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import passy.prog.viewmodel.ViewModelPassword
+import android.widget.Toast
 
 fun Context.hideToolbarAndStatusBar(context: Context) {
     (context as MainActivity).supportActionBar!!.hide()
@@ -23,3 +25,6 @@ fun Context.hideKeyboard(view: View) {
     val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 }
+
+
+

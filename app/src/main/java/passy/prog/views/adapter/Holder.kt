@@ -2,19 +2,25 @@ package passy.prog.views.adapter
 
 import android.annotation.SuppressLint
 import android.os.Build
+import android.view.View
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import passy.prog.R
 import passy.prog.databinding.LyListaItemsBinding
 import passy.prog.db.EntityPassword
 
-class PasswordViewHolder(private val binding: LyListaItemsBinding) :
+class PasswordViewHolder(
+    private val binding: LyListaItemsBinding,
+) :
     RecyclerView.ViewHolder(binding.root) {
     @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("ResourceAsColor")
     fun binder(entityPassword: EntityPassword) {
         binding.apply {
-            binding.labelLoghin.setText(entityPassword.loghin)
+            this.labelLoghin.setText(entityPassword.loghin)
+            this.labelPassword.setText(entityPassword.password)
+
 
             when (entityPassword.color) {
                 "n" -> binding.viewLayout.setBackgroundColor(R.color.purple_200)
@@ -36,8 +42,15 @@ class PasswordViewHolder(private val binding: LyListaItemsBinding) :
             }
 
             this.materialCardVIew.setOnClickListener { card ->
-
-
+                Toast.makeText(card.context, "biometrico", Toast.LENGTH_SHORT).show()
+                if (this.labelPassword.visibility ==View.VISIBLE){
+                    this.labelPassword.visibility = View.GONE
+                }else if (binding.labelPassword.visibility == View.GONE){
+                    this.labelPassword.visibility = View.VISIBLE
+                }
+                this.labelPassword.setOnClickListener {
+                    it.visibility = View.GONE
+                }
             }
         }
     }
