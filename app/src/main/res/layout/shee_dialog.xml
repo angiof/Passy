@@ -18,7 +18,6 @@
         android:layout_height="match_parent"
         app:layoutDescription="@xml/shee_dialog_xml_constraintlayout3_scene">
 
-
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/up"
             android:layout_width="0dp"
@@ -26,7 +25,7 @@
             android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></com.google.android.material.imageview.ShapeableImageView>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text0"
@@ -59,7 +58,7 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@id/btn_save"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/btn_save"></com.google.android.material.textview.MaterialTextView>
+            app:layout_constraintTop_toTopOf="@id/btn_save" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_red"
@@ -68,7 +67,6 @@
             android:layout_marginTop="12dp"
             android:adjustViewBounds="true"
             android:cropToPadding="false"
-            android:onClick="onclik"
             android:paddingHorizontal="0dp"
             android:paddingVertical="0dp"
             android:scaleType="centerCrop"
@@ -85,6 +83,7 @@
             android:cropToPadding="false"
             android:paddingHorizontal="0dp"
             android:paddingVertical="0dp"
+            tools:focused="true"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="@+id/iv_red"
             app:layout_constraintEnd_toStartOf="@+id/iv_red"
@@ -104,8 +103,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text0"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent">
-
-
         </ImageButton>
 
         <com.google.android.material.button.MaterialButton
@@ -120,7 +117,6 @@
             app:elevation="20dp"
             app:layout_constraintBottom_toBottomOf="@+id/text0"
             app:layout_constraintEnd_toEndOf="parent">
-
         </com.google.android.material.button.MaterialButton>
 
         <Spinner
@@ -141,7 +137,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
         </Spinner>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -169,7 +164,6 @@
                 android:nextFocusForward="@id/txt_pass"
                 android:textAlignment="center"
                 android:textColor="#FF4B26"
-
                 android:textColorHint="#C7BDBD"
                 android:textSize="24sp" />
 
@@ -183,12 +177,9 @@
             app:circularflow_radiusInDP="6dp"
             app:layout_constraintEnd_toEndOf="@+id/txt_loghin"
             app:layout_constraintStart_toStartOf="@+id/txt_loghin"
-
             app:layout_constraintTop_toBottomOf="@+id/txt_loghin"
             app:startIconDrawable="@drawable/ic_cancello"
-
             >
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_password"
                 android:layout_width="wrap_content"
@@ -211,13 +202,11 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_Green"
             android:layout_width="wrap_content"
-
             android:layout_height="120dp"
             android:adjustViewBounds="true"
             android:background="@drawable/cerchio"
             android:cropToPadding="false"
             android:imeOptions="actionDone"
-            android:onClick="onclick"
             android:paddingHorizontal="0dp"
             android:paddingVertical="0dp"
             android:scaleType="centerCrop"

@@ -3,6 +3,7 @@ package passy.prog.views
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,7 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
         )
     }
 
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +38,7 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
         viewModel = ViewModelProvider(this)[ViewModelPassword::class.java]
         return bindingFragSheet.root
     }
+
     private fun bntInserCategory() {
         bindingFragSheet.bntInsertCategory.setOnClickListener {
             Toast.makeText(requireActivity(), "feature da lavorare", Toast.LENGTH_SHORT).show()
@@ -46,27 +49,26 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
     }
     @RequiresApi(Build.VERSION_CODES.M)
     private fun saveClick() {
-
+        bindingFragSheet.ivRed.setOnClickListener {
+            colors = "r"
+            bindingFragSheet.btnSave.setBackgroundColor(requireActivity().getColor(R.color.redsoft))
+        }
+        bindingFragSheet.ivGreen.setOnClickListener {
+            colors = "n"
+            bindingFragSheet.btnSave.setBackgroundColor(it.context.getColor(R.color.purple_200))
+        }
+        bindingFragSheet.ivGreen.setOnClickListener {
+            colors = "g"
+            bindingFragSheet.btnSave.setBackgroundColor(it.context.getColor(R.color.softGreen))
+        }
         bindingFragSheet.btnSave.setOnClickListener {
             val loghin = bindingFragSheet.txtUser.text.toString()
             val password = bindingFragSheet.txtPassword.text.toString()
-            bindingFragSheet.ivGreen.setOnClickListener {
-                colors = "g"
-                bindingFragSheet.btnSave.setBackgroundColor(requireContext().getColor(R.color.softGreen))
-            }
-            bindingFragSheet.ivRed.setOnClickListener {
-                colors = "r"
-                bindingFragSheet.btnSave.setBackgroundColor(requireActivity().getColor(R.color.redsoft))
-            }
-            bindingFragSheet.ivGreen.setOnClickListener {
-                colors = "n"
-                bindingFragSheet.btnSave.setBackgroundColor(requireActivity().getColor(R.color.purple_200))
-            }
-
-            viewModel.insertPasswordViewModel(EntityPassword(0, "null", "password", colors, null))
+            viewModel.insertPasswordViewModel(EntityPassword(0, loghin, password, colors, null))
             viewModel.mostraToas(requireActivity(), loghin + password)
         }
     }
+
     private fun onChangeAvatar() {
         with(bindingFragSheet.ivAvatarSheetN) {
             this.setOnClickListener {
@@ -74,6 +76,7 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
             }
         }
     }
+
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun showMenu(v: View, @MenuRes menuRes: Int) {
         val popup = PopupMenu(requireContext(), v)
@@ -94,6 +97,17 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
         }
         // Show the popup menu.
         popup.show()
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun SetColorOnclickListener(): String? {
+        with(bindingFragSheet){
+            this.ivGreen.setOnClickListener {
+                Toast.makeText(it.context, "premuto", Toast.LENGTH_SHORT).show()
+            }
+        }
+        return colors
     }
 }
 
