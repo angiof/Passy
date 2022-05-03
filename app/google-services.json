@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "580878526525",
+    "project_id": "passy-ca2fc",
+    "storage_bucket": "passy-ca2fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:580878526525:android:5732e56b50bfb60ba1a254",
+        "android_client_info": {
+          "package_name": "passy.prog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "580878526525-r4uu9727v89osbr1cu4cn7nfi35nvhj8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiBovg7H49fAy1eh8Ft3YFh3LTxol4sn0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "580878526525-r4uu9727v89osbr1cu4cn7nfi35nvhj8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

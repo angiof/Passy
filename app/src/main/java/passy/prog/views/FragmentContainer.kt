@@ -33,7 +33,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class FragmentContainer : Fragment(R.layout.fragment_container) {
     val fragment: FragError = FragError()
-
     @Inject
     lateinit var dependencesHilt: DependencesHilt
     var basePerformances: BasePerformances = BasePerformances()
@@ -54,7 +53,6 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[ViewModelPassword::class.java]
-
         binding = FragmentContainerBinding.bind(view)
 
 
@@ -64,7 +62,6 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
             }
 
         })
-
         binding = FragmentContainerBinding.bind(view)
         binding.recyclerView.apply {
             val decorationSpan = DividerItemDecoration(requireContext(), LinearLayout.VERTICAL)
@@ -83,9 +80,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
 
     }
 
-
     private fun hideFabs() {
-
 
         binding.fbFrag.setOnLongClickListener {
             if (binding.floatingActionButton.visibility == View.VISIBLE) {
@@ -94,14 +89,11 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
                 Toast.makeText(requireActivity(), "si", Toast.LENGTH_SHORT).show()
             } else if (binding.floatingActionButton.visibility == View.GONE) {
                 binding.floatingActionButton.visibility = View.VISIBLE
-
             }
             return@setOnLongClickListener true
         }
-
         binding.fbFrag.setOnClickListener {
             viewModel.btnhide2(it.context)
-
         }
     }
 
@@ -113,22 +105,12 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
 
         MaterialDialog(requireContext(), BottomSheet(LayoutMode.MATCH_PARENT)).show {
             cornerRadius(18f)
-
             customView(view = bindSheetLayout.root, scrollable = true)
             title(passy.prog.R.string.insertitle)
-
-
             bindSheetLayout.txtUser.setText("")
             bindSheetLayout.txtPassword.setText("")
-
-
-
             with(bindSheetLayout.spinner) {
                 this.prompt = getString(R.string.app_name)
-
-
-
-
             }
         }
     }
@@ -141,15 +123,9 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
 
         }
     }
-
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onResume() {
         super.onResume()
         fabInsert()
     }
-
-
-
 }
-
-

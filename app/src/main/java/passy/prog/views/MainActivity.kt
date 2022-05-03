@@ -7,7 +7,9 @@ import android.hardware.biometrics.BiometricPrompt
 import android.os.Build
 import android.os.Bundle
 import android.os.CancellationSignal
+import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Button
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -142,4 +144,6 @@ open class MainActivity : AppCompatActivity() {
 // Commit the transaction
         transaction.commit();
     }
+
+
 }
