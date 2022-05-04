@@ -7,9 +7,7 @@ import android.hardware.biometrics.BiometricPrompt
 import android.os.Build
 import android.os.Bundle
 import android.os.CancellationSignal
-import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.Button
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -32,8 +30,6 @@ open class MainActivity : AppCompatActivity() {
                         super.onAuthenticationSucceeded(result)
                         Toast.makeText(this@MainActivity, "un cazzo ", Toast.LENGTH_SHORT).show()
                         restoreFrag()
-
-
                     }
 
                     override fun onAuthenticationError(errorCode: Int, errString: CharSequence?) {
@@ -45,9 +41,7 @@ open class MainActivity : AppCompatActivity() {
 
                         replace()
                         super.onAuthenticationError(errorCode, errString)
-
                     }
-
                 }
             } else {
                 TODO("VERSION.SDK_INT < P")
@@ -61,11 +55,8 @@ open class MainActivity : AppCompatActivity() {
         );
 
         setContentView(R.layout.activity_main)
-        this.hideToolbarAndStatusBar(this)
         viewModel = ViewModelProvider(this)[ViewModelPassword::class.java]
         //
-
-
     }
 
     @RequiresApi(Build.VERSION_CODES.P)
@@ -102,7 +93,6 @@ open class MainActivity : AppCompatActivity() {
             replace()
         }
         return cancellationSignal as CancellationSignal
-
     }
 
     @RequiresApi(Build.VERSION_CODES.P)
@@ -144,6 +134,7 @@ open class MainActivity : AppCompatActivity() {
 // Commit the transaction
         transaction.commit();
     }
+
 
 
 }

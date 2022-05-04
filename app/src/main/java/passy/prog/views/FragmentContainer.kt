@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -33,6 +32,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class FragmentContainer : Fragment(R.layout.fragment_container) {
     val fragment: FragError = FragError()
+
     @Inject
     lateinit var dependencesHilt: DependencesHilt
     var basePerformances: BasePerformances = BasePerformances()
@@ -59,6 +59,10 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
         val adapter = MyAdapter(object : MyAdapter.OnCardButtonsClick {
             override suspend fun OpenShowSheetButon(entityPassword: EntityPassword) {
                 //showSheet()
+            }
+
+            override suspend fun onDelateCard(entityPassword: EntityPassword) {
+                viewModel.cancellaTutto(entityPassword)
             }
 
         })
@@ -123,6 +127,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
 
         }
     }
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onResume() {
         super.onResume()

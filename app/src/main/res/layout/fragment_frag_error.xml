@@ -7,14 +7,12 @@
     tools:context=".views.FragError">
 
 
-
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:lottie_rawRes="@raw/error"
         app:lottie_autoPlay="true"
         app:lottie_repeatCount="5"
-        android:id="@+id/error_animation_lottie"
-        ></com.airbnb.lottie.LottieAnimationView>
+        android:id="@+id/error_animation_lottie" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
