@@ -57,4 +57,9 @@ class Repositorio(context: Context) {
     }
 
 
+    fun updatePasswordFromRepo(entityPassword: EntityPassword) {
+        daoPasswordsRepositorio.updatePassword(entityPassword)
+    }
+
+
 }

@@ -36,6 +36,9 @@ open class ViewModelPassword(application: Application) : AndroidViewModel(applic
     fun mostraToas(activity: Activity,messaggio: String){
         repositorioFromViewModel.mostraToas(activity ,messaggio)
     }
+    fun updatePassword(entityPassword: EntityPassword){
+        repositorioFromViewModel.updatePasswordFromRepo(entityPassword)
+    }
 }
 
 

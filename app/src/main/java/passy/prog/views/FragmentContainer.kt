@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
@@ -15,6 +16,9 @@ import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputEditText
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -61,6 +65,12 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
                 //showSheet()
             }
 
+            @SuppressLint("SetTextI18n")
+            override suspend fun onUpdatePassword(entityPassword: EntityPassword) {
+                openFb(entityPassword)
+                // viewModel.updatePassword(entityPassword)
+            }
+
             override suspend fun onDelateCard(entityPassword: EntityPassword) {
                 viewModel.cancellaTutto(entityPassword)
             }
@@ -79,8 +89,8 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
             adapter.submitList(it)
         }
 
-        hideFabs()
-        fabInsert()
+        //hideFabs()
+        //fabInsert()
 
     }
 
@@ -124,7 +134,6 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
         binding.fbFrag.setOnClickListener { v ->
             val sheet2: BTnSheetDialogFragment = BTnSheetDialogFragment()
             sheet2.show(requireActivity().supportFragmentManager, "sheet")
-
         }
     }
 
@@ -132,5 +141,17 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
     override fun onResume() {
         super.onResume()
         fabInsert()
+    }
+
+
+    fun openFb(entityPassword: EntityPassword) {
+        val sheet2: BTnSheetDialogFragment = BTnSheetDialogFragment()
+        sheet2.view?.findViewById<TextInputEditText>(R.id.txt_password)?.setText("pp")
+        sheet2.view?.findViewById<MaterialButton>(R.id.btn_save)?.setOnClickListener {
+            Toast.makeText(requireContext(), "preso", Toast.LENGTH_SHORT).show()
+            sheet2.dismiss()
+        }
+        sheet2.show(requireActivity().supportFragmentManager, "sheet2")
+
     }
 }

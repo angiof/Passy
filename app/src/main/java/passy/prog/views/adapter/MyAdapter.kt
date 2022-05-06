@@ -1,7 +1,9 @@
 package passy.prog.views.adapter
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -16,8 +20,10 @@ import kotlinx.coroutines.*
 import passy.prog.R
 import passy.prog.databinding.LyListaItemsBinding
 import passy.prog.db.EntityPassword
+import passy.prog.views.BTnSheetDialogFragment
 
-class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
+
+class MyAdapter( val onCardButtonsClick: OnCardButtonsClick) :
     ListAdapter<EntityPassword, MyAdapter.PasswordViewHolder>(DiffCallBack()) {
     private var dataset: MutableList<EntityPassword> = mutableListOf()
     var TAG: String = "MYADAPTER"
@@ -76,12 +82,16 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
                     viewDialog.findViewById<View>(R.id.edit).setOnClickListener {
 
                         GlobalScope.launch {
-
-                        onCardButtonsClick.onDelateCard(entityPassword)
+                            onCardButtonsClick.onUpdatePassword(entityPassword)
                         }
-
                         Log.d("dialog", "premuto edit ")
                         dialog.dismiss()
+                    }
+
+                    viewDialog.findViewById<View>(R.id.delate).setOnClickListener {
+                        GlobalScope.launch {
+                            onCardButtonsClick.onDelateCard(entityPassword)
+                        }
                     }
                     dialog.show()
                     return@setOnLongClickListener true
@@ -115,12 +125,13 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
     interface OnCardButtonsClick {
         suspend fun onDelateCard(entityPassword: EntityPassword)
         suspend fun OpenShowSheetButon(entityPassword: EntityPassword)
+        suspend fun onUpdatePassword(entityPassword: EntityPassword)
     }
 
-     fun run(position: Int) = runBlocking {
-         launch(Dispatchers.IO){
-             onCardButtonsClick.onDelateCard(dataset[position])
-         }
+    fun run(position: Int) = runBlocking {
+        launch(Dispatchers.IO) {
+            onCardButtonsClick.onDelateCard(dataset[position])
+        }
 
-     }
+    }
 }
