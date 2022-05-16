@@ -21,6 +21,7 @@ import passy.prog.R
 import passy.prog.databinding.LyListaItemsBinding
 import passy.prog.db.EntityPassword
 import passy.prog.views.BTnSheetDialogFragment
+import javax.annotation.meta.When
 
 
 class MyAdapter( val onCardButtonsClick: OnCardButtonsClick) :
@@ -59,7 +60,10 @@ class MyAdapter( val onCardButtonsClick: OnCardButtonsClick) :
                     "Uso_Personale" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_prifile2)
                     "Posta" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_email)
 
-                    else -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_lock)
+                    else -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_google_svgrepo_com)
+                }
+                if (entityPassword.loghin!!.contains("accenture",true)){
+                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_acure_icon)
                 }
 
                 this.materialCardVIew.setOnClickListener { card ->

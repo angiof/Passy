@@ -23,6 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import passy.prog.R
+import passy.prog.R.id.txt_password
 import passy.prog.databinding.FragmentContainerBinding
 import passy.prog.databinding.SheeDialogBinding
 import passy.prog.db.EntityPassword
@@ -146,7 +147,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
 
     fun openFb(entityPassword: EntityPassword) {
         val sheet2: BTnSheetDialogFragment = BTnSheetDialogFragment()
-        sheet2.view?.findViewById<TextInputEditText>(R.id.txt_password)?.setText("pp")
+        sheet2.view?.findViewById<TextInputEditText>(txt_password)?.setText("pp")
         sheet2.view?.findViewById<MaterialButton>(R.id.btn_save)?.setOnClickListener {
             Toast.makeText(requireContext(), "preso", Toast.LENGTH_SHORT).show()
             sheet2.dismiss()
