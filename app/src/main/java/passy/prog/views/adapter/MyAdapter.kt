@@ -28,7 +28,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
     var TAG: String = "MYADAPTER"
     val builder = AlertDialog.Builder(context)
 
-    val viewDialog = View.inflate(context, R.layout.custom_, null)
+    val viewDialog: View = View.inflate(context, R.layout.custom_, null)
     val jobPadres: CoroutineScope by lazy { CoroutineScope(Dispatchers.Main) }
 
     @OptIn(DelicateCoroutinesApi::class)
