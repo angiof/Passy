@@ -2,11 +2,15 @@ package passy.prog.views.adapter
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Context
+import android.media.Image
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
@@ -18,10 +22,13 @@ import passy.prog.databinding.LyListaItemsBinding
 import passy.prog.db.EntityPassword
 
 
-class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
+class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
     ListAdapter<EntityPassword, MyAdapter.PasswordViewHolder>(DiffCallBack()) {
     private var dataset: MutableList<EntityPassword> = mutableListOf()
     var TAG: String = "MYADAPTER"
+    val builder = AlertDialog.Builder(context)
+
+    val viewDialog = View.inflate(context, R.layout.custom_, null)
     val jobPadres: CoroutineScope by lazy { CoroutineScope(Dispatchers.Main) }
 
     @OptIn(DelicateCoroutinesApi::class)
@@ -34,8 +41,8 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
         @SuppressLint("ResourceAsColor")
         fun binder(entityPassword: EntityPassword) = runBlocking {
             binding.apply {
-                this.labelLoghin.setText(entityPassword.loghin)
-                this.labelPassword.setText(entityPassword.password)
+                this.labelLoghin.text = entityPassword.loghin
+                this.labelPassword.text = entityPassword.password
 
 
                 when (entityPassword.color) {
@@ -60,24 +67,23 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
                     binding.ivAvatar.setBackgroundResource(R.drawable.ic_acure_icon)
                 } else if (entityPassword.loghin.contains("microsoft", true)) {
                     binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_microsoft)
-                }else if (entityPassword.loghin.contains("ig", true)) {
+                } else if (entityPassword.loghin.contains("ig", true)) {
                     binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_instagram)
-                }else if (entityPassword.loghin.contains("fb", true)) {
+                } else if (entityPassword.loghin.contains("fb", true)) {
                     binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_facebook_f__1_)
-                }
-                else if (entityPassword.loghin.contains("git", true)) {
+                } else if (entityPassword.loghin.contains("git", true)) {
                     binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_github)
-                }else if (entityPassword.loghin.contains("gitlab", true)) {
+                } else if (entityPassword.loghin.contains("gitlab", true)) {
                     binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_gitlab)
-                }else if (entityPassword.loghin.contains("apple", true)) {
+                } else if (entityPassword.loghin.contains("apple", true)) {
                     binding.ivAvatar.setBackgroundResource(R.drawable.ic_apple_brands)
-                }else if (entityPassword.loghin.contains("android", true)) {
+                } else if (entityPassword.loghin.contains("android", true)) {
                     binding.ivAvatar.setBackgroundResource(R.drawable.ic_android_brands)
-                }else if (entityPassword.loghin.contains("paypal", true)) {
+                } else if (entityPassword.loghin.contains("paypal", true)) {
                     binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_paypal)
-                }else if (entityPassword.loghin.contains("koltin", true)) {
+                } else if (entityPassword.loghin.contains("koltin", true)) {
                     binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_kotlin)
-                }else if (entityPassword.loghin.contains("oracle", true)) {
+                } else if (entityPassword.loghin.contains("oracle", true)) {
                     binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_java)
                 }
 
@@ -93,11 +99,13 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
                     }
                 }
                 this.materialCardVIew.setOnLongClickListener {
-                    val viewDialog = View.inflate(it.context, R.layout.custom_, null)
                     val builder = AlertDialog.Builder(it.context)
-                    builder.setCancelable(false)
+                    builder.setCancelable(true)
                     builder.setView(viewDialog)
                     val dialog = builder.create()
+                    imagecontrol(entityPassword)
+
+                    viewDialog.findViewById<TextView>(R.id.texttest).text = entityPassword.loghin
                     viewDialog.findViewById<View>(R.id.edit).setOnClickListener {
 
                         GlobalScope.launch {
@@ -112,6 +120,10 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
                             onCardButtonsClick.onDelateCard(entityPassword)
                             dialog.dismiss()
                         }
+                        viewDialog.findViewById<ImageView>(R.id.closeview).setOnClickListener {
+                            dialog.dismiss()
+                        }
+                       // dialog.show()
                     }
                     dialog.show()
                     return@setOnLongClickListener true
@@ -151,6 +163,35 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
     fun run(position: Int) = runBlocking {
         launch(Dispatchers.IO) {
             onCardButtonsClick.onDelateCard(dataset[position])
+        }
+    }
+    fun imagecontrol(entityPassword: EntityPassword) {
+       val pipo = viewDialog.findViewById<ImageView>(R.id.avatardialog)
+        if (entityPassword.loghin!!.contains("accenture", true)) {
+            pipo.setBackgroundResource(R.drawable.ic_acure_icon)
+        } else if (entityPassword.loghin.contains("microsoft", true)) {
+            pipo.setBackgroundResource(R.drawable.ic_icons8_microsoft)
+        } else if (entityPassword.loghin.contains("ig", true)) {
+            pipo.setBackgroundResource(R.drawable.ic_icons8_instagram)
+        } else if (entityPassword.loghin.contains("fb", true)) {
+            pipo.setBackgroundResource(R.drawable.ic_icons8_facebook_f__1_)
+        } else if (entityPassword.loghin.contains("git", true)) {
+            pipo.setBackgroundResource(R.drawable.ic_icons8_github)
+        } else if (entityPassword.loghin.contains("gitlab", true)) {
+            pipo.setBackgroundResource(R.drawable.ic_icons8_gitlab)
+        } else if (entityPassword.loghin.contains("apple", true)) {
+            pipo.setBackgroundResource(R.drawable.ic_apple_brands)
+        } else if (entityPassword.loghin.contains("android", true)) {
+            pipo.setBackgroundResource(R.drawable.ic_android_brands)
+        } else if (entityPassword.loghin.contains("paypal", true)) {
+            pipo.setBackgroundResource(R.drawable.ic_icons8_paypal)
+        } else if (entityPassword.loghin.contains("koltin", true)) {
+            pipo.setBackgroundResource(R.drawable.ic_icons8_kotlin)
+        } else if (entityPassword.loghin.contains("oracle", true)) {
+            pipo.setBackgroundResource(R.drawable.ic_icons8_java)
+        }else{
+            pipo.setBackgroundResource(R.drawable.ic_prifile2)
+
         }
 
     }

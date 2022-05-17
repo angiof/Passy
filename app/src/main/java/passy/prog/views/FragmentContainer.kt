@@ -74,7 +74,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
                 viewModel.cancellaTutto(entityPassword)
             }
 
-        })
+        },requireActivity())
         binding = FragmentContainerBinding.bind(view)
         binding.recyclerView.apply {
             val decorationSpan = DividerItemDecoration(requireContext(), LinearLayout.VERTICAL)

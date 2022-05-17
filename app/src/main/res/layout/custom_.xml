@@ -1,53 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="8dp">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="47dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/bg_text_finder"
         android:fontFamily="@font/roboto_bold"
-        app:backgroundTint="@color/softGreen"
         android:imeOptions="actionNext"
-        android:text="EDIT"
         android:inputType="textEmailAddress"
         android:letterSpacing="0.1"
         android:nextFocusForward="@id/txt_pass"
+        android:text="EDIT"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:backgroundTint="@color/softGreen"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@+id/texttest" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/delate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="57dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/bg_text_finder"
         android:fontFamily="@font/roboto_bold"
-        android:text="DELATE"
-        app:backgroundTint="@color/redsoft"
         android:imeOptions="actionNext"
         android:inputType="textEmailAddress"
         android:letterSpacing="0.1"
         android:nextFocusForward="@id/txt_pass"
+        android:text="DELATE"
         android:textAlignment="center"
+
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit"
+        app:backgroundTint="@color/redsoft"
+        app:layout_constraintEnd_toEndOf="@+id/edit"
+        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintStart_toStartOf="@+id/edit"
+        app:layout_constraintTop_toBottomOf="@+id/edit" />
 
+    <TextView
+        android:id="@+id/texttest"
+        android:layout_width="194dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toStartOf="@+id/closeview"
+        app:layout_constraintHorizontal_bias="0.611"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avatardialog" />
+
+    <ImageButton
+        android:id="@+id/closeview"
+        android:layout_width="57dp"
+        android:layout_height="46dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_close_24" />
+
+    <ImageView
+        android:id="@+id/avatardialog"
+        android:layout_width="95dp"
+        android:layout_height="52dp"
+        app:layout_constraintEnd_toEndOf="@+id/texttest"
+        app:layout_constraintStart_toStartOf="@+id/texttest"
+        app:layout_constraintTop_toTopOf="parent"
         />
 
 
