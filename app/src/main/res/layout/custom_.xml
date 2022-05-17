@@ -64,18 +64,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avatardialog" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/closeview"
-        android:layout_width="57dp"
-        android:layout_height="46dp"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_close_24" />
 
     <ImageView
         android:id="@+id/avatardialog"
-        android:layout_width="95dp"
-        android:layout_height="52dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintEnd_toEndOf="@+id/texttest"
         app:layout_constraintStart_toStartOf="@+id/texttest"
         app:layout_constraintTop_toTopOf="parent"

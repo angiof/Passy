@@ -3,12 +3,12 @@ package passy.prog.views.adapter
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
-import android.media.Image
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -98,36 +98,52 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                         it.visibility = View.GONE
                     }
                 }
-                this.materialCardVIew.setOnLongClickListener {
-                    val builder = AlertDialog.Builder(it.context)
-                    builder.setCancelable(true)
-                    builder.setView(viewDialog)
-                    val dialog = builder.create()
-                    imagecontrol(entityPassword)
+                this.materialCardVIew.let {
+                    it.setOnLongClickListener {
+                        val builder = AlertDialog.Builder(it.context)
+                        builder.setCancelable(true)
+                        builder.setView(viewDialog)
+                        val dialog = builder.create()
+                        imagecontrol(entityPassword)
 
-                    viewDialog.findViewById<TextView>(R.id.texttest).text = entityPassword.loghin
-                    viewDialog.findViewById<View>(R.id.edit).setOnClickListener {
+                        viewDialog.findViewById<TextView>(R.id.texttest).text =
+                            entityPassword.loghin
+                        viewDialog.findViewById<View>(R.id.edit).setOnClickListener {
 
-                        GlobalScope.launch {
-                            onCardButtonsClick.onUpdatePassword(entityPassword)
-                        }
-                        Log.d("dialog", "premuto edit ")
-                        dialog.dismiss()
-                    }
+                            viewDialog.parent
+                            if (viewDialog.parent != null) {
+                                (viewDialog.parent as ViewGroup).removeView(viewDialog) // <- fix
+                            }
+                            builder.setView(viewDialog)
 
-                    viewDialog.findViewById<View>(R.id.delate).setOnClickListener {
-                        GlobalScope.launch {
-                            onCardButtonsClick.onDelateCard(entityPassword)
+
+
+                            GlobalScope.launch {
+                                onCardButtonsClick.onUpdatePassword(entityPassword)
+                            }
+                            Log.d("dialog", "premuto edit ")
                             dialog.dismiss()
+                        }
+
+                        viewDialog.findViewById<View>(R.id.delate).setOnClickListener {
+                            GlobalScope.launch {
+                                onCardButtonsClick.onDelateCard(entityPassword)
+                                dialog.dismiss()
+                            }
                         }
                         viewDialog.findViewById<ImageView>(R.id.closeview).setOnClickListener {
                             dialog.dismiss()
                         }
-                       // dialog.show()
+                        // dialog.show()
+                        if (viewDialog.parent != null) {
+                            (viewDialog.parent as ViewGroup).removeView(viewDialog) // <- fix
+                        }
+                        dialog.show()
+
+                        return@setOnLongClickListener true
                     }
-                    dialog.show()
-                    return@setOnLongClickListener true
                 }
+
 
             }
         }
@@ -165,8 +181,9 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
             onCardButtonsClick.onDelateCard(dataset[position])
         }
     }
+
     fun imagecontrol(entityPassword: EntityPassword) {
-       val pipo = viewDialog.findViewById<ImageView>(R.id.avatardialog)
+        val pipo = viewDialog.findViewById<ImageView>(R.id.avatardialog)
         if (entityPassword.loghin!!.contains("accenture", true)) {
             pipo.setBackgroundResource(R.drawable.ic_acure_icon)
         } else if (entityPassword.loghin.contains("microsoft", true)) {
@@ -189,7 +206,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
             pipo.setBackgroundResource(R.drawable.ic_icons8_kotlin)
         } else if (entityPassword.loghin.contains("oracle", true)) {
             pipo.setBackgroundResource(R.drawable.ic_icons8_java)
-        }else{
+        } else {
             pipo.setBackgroundResource(R.drawable.ic_prifile2)
 
         }
