@@ -11,6 +11,7 @@
         <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/drawable/cerchio3.xml" value="0.10277777777777777" />
         <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/drawable/google_gradiente.xml" value="0.2545" />
         <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/drawable/ic_accenture_icon.xml" value="0.209" />
+        <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/drawable/ic_apple_brands.xml" value="0.1" />
         <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1" />
         <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/drawable/ic_baseline_error_outline_24_viola.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.2415" />
@@ -34,11 +35,11 @@
         <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/drawable/shapebgsheet.xml" value="0.222" />
         <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/drawable/spin.xml" value="0.1895" />
         <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/layout/activity_main.xml" value="0.18229166666666666" />
-        <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/layout/custom_.xml" value="0.16979166666666667" />
+        <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/layout/custom_.xml" value="0.4" />
         <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/layout/fragment_blank.xml" value="0.25" />
-        <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/layout/fragment_container.xml" value="0.25" />
+        <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/layout/fragment_container.xml" value="0.1" />
         <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/layout/fragment_frag_error.xml" value="0.21203703703703702" />
-        <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/layout/ly_lista_items.xml" value="0.6" />
+        <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/layout/ly_lista_items.xml" value="0.1" />
         <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/layout/shee_dialog.xml" value="0.24444444444444444" />
         <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/layout/sheet_layout_motion.xml" value="0.4" />
         <entry key="..\:/Users/honor/AndroidStudioProjects/Passy/app/src/main/res/layout/sheet_password.xml" value="0.264" />

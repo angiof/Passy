@@ -7,21 +7,20 @@
     android:padding="8dp">
 
 
-    <com.google.android.material.textfield.TextInputEditText
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_text_finder"
         android:fontFamily="@font/roboto_bold"
-        android:hint="EDIT"
-        focused="false"
+        app:backgroundTint="@color/softGreen"
         android:imeOptions="actionNext"
+        android:text="EDIT"
         android:inputType="textEmailAddress"
         android:letterSpacing="0.1"
         android:nextFocusForward="@id/txt_pass"
         android:textAlignment="center"
-        android:textColor="#FF4B26"
-        android:textColorHint="#F44336"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,21 +28,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.google.android.material.textfield.TextInputEditText
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/delate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:background="@drawable/bg_text_finder"
         android:fontFamily="@font/roboto_bold"
-        android:hint="DELATE"
+        android:text="DELATE"
+        app:backgroundTint="@color/redsoft"
         android:imeOptions="actionNext"
         android:inputType="textEmailAddress"
         android:letterSpacing="0.1"
         android:nextFocusForward="@id/txt_pass"
         android:textAlignment="center"
-        android:textColor="#FF4B26"
-        android:textColorHint="#F44336"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

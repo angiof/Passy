@@ -1,9 +1,7 @@
 package passy.prog.views.adapter
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.app.AlertDialog
-import android.content.Context
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,8 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -20,11 +16,9 @@ import kotlinx.coroutines.*
 import passy.prog.R
 import passy.prog.databinding.LyListaItemsBinding
 import passy.prog.db.EntityPassword
-import passy.prog.views.BTnSheetDialogFragment
-import javax.annotation.meta.When
 
 
-class MyAdapter( val onCardButtonsClick: OnCardButtonsClick) :
+class MyAdapter(val onCardButtonsClick: OnCardButtonsClick) :
     ListAdapter<EntityPassword, MyAdapter.PasswordViewHolder>(DiffCallBack()) {
     private var dataset: MutableList<EntityPassword> = mutableListOf()
     var TAG: String = "MYADAPTER"
@@ -62,8 +56,29 @@ class MyAdapter( val onCardButtonsClick: OnCardButtonsClick) :
 
                     else -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_google_svgrepo_com)
                 }
-                if (entityPassword.loghin!!.contains("accenture",true)){
+                if (entityPassword.loghin!!.contains("accenture", true)) {
                     binding.ivAvatar.setBackgroundResource(R.drawable.ic_acure_icon)
+                } else if (entityPassword.loghin.contains("microsoft", true)) {
+                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_microsoft)
+                }else if (entityPassword.loghin.contains("ig", true)) {
+                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_instagram)
+                }else if (entityPassword.loghin.contains("fb", true)) {
+                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_facebook_f__1_)
+                }
+                else if (entityPassword.loghin.contains("git", true)) {
+                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_github)
+                }else if (entityPassword.loghin.contains("gitlab", true)) {
+                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_gitlab)
+                }else if (entityPassword.loghin.contains("apple", true)) {
+                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_apple_brands)
+                }else if (entityPassword.loghin.contains("android", true)) {
+                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_android_brands)
+                }else if (entityPassword.loghin.contains("paypal", true)) {
+                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_paypal)
+                }else if (entityPassword.loghin.contains("koltin", true)) {
+                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_kotlin)
+                }else if (entityPassword.loghin.contains("oracle", true)) {
+                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_java)
                 }
 
                 this.materialCardVIew.setOnClickListener { card ->
@@ -95,6 +110,7 @@ class MyAdapter( val onCardButtonsClick: OnCardButtonsClick) :
                     viewDialog.findViewById<View>(R.id.delate).setOnClickListener {
                         GlobalScope.launch {
                             onCardButtonsClick.onDelateCard(entityPassword)
+                            dialog.dismiss()
                         }
                     }
                     dialog.show()

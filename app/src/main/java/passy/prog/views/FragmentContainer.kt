@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
@@ -17,7 +16,6 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -88,6 +86,11 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
         ViewModelProvider(this)[ViewModelPassword::class.java]
         viewModel.lista.observe(requireActivity()) {
             adapter.submitList(it)
+            if (it.size == 0) {
+                binding.lottie0.visibility = View.VISIBLE
+            } else {
+                binding.lottie0.visibility = View.GONE
+            }
         }
 
         //hideFabs()
