@@ -104,6 +104,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                         builder.setCancelable(true)
                         builder.setView(viewDialog)
                         val dialog = builder.create()
+                        viewDialog.findViewById<TextView>(R.id.password_dialog).text = entityPassword.password
                         imagecontrol(entityPassword)
 
                         viewDialog.findViewById<TextView>(R.id.texttest).text =

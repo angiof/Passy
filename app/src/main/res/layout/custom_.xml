@@ -11,7 +11,7 @@
         android:id="@+id/edit"
         android:layout_width="wrap_content"
         android:layout_height="47dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/bg_text_finder"
         android:fontFamily="@font/roboto_bold"
         android:imeOptions="actionNext"
@@ -24,15 +24,14 @@
         android:textSize="24sp"
         app:backgroundTint="@color/softGreen"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/texttest" />
+        app:layout_constraintTop_toBottomOf="@+id/password_dialog" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/delate"
-        android:layout_width="0dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="47dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/bg_text_finder"
         android:fontFamily="@font/roboto_bold"
         android:imeOptions="actionNext"
@@ -40,13 +39,12 @@
         android:letterSpacing="0.1"
         android:nextFocusForward="@id/txt_pass"
         android:text="DELATE"
-        android:textAlignment="center"
 
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:backgroundTint="@color/redsoft"
         app:layout_constraintEnd_toEndOf="@+id/edit"
-        app:layout_constraintHorizontal_bias="0.568"
         app:layout_constraintStart_toStartOf="@+id/edit"
         app:layout_constraintTop_toBottomOf="@+id/edit" />
 
@@ -55,13 +53,12 @@
         android:layout_width="194dp"
         android:layout_height="59dp"
         android:layout_marginTop="8dp"
-        android:textColor="@color/black"
-        android:textAlignment="center"
         android:fontFamily="@font/roboto_bold"
+        android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="28sp"
-        app:layout_constraintEnd_toStartOf="@+id/closeview"
-        app:layout_constraintHorizontal_bias="0.611"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/avatardialog"
+        app:layout_constraintStart_toStartOf="@+id/avatardialog"
         app:layout_constraintTop_toBottomOf="@+id/avatardialog" />
 
     <ImageView
@@ -76,10 +73,37 @@
         android:id="@+id/avatardialog"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Password"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+
         app:layout_constraintEnd_toEndOf="@+id/texttest"
         app:layout_constraintStart_toStartOf="@+id/texttest"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/texttest" />
+
+    <TextView
+        android:id="@+id/password_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:letterSpacing="0.1"
+        android:textAlignment="center"
+        android:fontFamily="@font/roboto_bold"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
