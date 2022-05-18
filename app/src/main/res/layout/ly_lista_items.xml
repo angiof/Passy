@@ -22,10 +22,11 @@
 
         >
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.motion.widget.MotionLayout
             android:id="@+id/view_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layoutDescription="@xml/ly_lista_items_xml_view_layout_scene2">
 
             <ImageView
                 android:id="@+id/iv_avatar"
@@ -37,6 +38,7 @@
                 android:src="@drawable/ic_logo_google"
                 app:circularflow_defaultRadius="12dp"
                 app:circularflow_radiusInDP="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -46,14 +48,13 @@
                 android:id="@+id/label_loghin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="4dp"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.226"
-                app:layout_constraintStart_toEndOf="@+id/iv_avatar"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_avatar"
+                app:layout_constraintStart_toStartOf="@+id/iv_avatar"
+                app:layout_constraintTop_toBottomOf="@+id/iv_avatar"
                 tools:text="user\"
                 tools:textColor="black" />
 
@@ -63,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
                 android:letterSpacing="0.1"
-                android:text="password"
+                android:text="show password"
                 android:textAlignment="viewStart"
                 android:textColor="@color/white"
                 android:textSize="24sp"
@@ -96,7 +97,7 @@
                 app:srcCompat="@drawable/ic_baseline_content_copy_24" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.motion.widget.MotionLayout>
 
 
     </com.google.android.material.card.MaterialCardView>
