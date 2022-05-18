@@ -27,16 +27,13 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
     private var dataset: MutableList<EntityPassword> = mutableListOf()
     var TAG: String = "MYADAPTER"
     val builder = AlertDialog.Builder(context)
-
     val viewDialog: View = View.inflate(context, R.layout.custom_, null)
     val jobPadres: CoroutineScope by lazy { CoroutineScope(Dispatchers.Main) }
-
     @OptIn(DelicateCoroutinesApi::class)
     inner class PasswordViewHolder(
         private val binding: LyListaItemsBinding
     ) :
         RecyclerView.ViewHolder(binding.root) {
-
         @RequiresApi(Build.VERSION_CODES.M)
         @SuppressLint("ResourceAsColor")
         fun binder(entityPassword: EntityPassword) = runBlocking {
@@ -55,7 +52,6 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                     "Lavoro" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_jobs)
 
                     "Giochi" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_jositick_inset)
-
                     "Importante" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_imm)
 
                     "Uso_Personale" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_prifile2)
@@ -106,19 +102,14 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                         val dialog = builder.create()
                         viewDialog.findViewById<TextView>(R.id.password_dialog).text = entityPassword.password
                         imagecontrol(entityPassword)
-
                         viewDialog.findViewById<TextView>(R.id.texttest).text =
                             entityPassword.loghin
                         viewDialog.findViewById<View>(R.id.edit).setOnClickListener {
-
                             viewDialog.parent
                             if (viewDialog.parent != null) {
                                 (viewDialog.parent as ViewGroup).removeView(viewDialog) // <- fix
                             }
                             builder.setView(viewDialog)
-
-
-
                             GlobalScope.launch {
                                 onCardButtonsClick.onUpdatePassword(entityPassword)
                             }
@@ -144,11 +135,8 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                         return@setOnLongClickListener true
                     }
                 }
-
-
             }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PasswordViewHolder {
@@ -209,8 +197,6 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
             pipo.setBackgroundResource(R.drawable.ic_icons8_java)
         } else {
             pipo.setBackgroundResource(R.drawable.ic_prifile2)
-
         }
-
     }
 }
