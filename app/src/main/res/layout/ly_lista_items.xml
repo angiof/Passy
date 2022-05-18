@@ -96,6 +96,14 @@
                 app:layout_constraintTop_toTopOf="@+id/label_password"
                 app:srcCompat="@drawable/ic_baseline_content_copy_24" />
 
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="40dp"
+                android:layout_height="48dp"
+                app:srcCompat="@drawable/ic_baseline_more_vert_24"
+                tools:layout_editor_absoluteX="210dp"
+                tools:layout_editor_absoluteY="33dp" />
+
 
         </androidx.constraintlayout.motion.widget.MotionLayout>
 

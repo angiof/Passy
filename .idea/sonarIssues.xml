@@ -63,6 +63,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/xml/ly_lista_items_xml_view_layout_scene2.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
       </map>
     </option>
   </component>

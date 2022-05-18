@@ -102,8 +102,8 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                         it.visibility = View.GONE
                     }
                 }
-                this.materialCardVIew.let {
-                    it.setOnLongClickListener {
+                this.imageView.let {
+                    it.setOnClickListener {
                         val builder = AlertDialog.Builder(it.context)
                         builder.setCancelable(true)
                         builder.setView(viewDialog)
@@ -140,7 +140,6 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                         }
                         dialog.show()
 
-                        return@setOnLongClickListener true
                     }
                 }
             }
