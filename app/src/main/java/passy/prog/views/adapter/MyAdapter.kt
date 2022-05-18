@@ -2,6 +2,8 @@ package passy.prog.views.adapter
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.os.Build
 import android.util.Log
@@ -81,6 +83,12 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                     binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_kotlin)
                 } else if (entityPassword.loghin.contains("oracle", true)) {
                     binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_java)
+                }
+
+                this.btncopy.let { it ->
+                    it.setOnClickListener {
+                    it.context.copyToClipboard(this.labelPassword.text.toString(),it.context)
+                    }
                 }
 
                 this.materialCardVIew.setOnClickListener { card ->
@@ -198,5 +206,12 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
         } else {
             pipo.setBackgroundResource(R.drawable.ic_prifile2)
         }
+    }
+    @SuppressLint("ServiceCast")
+    fun Context.copyToClipboard(text: CharSequence,context: Context){
+        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText("label",text)
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+        clipboard.setPrimaryClip(clip)
     }
 }
