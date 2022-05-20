@@ -1,4 +1,4 @@
-package passy.prog.views
+package passy.prog.utils
 
 import android.app.Activity
 import android.content.Context
@@ -10,8 +10,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import passy.prog.R
 import passy.prog.db.EntityPassword
+import passy.prog.views.MainActivity
 
 typealias utils = UtilsFuns
+fun pipo(){
+    println("questo è pippo ")
+}
 
 class UtilsFuns {
 
@@ -51,5 +55,8 @@ class UtilsFuns {
         }
         dialog.show()
     }
-
+fun pipi(){
+    pipo()
 }
+}
+

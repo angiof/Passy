@@ -206,6 +206,37 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
             pipo.setBackgroundResource(R.drawable.ic_prifile2)
         }
     }
+
+
+    fun assetControl(context: Context,entityPassword: EntityPassword,binding: LyListaItemsBinding,viewDialog: View ){
+
+
+        if (entityPassword.loghin!!.contains("accenture", true)) {
+            binding.ivAvatar.setBackgroundResource(R.drawable.ic_acure_icon)
+        } else if (entityPassword.loghin.contains("microsoft", true)) {
+            binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_microsoft)
+        } else if (entityPassword.loghin.contains("ig", true)) {
+            binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_instagram)
+        } else if (entityPassword.loghin.contains("fb", true)) {
+            binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_facebook_f__1_)
+        } else if (entityPassword.loghin.contains("git", true)) {
+            binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_github)
+        } else if (entityPassword.loghin.contains("gitlab", true)) {
+            binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_gitlab)
+        } else if (entityPassword.loghin.contains("apple", true)) {
+            binding.ivAvatar.setBackgroundResource(R.drawable.ic_apple_brands)
+        } else if (entityPassword.loghin.contains("android", true)) {
+            binding.ivAvatar.setBackgroundResource(R.drawable.ic_android_brands)
+        } else if (entityPassword.loghin.contains("paypal", true)) {
+            binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_paypal)
+        } else if (entityPassword.loghin.contains("koltin", true)) {
+            binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_kotlin)
+        } else if (entityPassword.loghin.contains("oracle", true)) {
+            binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_java)
+        }
+    }
+
+
     @SuppressLint("ServiceCast")
     fun Context.copyToClipboard(text: CharSequence,context: Context){
         val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
