@@ -5,6 +5,7 @@
     <string name="title_activity_main2">MainActivity2</string>
     <string name="insertitle">\t\tINSERIRE NUOVA PASSWORD</string>
     <string name="spintitle">categoria</string>
+    <string name="modifica">modifica</string>
 
 
     <string-array name="colori_spinner">

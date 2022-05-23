@@ -2,6 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.Passy" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
+        <item name="md_corner_radius">16dp</item>
+
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -72,6 +74,17 @@
 
     <style name="overlay" parent="Widget.Design.FloatingActionButton">
         <item name="shapeAppearanceOverlay">@style/shapestyle</item>
+    </style>
+
+
+
+    <style name="alter" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">@color/softGreen</item>
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <!-- Used for the background -->
+        <item name="android:background">@color/softGreen</item>
     </style>
 
 </resources>

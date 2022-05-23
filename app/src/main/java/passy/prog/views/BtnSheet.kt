@@ -14,6 +14,7 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import passy.prog.R
+import passy.prog.databinding.EditSheetBinding
 import passy.prog.databinding.SheeDialogBinding
 import passy.prog.db.EntityPassword
 import passy.prog.viewmodel.ViewModelPassword
@@ -40,11 +41,7 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun bntInserCategory() {
-        bindingFragSheet.bntInsertCategory.setOnClickListener {
-            Toast.makeText(requireActivity(), "feature da lavorare", Toast.LENGTH_SHORT).show()
-            // it.visibility = View.GONE
-            // bindingFragSheet.ivAvatarSheetN.visibility = View.VISIBLE
-        }
+
 
     }
     @RequiresApi(Build.VERSION_CODES.M)
@@ -90,7 +87,6 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
                     // bindingFragSheet.ivAvatarSheet.visibility=View.GONE
                     bindingFragSheet.ivAvatarSheetN.background =
                         requireActivity().getDrawable(R.drawable.ic_lock)
-                    bindingFragSheet.bntInsertCategory.visibility = View.VISIBLE
                 }
             }
             true

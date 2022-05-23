@@ -120,6 +120,10 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                             builder.setView(viewDialog)
                             GlobalScope.launch {
                                 onCardButtonsClick.onUpdatePassword(entityPassword)
+                                 object  {
+                                    val entityPassword = entityPassword
+                                }
+
                             }
                             Log.d("dialog", "premuto edit ")
                             dialog.dismiss()
@@ -244,4 +248,6 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
         clipboard.setPrimaryClip(clip)
     }
+
+
 }

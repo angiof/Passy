@@ -1,6 +1,8 @@
 package passy.prog.views
 
+import BtnSheetEdit
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -15,13 +17,12 @@ import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.textfield.TextInputEditText
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import passy.prog.R
-import passy.prog.R.id.txt_password
 import passy.prog.databinding.FragmentContainerBinding
 import passy.prog.databinding.SheeDialogBinding
 import passy.prog.db.EntityPassword
@@ -45,12 +46,16 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
     private lateinit var viewModel: ViewModelPassword
     private lateinit var binding: passy.prog.databinding.FragmentContainerBinding
     var colors: String? = null
-    private val bindSheetLayout: passy.prog.databinding.SheeDialogBinding by lazy {
+    private val bindSheetLayout: SheeDialogBinding by lazy {
         SheeDialogBinding.inflate(
             layoutInflater
         )
     }
-    val tipologia: Array<String> by lazy { resources.getStringArray(R.array.avatar_password) }
+    private val bindSheetLayout2: SheeDialogBinding by lazy {
+        SheeDialogBinding.inflate(
+            layoutInflater
+        )
+    }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -66,15 +71,34 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
 
             @SuppressLint("SetTextI18n")
             override suspend fun onUpdatePassword(entityPassword: EntityPassword) {
-                openFb(entityPassword)
-                // viewModel.updatePassword(entityPassword)
+
+                // dialogs(entityPassword)
+                val sheet2 = BtnSheetEdit()
+
+                val p : PersistentData = PersistentData()
+
+                p.saveParam(requireActivity(),"id",entityPassword.id)
+                p.saveParam(requireActivity(),"l",entityPassword.loghin)
+                p.saveParam(requireActivity(),"p",entityPassword.password)
+
+                sheet2.show(requireActivity().supportFragmentManager, "sheet2")
+
+
+
+              //  fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView2, sheet2)?.commit()
+
+
+
             }
+
+            // viewModel.updatePassword(entityPassword)
+
 
             override suspend fun onDelateCard(entityPassword: EntityPassword) {
                 viewModel.cancellaTutto(entityPassword)
             }
 
-        },requireActivity())
+        }, requireActivity())
         binding = FragmentContainerBinding.bind(view)
         binding.recyclerView.apply {
             val decorationSpan = DividerItemDecoration(requireContext(), LinearLayout.VERTICAL)
@@ -95,7 +119,6 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
 
         //hideFabs()
         //fabInsert()
-
     }
 
     private fun hideFabs() {
@@ -135,7 +158,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
 
     @RequiresApi(Build.VERSION_CODES.M)
     private fun fabInsert() {
-        binding.fbFrag.setOnClickListener { v ->
+        binding.fbFrag.setOnClickListener {
             val sheet2: BTnSheetDialogFragment = BTnSheetDialogFragment()
             sheet2.show(requireActivity().supportFragmentManager, "sheet")
         }
@@ -148,14 +171,42 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
     }
 
 
-    fun openFb(entityPassword: EntityPassword) {
-        val sheet2: BTnSheetDialogFragment = BTnSheetDialogFragment()
-        sheet2.view?.findViewById<TextInputEditText>(txt_password)?.setText("pp")
-        sheet2.view?.findViewById<MaterialButton>(R.id.btn_save)?.setOnClickListener {
-            Toast.makeText(requireContext(), "preso", Toast.LENGTH_SHORT).show()
-            sheet2.dismiss()
-        }
-        sheet2.show(requireActivity().supportFragmentManager, "sheet2")
+    fun dialogs(entityPassword: EntityPassword): MaterialDialog {
+        SheeDialogBinding.inflate(layoutInflater)
+        val s = MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
+            customView(view = bindSheetLayout2.root, scrollable = true)
+            cornerRadius(res = R.dimen.md_dialog_default_corner_radius)
 
+            bindSheetLayout2.txtLoghin.editText?.setText(entityPassword.loghin)
+                .toString()
+
+            bindSheetLayout2.txtPassword.setText(entityPassword.loghin).toString()
+
+            bindSheetLayout2.btnSave.setOnClickListener {
+
+                val k: String? = bindSheetLayout2.txtLoghin.editText?.text.toString()
+                val p: String? = bindSheetLayout2.txtPassword.text?.toString()
+
+                GlobalScope.launch {
+                    viewModel.updatePassword(
+                        EntityPassword(
+                            entityPassword.id,
+                            k,
+                            p
+                        )
+                    )
+                }
+
+                dismiss()
+            }
+
+        }
+        return s
     }
+
+
+
+
+
+
 }

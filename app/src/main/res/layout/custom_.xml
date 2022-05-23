@@ -50,13 +50,13 @@
 
     <TextView
         android:id="@+id/texttest"
-        android:layout_width="194dp"
-        android:layout_height="59dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto_bold"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="28sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/avatardialog"
         app:layout_constraintStart_toStartOf="@+id/avatardialog"
         app:layout_constraintTop_toBottomOf="@+id/avatardialog" />
@@ -95,7 +95,7 @@
         android:id="@+id/password_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:letterSpacing="0.1"
         android:textAlignment="center"
         android:fontFamily="@font/roboto_bold"
