@@ -2,7 +2,6 @@ package passy.prog.views
 
 import BtnSheetEdit
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -17,7 +16,6 @@ import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -26,20 +24,12 @@ import passy.prog.R
 import passy.prog.databinding.FragmentContainerBinding
 import passy.prog.databinding.SheeDialogBinding
 import passy.prog.db.EntityPassword
-import passy.prog.hilt.DependencesHilt
-import passy.prog.viewmodel.BasePerformances
 import passy.prog.viewmodel.ViewModelPassword
 import passy.prog.views.adapter.MyAdapter
-import javax.inject.Inject
 
-
-@AndroidEntryPoint
 class FragmentContainer : Fragment(R.layout.fragment_container) {
     val fragment: FragError = FragError()
 
-    @Inject
-    lateinit var dependencesHilt: DependencesHilt
-    var basePerformances: BasePerformances = BasePerformances()
 
     //curoines
     private val coroutineScopeInsert: CoroutineScope by lazy { CoroutineScope(Dispatchers.Default) }
@@ -80,6 +70,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
                 p.saveParam(requireActivity(),"id",entityPassword.id)
                 p.saveParam(requireActivity(),"l",entityPassword.loghin)
                 p.saveParam(requireActivity(),"p",entityPassword.password)
+                p.saveParam(requireActivity(),"c",entityPassword.color)
 
                 sheet2.show(requireActivity().supportFragmentManager, "sheet2")
 
@@ -117,8 +108,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
             }
         }
 
-        //hideFabs()
-        //fabInsert()
+
     }
 
     private fun hideFabs() {
@@ -142,7 +132,6 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
     @SuppressLint("ResourceAsColor")
     private fun showSheet() {
         var ic_signature: String? = null
-        dependencesHilt.hideStatusBAr()
 
         MaterialDialog(requireContext(), BottomSheet(LayoutMode.MATCH_PARENT)).show {
             cornerRadius(18f)

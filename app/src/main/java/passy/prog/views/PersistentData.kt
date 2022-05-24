@@ -7,8 +7,6 @@ class PersistentData(){
         val preferences = c.getSharedPreferences("code", Context.MODE_PRIVATE)
         val editor = preferences.edit()
         when (value) {
-
-
             is String -> {
                 editor.putString(key, value)
             }

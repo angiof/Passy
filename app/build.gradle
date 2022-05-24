@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'dagger.hilt.android.plugin'
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
 
@@ -103,16 +102,10 @@ dependencies {
     //button
     implementation 'com.afollestad.material-dialogs:bottomsheets:3.3.0'
 
-    //hilt
-    implementation "com.google.dagger:hilt-android:2.38.1"
-    kapt "com.google.dagger:hilt-android-compiler:2.38.1"
-
     //lotties
     def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
-    //angelbuttons
-    implementation "me.spark:submitbutton:1.0.1"
 
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 

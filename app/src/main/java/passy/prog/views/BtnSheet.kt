@@ -16,14 +16,16 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import passy.prog.R
 import passy.prog.databinding.EditSheetBinding
 import passy.prog.databinding.SheeDialogBinding
+import passy.prog.databinding.SheetMainBinding
+import passy.prog.databinding.SheetPasswordBinding
 import passy.prog.db.EntityPassword
 import passy.prog.viewmodel.ViewModelPassword
 
 open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
     var colors: String? = null
     private lateinit var viewModel: ViewModelPassword
-    private val bindingFragSheet: SheeDialogBinding by lazy {
-        SheeDialogBinding.inflate(
+    private val bindingFragSheet: SheetMainBinding by lazy {
+        SheetMainBinding.inflate(
             layoutInflater
         )
     }
@@ -46,15 +48,15 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
     }
     @RequiresApi(Build.VERSION_CODES.M)
     private fun saveClick() {
-        bindingFragSheet.ivRed.setOnClickListener {
+        bindingFragSheet.ivRedEdit .setOnClickListener {
             colors = "r"
             bindingFragSheet.btnSave.setBackgroundColor(requireActivity().getColor(R.color.redsoft))
         }
-        bindingFragSheet.ivGreen.setOnClickListener {
+        bindingFragSheet.ivBlue.setOnClickListener {
             colors = "n"
             bindingFragSheet.btnSave.setBackgroundColor(it.context.getColor(R.color.purple_200))
         }
-        bindingFragSheet.ivGreen.setOnClickListener {
+        bindingFragSheet.ivGreenEdit.setOnClickListener {
             colors = "g"
             bindingFragSheet.btnSave.setBackgroundColor(it.context.getColor(R.color.softGreen))
         }
@@ -99,7 +101,7 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
     @RequiresApi(Build.VERSION_CODES.M)
     private fun SetColorOnclickListener(): String? {
         with(bindingFragSheet){
-            this.ivGreen.setOnClickListener {
+            this.ivRedEdit.setOnClickListener {
                 Toast.makeText(it.context, "premuto", Toast.LENGTH_SHORT).show()
             }
         }

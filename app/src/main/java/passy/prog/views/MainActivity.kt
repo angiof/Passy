@@ -15,11 +15,9 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
-import dagger.hilt.android.AndroidEntryPoint
 import passy.prog.R
 import passy.prog.viewmodel.ViewModelPassword
 
-@AndroidEntryPoint
 open class MainActivity : AppCompatActivity() {
     private var cancellationSignal: CancellationSignal? = null
     private val auteticationCallback: BiometricPrompt.AuthenticationCallback
@@ -98,7 +96,7 @@ open class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.P)
     open fun idFInger() {
         val biometricPrompt = BiometricPrompt.Builder(this).let {
-            title = "identificatore  impronte "
+            title = "PASSY "
             it.setTitle("titlo")
             it.setDescription("cerchiamo di prottegerre i tuoi dati")
             it.setNegativeButton("cancellare", this.mainExecutor) { _, _ ->

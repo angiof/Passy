@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/shapebgsheet"
+    android:background="#121212"
     tools:context=".views.FragmentContainer">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -71,6 +71,7 @@
             android:layout_height="68dp"
             android:clickable="true"
             app:elevation="4dp"
+            android:backgroundTint="#6750A4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 

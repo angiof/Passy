@@ -45,9 +45,9 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
 
 
                 when (entityPassword.color) {
-                    "n" -> binding.viewLayout.setBackgroundColor(R.color.purple_200)
-                    "g" -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.design_default_color_secondary_variant))
-                    "r" -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.redsoft))
+                    "n" -> binding.viewLayout.setBackgroundColor(R.color.purple_7002)
+                    "g" -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.softGreen2))
+                    "r" -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.redsoft2))
                     null -> binding.viewLayout.setBackgroundColor(R.color.softGreen)
                 }
                 when (entityPassword.tipologia) {
