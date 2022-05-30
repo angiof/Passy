@@ -9,8 +9,8 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardVIew"
-        android:layout_width="338dp"
-        android:layout_height="112dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
         android:padding="3dp"
         app:cardCornerRadius="22dp"
 

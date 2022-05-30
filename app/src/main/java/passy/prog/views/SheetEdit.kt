@@ -1,3 +1,4 @@
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -5,12 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import passy.prog.R
 import passy.prog.databinding.EditSheetBinding
 import passy.prog.db.EntityPassword
 import passy.prog.viewmodel.ViewModelPassword
 import passy.prog.views.PersistentData
+
 
 class BtnSheetEdit : BottomSheetDialogFragment() {
     private lateinit var viewModel: ViewModelPassword
@@ -22,6 +27,7 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
 
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,7 +48,15 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
             }
         }
 
-
+        bindingFragSheet2.ivRedEdit.setOnClickListener {
+            colorete = "r"
+        }
+        bindingFragSheet2.ivBlue.setOnClickListener {
+            colorete = "n"
+        }
+        bindingFragSheet2.ivGreenEdit.setOnClickListener {
+            colorete = "g"
+        }
 
         bindingFragSheet2.txtUser.setText(loghin)
         bindingFragSheet2.txtPassword.setText(password)
@@ -53,7 +67,18 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
             val labelLoghin = bindingFragSheet2.txtUser.text.toString()
 
             GlobalScope.launch {
-                viewModel.updatePassword(EntityPassword(id, labelLoghin, labelPassword, getColors(colorete)))
+
+
+                viewModel.updatePassword(
+                    EntityPassword(
+                        id,
+                        labelLoghin,
+                        labelPassword,
+                        getColors()
+                    )
+                )
+
+
             }
 
             dismiss()
@@ -68,19 +93,13 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
     }
 
 
-    fun getColors(colorete: String): String {
+    fun getColors(): String {
 
-        bindingFragSheet2.ivRedEdit.setOnClickListener {
-            this.colorete = "r"
-        }
-        bindingFragSheet2.ivBlue.setOnClickListener {
-            this.colorete = "n"
-        }
-        bindingFragSheet2.ivGreenEdit.setOnClickListener {
-            this.colorete = "g"
-        }
-        return this.colorete
+
+
+        return colorete
+
+
     }
-
 
 }

@@ -1,138 +1,102 @@
 package passy.prog.views
 
-import android.app.KeyguardManager
-import android.content.Context
-import android.content.pm.PackageManager
-import android.hardware.biometrics.BiometricPrompt
 import android.os.Build
 import android.os.Bundle
-import android.os.CancellationSignal
-import android.view.WindowManager
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
+import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import androidx.lifecycle.ViewModelProvider
 import passy.prog.R
-import passy.prog.viewmodel.ViewModelPassword
+import java.util.concurrent.Executor
 
 open class MainActivity : AppCompatActivity() {
-    private var cancellationSignal: CancellationSignal? = null
-    private val auteticationCallback: BiometricPrompt.AuthenticationCallback
-        get() =
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                object : BiometricPrompt.AuthenticationCallback() {
-                    override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult?) {
-                        super.onAuthenticationSucceeded(result)
-                        Toast.makeText(this@MainActivity, "un cazzo ", Toast.LENGTH_SHORT).show()
-                        restoreFrag()
-                    }
 
-                    override fun onAuthenticationError(errorCode: Int, errString: CharSequence?) {
-                        Toast.makeText(
-                            this@MainActivity,
-                            "$errorCode +$errString",
-                            Toast.LENGTH_SHORT
-                        ).show()
 
-                        replace()
-                        super.onAuthenticationError(errorCode, errString)
-                    }
-                }
-            } else {
-                TODO("VERSION.SDK_INT < P")
-            }
-    private lateinit var viewModel: ViewModelPassword
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_SECURE,
-            WindowManager.LayoutParams.FLAG_SECURE
-        );
-
         setContentView(R.layout.activity_main)
-        viewModel = ViewModelProvider(this)[ViewModelPassword::class.java]
-        //
+        setTheme(R.style.MD_Dark)
+        face()
     }
 
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onResume() {
-        idFInger()
+        //  idFInger()
+        face()
         super.onResume()
     }
 
 
     @RequiresApi(Build.VERSION_CODES.M)
-    open fun checkBiometriSUpport(): Boolean {
-        val keyWardManger = getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
-        if (!keyWardManger.isKeyguardSecure) {
-            Toast.makeText(this, "non è sato abilitato ", Toast.LENGTH_SHORT).show()
-            return false
-        }
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.USE_BIOMETRIC)
-            != PackageManager.PERMISSION_GRANTED
-        ) {
-            return false
-        }
+    override fun onBackPressed() {
+        finishAffinity()
+        finish()
+        super.onBackPressed()
+    }
 
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            packageManager.hasSystemFeature(PackageManager.FEATURE_FACE)
-        } else {
-            TODO("VERSION.SDK_INT < Q")
+    override fun onStop() {
+        super.onStop()
+        finish()
+    }
+
+    private fun face() {
+        val executor: Executor = ContextCompat.getMainExecutor(this)
+        val biometricPrompt: androidx.biometric.BiometricPrompt =
+            androidx.biometric.BiometricPrompt(
+                this,
+                executor,
+                object : androidx.biometric.BiometricPrompt.AuthenticationCallback() {
+                    override fun onAuthenticationSucceeded(result: androidx.biometric.BiometricPrompt.AuthenticationResult) {
+                        Toast.makeText(this@MainActivity, "fatto", Toast.LENGTH_SHORT).show()
+                        super.onAuthenticationSucceeded(result)
+                    }
+
+                    override fun onAuthenticationFailed() {
+                        finishAffinity()
+                        Toast.makeText(this@MainActivity, "sto cazzo", Toast.LENGTH_SHORT).show()
+                        super.onAuthenticationFailed()
+                    }
+
+                    override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                        finishAffinity()
+
+                        super.onAuthenticationError(errorCode, errString)
+                    }
+                })
+        val prontInfo: androidx.biometric.BiometricPrompt.PromptInfo =
+            androidx.biometric.BiometricPrompt.PromptInfo.Builder().setTitle("protezione")
+                .setNegativeButtonText("non sono io")
+                .setAllowedAuthenticators(BIOMETRIC_STRONG or BiometricManager.Authenticators.BIOMETRIC_WEAK)
+                .build()
+        if (biometricAvailable()) {
+            biometricPrompt.authenticate(prontInfo)
         }
     }
 
-    private fun getCancelTIonSignal(): CancellationSignal {
+    private fun biometricAvailable(): Boolean {
 
-        cancellationSignal = CancellationSignal()
-        cancellationSignal?.setOnCancelListener {
-            replace()
-        }
-        return cancellationSignal as CancellationSignal
-    }
-
-    @RequiresApi(Build.VERSION_CODES.P)
-    open fun idFInger() {
-        val biometricPrompt = BiometricPrompt.Builder(this).let {
-            title = "PASSY "
-            it.setTitle("titlo")
-            it.setDescription("cerchiamo di prottegerre i tuoi dati")
-            it.setNegativeButton("cancellare", this.mainExecutor) { _, _ ->
-
-                Toast.makeText(this, "cancellao da te", Toast.LENGTH_SHORT).show()
-                replace()
-                //fragVisibility?.visibility = View.GONE
+        val biometricManager = BiometricManager.from(this)
+        return when (biometricManager.canAuthenticate(BIOMETRIC_STRONG or BiometricManager.Authenticators.BIOMETRIC_WEAK)) {
+            BiometricManager.BIOMETRIC_SUCCESS -> {
+                true
             }
-            it.build()
+            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
+                Toast.makeText(applicationContext, "not found HW ", Toast.LENGTH_SHORT).show()
+                finish()
+                false
+            }
+            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
+                finish()
+                Toast.makeText(applicationContext, "not found HW ", Toast.LENGTH_SHORT).show()
+                false
+            }
+            else -> false
         }
-        biometricPrompt.authenticate(getCancelTIonSignal(), mainExecutor, auteticationCallback)
-
     }
-
-    private fun replace() {
-        val f: Fragment = FragError();
-        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction();
-// Replace whatever is in the fragment_container view with this fragment,
-// and add the transaction to the back stack if needed
-        transaction.replace(R.id.fragmentContainerView2, f);
-        transaction.addToBackStack(null);
-// Commit the transaction
-        transaction.commit();
-    }
-
-    private fun restoreFrag() {
-        val f: Fragment = FragmentContainer();
-        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction();
-// Replace whatever is in the fragment_container view with this fragment,
-// and add the transaction to the back stack if needed
-        transaction.replace(R.id.fragmentContainerView2, f);
-        transaction.addToBackStack(null);
-// Commit the transaction
-        transaction.commit();
-    }
-
-
-
 }

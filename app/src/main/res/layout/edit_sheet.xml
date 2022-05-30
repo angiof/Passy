@@ -188,7 +188,7 @@
             android:id="@+id/btn_save"
             android:layout_width="wrap_content"
             android:layout_height="120dp"
-            android:backgroundTint="@color/softpurple"
+            android:background="@color/softpurple"
             android:src="@drawable/ic_freccia"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/iv_Green_edit"

@@ -27,22 +27,22 @@
             android:elevation="3dp"
             android:layout_width="83dp"
             android:layout_height="65dp"
-            motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
-            motion:layout_constraintBottom_toBottomOf="parent" />
+            motion:layout_constraintTop_toBottomOf="@+id/textView5"
+            motion:layout_constraintTop_toTopOf="parent" />
         <Constraint
             android:id="@+id/iv_avatar"
             android:elevation="3dp"
             android:layout_width="83dp"
             android:layout_height="65dp"
-            motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="16dp" />
+            motion:layout_constraintTop_toBottomOf="@+id/textView5"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="24dp" />
         <Constraint
             android:id="@+id/label_loghin"
             motion:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +65,9 @@
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             motion:layout_constraintTop_toBottomOf="@+id/textView5"
-            android:id="@+id/label_password" />
+            android:id="@+id/label_password"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="14dp" />
         <Constraint
             android:layout_height="40dp"
             motion:layout_constraintEnd_toEndOf="parent"
@@ -74,5 +76,14 @@
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_editor_absoluteX="298dp" />
+        <Constraint
+            motion:layout_constraintEnd_toEndOf="@+id/label_loghin"
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            motion:layout_constraintTop_toBottomOf="@+id/label_loghin"
+            motion:layout_constraintHorizontal_bias="0.489"
+            motion:layout_constraintStart_toStartOf="@+id/label_loghin"
+            android:layout_marginTop="12dp"
+            android:id="@+id/textView5" />
     </ConstraintSet>
 </MotionScene>

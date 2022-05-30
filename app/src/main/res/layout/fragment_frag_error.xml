@@ -3,16 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#6750A4"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".views.FragError">
 
 
     <com.airbnb.lottie.LottieAnimationView
+        android:backgroundTint="#6750A4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:lottie_rawRes="@raw/error"
+        app:lottie_rawRes="@raw/ff"
         app:lottie_autoPlay="true"
-        app:lottie_repeatCount="5"
+        app:lottie_repeatCount="122"
         android:id="@+id/error_animation_lottie" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
