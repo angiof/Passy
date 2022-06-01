@@ -1,97 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#121212"
-    tools:context=".views.FragmentContainer">
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#121212"
+        tools:context=".views.FragmentContainer">
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lottie0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:lottie_autoPlay="true"
-            app:lottie_rawRes="@raw/lente"
-            app:lottie_repeatCount="27" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="0dp"
-            android:layout_height="4dp"
-            android:background="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_loghin" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view"
-            tools:ignore="SpeakableTextPresentCheck"
-            tools:listitem="@layout/ly_lista_items"
-            tools:visibility="gone">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txt_loghin"
-            android:layout_width="409dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_text_finder"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie0"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="ricerca password"
-                android:textColorHint="#C7BDBD"
-                android:textSize="24sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_rawRes="@raw/lente"
+                app:lottie_repeatCount="27" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fb_frag"
-            style="@style/overlay"
-            android:layout_width="80dp"
-            android:layout_height="68dp"
-            android:clickable="true"
-            app:elevation="4dp"
-            android:backgroundTint="#6750A4"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="4dp"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_loghin" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view"
+                tools:ignore="SpeakableTextPresentCheck"
+                tools:listitem="@layout/ly_lista_items"
+                tools:visibility="gone">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_loghin"
+                android:layout_width="409dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text_finder"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ricerca password"
+                    android:textColorHint="#C7BDBD"
+                    android:textSize="24sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
 
 
-
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            style="@style/overlay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:clickable="true"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/fb_frag"
-            app:layout_constraintEnd_toEndOf="@+id/fb_frag"
-            app:layout_constraintStart_toStartOf="@+id/fb_frag" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</FrameLayout>
+    </FrameLayout>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:backgroundTint="@color/softpurple"
+        app:fabAnimationMode="slide"
+        app:fabCradleMargin="20dp"
+        app:fabAlignmentMode="end"
+        app:fabCradleRoundedCornerRadius="20dp"
+        app:fabCradleVerticalOffset="2dp"
+        app:hideOnScroll="true"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fb_frag"
+        android:clickable="true"
+        app:hideOnScroll="true"
+
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/design_default_color_background"
+        app:layout_anchor="@id/bottomAppBar"
+        app:maxImageSize="35dp"
+        android:tint="@color/black"
+
+        />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

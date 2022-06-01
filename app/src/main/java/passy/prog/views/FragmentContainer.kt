@@ -111,22 +111,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
 
     }
 
-    private fun hideFabs() {
 
-        binding.fbFrag.setOnLongClickListener {
-            if (binding.floatingActionButton.visibility == View.VISIBLE) {
-                binding.floatingActionButton.visibility = View.GONE
-
-                Toast.makeText(requireActivity(), "si", Toast.LENGTH_SHORT).show()
-            } else if (binding.floatingActionButton.visibility == View.GONE) {
-                binding.floatingActionButton.visibility = View.VISIBLE
-            }
-            return@setOnLongClickListener true
-        }
-        binding.fbFrag.setOnClickListener {
-            viewModel.btnhide2(it.context)
-        }
-    }
 
     @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("ResourceAsColor")
@@ -192,10 +177,4 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
         }
         return s
     }
-
-
-
-
-
-
 }
