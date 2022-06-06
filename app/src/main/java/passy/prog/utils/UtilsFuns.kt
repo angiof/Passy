@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import passy.prog.R
@@ -19,7 +20,7 @@ fun pipo(){
 
 class UtilsFuns {
 
-    fun Context.hideToolbarAndStatusBar(context: Context) {
+    fun hideToolbarAndStatusBar(context: Context) {
         (context as MainActivity).supportActionBar!!.hide()
         // Hide the status bar.
         context.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN

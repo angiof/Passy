@@ -6,7 +6,6 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -24,6 +23,7 @@ import passy.prog.R
 import passy.prog.databinding.FragmentContainerBinding
 import passy.prog.databinding.SheeDialogBinding
 import passy.prog.db.EntityPassword
+import passy.prog.utils.utils
 import passy.prog.viewmodel.ViewModelPassword
 import passy.prog.views.adapter.MyAdapter
 
@@ -50,6 +50,9 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val utils: utils = utils()
+        utils.hideToolbarAndStatusBar(view.context)
+
         viewModel = ViewModelProvider(this)[ViewModelPassword::class.java]
         binding = FragmentContainerBinding.bind(view)
 
@@ -65,19 +68,17 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
                 // dialogs(entityPassword)
                 val sheet2 = BtnSheetEdit()
 
-                val p : PersistentData = PersistentData()
+                val p: PersistentData = PersistentData()
 
-                p.saveParam(requireActivity(),"id",entityPassword.id)
-                p.saveParam(requireActivity(),"l",entityPassword.loghin)
-                p.saveParam(requireActivity(),"p",entityPassword.password)
-                p.saveParam(requireActivity(),"c",entityPassword.color)
+                p.saveParam(requireActivity(), "id", entityPassword.id)
+                p.saveParam(requireActivity(), "l", entityPassword.loghin)
+                p.saveParam(requireActivity(), "p", entityPassword.password)
+                p.saveParam(requireActivity(), "c", entityPassword.color)
 
                 sheet2.show(requireActivity().supportFragmentManager, "sheet2")
 
 
-
-              //  fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView2, sheet2)?.commit()
-
+                //  fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView2, sheet2)?.commit()
 
 
             }
@@ -110,7 +111,6 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
 
 
     }
-
 
 
     @RequiresApi(Build.VERSION_CODES.M)
