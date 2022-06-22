@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutsheet3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    android:padding="5dp"
-    >
+    android:padding="5dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,38 +25,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text0"
-            android:layout_width="161dp"
-            android:layout_height="81dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="2dp"
-            android:fontFamily="@font/roboto_bold"
-            android:letterSpacing="0.1"
-            android:text="CREATE AN ACCOUNT"
-            android:textAlignment="textStart"
-            android:textColor="@color/white"
-            android:textSize="24dp"
-            app:layout_constraintStart_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/up">
-
-        </com.google.android.material.textview.MaterialTextView>
-
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="177dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:fontFamily="@font/roboto_bold"
-            android:letterSpacing="0.1"
-            android:text="save account"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@id/btn_save"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/btn_save" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_red_edit"
@@ -83,13 +49,13 @@
             android:cropToPadding="false"
             android:paddingHorizontal="0dp"
             android:paddingVertical="0dp"
-            tools:focused="true"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="@+id/iv_red_edit"
             app:layout_constraintEnd_toStartOf="@+id/iv_red_edit"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/iv_red_edit"
-            app:srcCompat="@drawable/cerchia4" />
+            app:srcCompat="@drawable/cerchia4"
+            tools:focused="true" />
 
 
         <ImageButton
@@ -101,9 +67,8 @@
             app:circularflow_radiusInDP="22dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text0"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent">
-        </ImageButton>
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            tools:layout_editor_absoluteY="163dp"></ImageButton>
 
         <Spinner
             android:id="@+id/spinner"
@@ -122,8 +87,39 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </Spinner>
+            app:layout_constraintTop_toTopOf="parent"></Spinner>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/descrzione_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_text_finder"
+            app:boxStrokeWidth="8dp"
+
+            app:layout_constraintBottom_toTopOf="@+id/iv_avatar_sheet_n"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/up">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_descrizione"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text_finder"
+                android:fontFamily="@font/roboto_bold"
+                android:hint="descrizione"
+                android:imeOptions="actionNext"
+                android:textSize="24sp"
+                app:boxStrokeWidth="8dp"
+
+                >
+
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txt_loghin"
@@ -134,7 +130,7 @@
             app:boxStrokeWidth="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_avatar_sheet_n"
+            app:layout_constraintTop_toBottomOf="@+id/descrzione_layout"
             app:startIconDrawable="@drawable/ic_user">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -164,8 +160,8 @@
             app:layout_constraintEnd_toEndOf="@+id/txt_loghin"
             app:layout_constraintStart_toStartOf="@+id/txt_loghin"
             app:layout_constraintTop_toBottomOf="@+id/txt_loghin"
-            app:startIconDrawable="@drawable/ic_cancello"
-            >
+            app:startIconDrawable="@drawable/ic_cancello">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_password"
                 android:layout_width="match_parent"

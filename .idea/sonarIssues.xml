@@ -28,6 +28,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/build/generated/source/kapt/debug/passy/prog/db/DaoPasswords_Impl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/build/tmp/kapt3/stubs/debug/passy/prog/views/FragmentContainer.java">
           <value>
             <set />
@@ -39,6 +44,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/passy/prog/db/EntityPassword.kt">
           <value>
             <set />
           </value>
@@ -123,6 +133,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/drawable/shape_dialogs.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <value>
             <set />
@@ -159,6 +174,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/sheet_main.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/menu/menu_avatar.xml">
           <value>
             <set />
           </value>
@@ -204,6 +224,36 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../android-corriere-app-news/Corriere/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../android-corriere-app-news/Corriere/src/main/java/it/rcs/corriere/utils/Utils.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../android-corriere-app-news/Corriere/src/main/java/it/rcs/corriere/views/abbonati/activity/CarouselAbbonatiActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../android-corriere-app-news/Corriere/src/main/java/it/rcs/corriere/views/home/activity/MainContainerActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../android-corriere-app-news/Corriere/src/main/java/it/rcs/corriere/views/home/presenters/MainPresenter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../android-corriere-app-news/Corriere/src/main/java/it/rcs/corriere/views/login/presenter/LoginPresenter.kt">
           <value>
             <set />
           </value>

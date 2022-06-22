@@ -2,6 +2,7 @@ package passy.prog.views
 
 import BtnSheetEdit
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -29,6 +30,8 @@ import passy.prog.views.adapter.MyAdapter
 
 class FragmentContainer : Fragment(R.layout.fragment_container) {
     val fragment: FragError = FragError()
+    val ctx : FragmentContainer get() =this@FragmentContainer
+
 
 
     //curoines
@@ -165,8 +168,9 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
                     viewModel.updatePassword(
                         EntityPassword(
                             entityPassword.id,
+                            null ,
                             k,
-                            p
+                            p,
                         )
                     )
                 }

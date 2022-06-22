@@ -98,7 +98,7 @@
                 app:srcCompat="@drawable/ic_baseline_content_copy_24" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/im_options"
                 android:layout_width="40dp"
                 android:layout_height="48dp"
                 app:srcCompat="@drawable/ic_baseline_more_vert_24"

@@ -10,7 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
+import android.view.Window
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -50,7 +50,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                     "r" -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.redsoft2))
                     null -> binding.viewLayout.setBackgroundColor(R.color.softGreen)
                 }
-                when (entityPassword.tipologia) {
+                when (entityPassword.descrizione) {
                     "Lavoro" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_jobs)
 
                     "Giochi" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_jositick_inset)
@@ -102,12 +102,13 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                         it.visibility = View.GONE
                     }
                 }
-                this.imageView.let {
+                this.imOptions.let { it ->
                     it.setOnClickListener {
                         val builder = AlertDialog.Builder(it.context)
                         builder.setCancelable(true)
                         builder.setView(viewDialog)
                         val dialog = builder.create()
+                        viewDialog.findViewById<TextView>(R.id.tv_descrizione).text = entityPassword.descrizione
                         viewDialog.findViewById<TextView>(R.id.password_dialog).text = entityPassword.password
                         imagecontrol(entityPassword)
                         viewDialog.findViewById<TextView>(R.id.texttest).text =
@@ -123,7 +124,6 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                                  object  {
                                     val entityPassword = entityPassword
                                 }
-
                             }
                             Log.d("dialog", "premuto edit ")
                             dialog.dismiss()
@@ -142,6 +142,9 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                         if (viewDialog.parent != null) {
                             (viewDialog.parent as ViewGroup).removeView(viewDialog) // <- fix
                         }
+                        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent);
+
                         dialog.show()
 
                     }

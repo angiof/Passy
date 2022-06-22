@@ -42,10 +42,6 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
         return bindingFragSheet.root
     }
 
-    private fun bntInserCategory() {
-
-
-    }
     @RequiresApi(Build.VERSION_CODES.M)
     private fun saveClick() {
         bindingFragSheet.ivRedEdit .setOnClickListener {
@@ -61,52 +57,15 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
             bindingFragSheet.btnSave.setBackgroundColor(it.context.getColor(R.color.softGreen))
         }
         bindingFragSheet.btnSave.setOnClickListener {
+            val descrizione=bindingFragSheet.edDescrizione.text.toString()
             val loghin = bindingFragSheet.txtUser.text.toString()
             val password = bindingFragSheet.txtPassword.text.toString()
-            viewModel.insertPasswordViewModel(EntityPassword(0, loghin, password, colors, null))
+            viewModel.insertPasswordViewModel(EntityPassword(0,descrizione, loghin, password, colors))
             viewModel.mostraToas(requireActivity(), loghin + password)
         }
     }
 
-    private fun onChangeAvatar() {
-        with(bindingFragSheet.ivAvatarSheetN) {
-            this.setOnClickListener {
-                showMenu(it, R.menu.menu_avatar)
-            }
-        }
-    }
 
-    @SuppressLint("UseCompatLoadingForDrawables")
-    private fun showMenu(v: View, @MenuRes menuRes: Int) {
-        val popup = PopupMenu(requireContext(), v)
-        popup.menuInflater.inflate(menuRes, popup.menu)
-        popup.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.personale -> {
-                    Toast.makeText(requireContext(), "cambia", Toast.LENGTH_SHORT).show()
-                }
-                R.id.spento -> {
-                    // bindingFragSheet.ivAvatarSheet.visibility=View.GONE
-                    bindingFragSheet.ivAvatarSheetN.background =
-                        requireActivity().getDrawable(R.drawable.ic_lock)
-                }
-            }
-            true
-        }
-        // Show the popup menu.
-        popup.show()
-    }
-
-
-    @RequiresApi(Build.VERSION_CODES.M)
-    private fun SetColorOnclickListener(): String? {
-        with(bindingFragSheet){
-            this.ivRedEdit.setOnClickListener {
-                Toast.makeText(it.context, "premuto", Toast.LENGTH_SHORT).show()
-            }
-        }
-        return colors
-    }
 }
 
 
