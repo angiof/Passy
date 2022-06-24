@@ -1,9 +1,11 @@
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.Dispatchers
@@ -13,6 +15,7 @@ import kotlinx.coroutines.withContext
 import passy.prog.R
 import passy.prog.databinding.EditSheetBinding
 import passy.prog.db.EntityPassword
+import passy.prog.utils.UtilsFuns
 import passy.prog.viewmodel.ViewModelPassword
 import passy.prog.views.PersistentData
 
@@ -27,6 +30,7 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +38,7 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProvider(this)[ViewModelPassword::class.java]
-
+        val data = UtilsFuns()
 
         val p = PersistentData()
         val id = p.getParam(requireActivity(), "id")!!.toInt()
@@ -65,20 +69,15 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
             //sett fields
             val labelPassword = bindingFragSheet2.txtPassword.text.toString()
             val labelLoghin = bindingFragSheet2.txtUser.text.toString()
+            val pd = bindingFragSheet2.desc.text.toString()
 
             GlobalScope.launch {
 
-
                 viewModel.updatePassword(
                     EntityPassword(
-                        id,
-                        labelLoghin,
-                        labelPassword,
-                        getColors()
+                       id,pd,labelLoghin,labelPassword,colorete, data.getdataFromDevice()
                     )
                 )
-
-
             }
 
             dismiss()
@@ -87,19 +86,5 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
         return bindingFragSheet2.root
     }
 
-    override fun onAttach(context: Context) {
-
-        super.onAttach(context)
-    }
-
-
-    fun getColors(): String {
-
-
-
-        return colorete
-
-
-    }
-
+    fun getColors(): String =colorete
 }

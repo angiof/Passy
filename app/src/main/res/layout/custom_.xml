@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_dialogs"
     android:padding="16dp">
+
+    <TextView
+        android:layout_marginTop="8dp"
+        android:id="@+id/label_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/redsoft2"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
 
     <TextView
         android:id="@+id/lb_descrizione"

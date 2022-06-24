@@ -12,5 +12,6 @@ data class EntityPassword(
     @ColumnInfo(name = "loghin") val loghin: String?,
     @ColumnInfo(name = "password") val password: String?,
     @ColumnInfo(name = "color") val color: String?=null,
+    @ColumnInfo(name = "data") val data: String?=null
 
     )

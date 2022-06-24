@@ -8,6 +8,11 @@
             <set />
           </value>
         </entry>
+        <entry key="/fragment.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../NotesVIewModel/app/src/main/java/com/example/notesviewmodel/views/views/MainActivity.kt">
           <value>
             <set />
@@ -254,6 +259,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../android-corriere-app-news/Corriere/src/main/java/it/rcs/corriere/views/login/presenter/LoginPresenter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../data/app/src/main/java/com/example/data/MainActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../data/app/src/main/res/layout/activity_main.xml">
           <value>
             <set />
           </value>

@@ -27,10 +27,9 @@ import passy.prog.db.EntityPassword
 class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
     ListAdapter<EntityPassword, MyAdapter.PasswordViewHolder>(DiffCallBack()) {
     private var dataset: MutableList<EntityPassword> = mutableListOf()
-    var TAG: String = "MYADAPTER"
-    val builder = AlertDialog.Builder(context)
     val viewDialog: View = View.inflate(context, R.layout.custom_, null)
     val jobPadres: CoroutineScope by lazy { CoroutineScope(Dispatchers.Main) }
+
     @OptIn(DelicateCoroutinesApi::class)
     inner class PasswordViewHolder(
         private val binding: LyListaItemsBinding
@@ -38,7 +37,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
         RecyclerView.ViewHolder(binding.root) {
         @RequiresApi(Build.VERSION_CODES.M)
         @SuppressLint("ResourceAsColor")
-        fun binder(entityPassword: EntityPassword) = runBlocking {
+        fun binder(entityPassword: EntityPassword)  {
             binding.apply {
                 this.labelLoghin.text = entityPassword.loghin
                 this.labelPassword.text = entityPassword.password
@@ -87,7 +86,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
 
                 this.btncopy.let { it ->
                     it.setOnClickListener {
-                    it.context.copyToClipboard(this.labelPassword.text.toString(),it.context)
+                        it.context.copyToClipboard(this.labelPassword.text.toString(), it.context)
                     }
                 }
 
@@ -108,8 +107,12 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                         builder.setCancelable(true)
                         builder.setView(viewDialog)
                         val dialog = builder.create()
-                        viewDialog.findViewById<TextView>(R.id.tv_descrizione).text = entityPassword.descrizione
-                        viewDialog.findViewById<TextView>(R.id.password_dialog).text = entityPassword.password
+                        viewDialog.findViewById<TextView>(R.id.label_data).text =
+                            entityPassword.data
+                        viewDialog.findViewById<TextView>(R.id.tv_descrizione).text =
+                            entityPassword.descrizione
+                        viewDialog.findViewById<TextView>(R.id.password_dialog).text =
+                            entityPassword.password
                         imagecontrol(entityPassword)
                         viewDialog.findViewById<TextView>(R.id.texttest).text =
                             entityPassword.loghin
@@ -121,7 +124,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                             builder.setView(viewDialog)
                             GlobalScope.launch {
                                 onCardButtonsClick.onUpdatePassword(entityPassword)
-                                 object  {
+                                object {
                                     val entityPassword = entityPassword
                                 }
                             }
@@ -144,9 +147,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                         }
                         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent);
-
                         dialog.show()
-
                     }
                 }
             }
@@ -215,7 +216,12 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
     }
 
 
-    fun assetControl(context: Context,entityPassword: EntityPassword,binding: LyListaItemsBinding,viewDialog: View ){
+    fun assetControl(
+        context: Context,
+        entityPassword: EntityPassword,
+        binding: LyListaItemsBinding,
+        viewDialog: View
+    ) {
 
 
         if (entityPassword.loghin!!.contains("accenture", true)) {
@@ -245,9 +251,9 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
 
 
     @SuppressLint("ServiceCast")
-    fun Context.copyToClipboard(text: CharSequence,context: Context){
+    fun Context.copyToClipboard(text: CharSequence, context: Context) {
         val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip = ClipData.newPlainText("label",text)
+        val clip = ClipData.newPlainText("label", text)
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
         clipboard.setPrimaryClip(clip)
     }

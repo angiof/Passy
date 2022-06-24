@@ -27,38 +27,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text0"
-            android:layout_width="161dp"
-            android:layout_height="81dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="2dp"
-            android:fontFamily="@font/roboto_bold"
-            android:letterSpacing="0.1"
-            android:text="EDIT ACCOUNT"
-            android:textAlignment="textStart"
-            android:textColor="@color/white"
-            android:textSize="24dp"
-            app:layout_constraintStart_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/up">
-
-        </com.google.android.material.textview.MaterialTextView>
-
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="177dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:fontFamily="@font/roboto_bold"
-            android:letterSpacing="0.1"
-            android:text="save changes"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="@id/btn_save"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/btn_save" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_red_edit"
@@ -101,9 +69,8 @@
             app:circularflow_radiusInDP="22dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text0"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent">
-        </ImageButton>
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            tools:layout_editor_absoluteY="163dp"></ImageButton>
 
 
 
@@ -194,5 +161,15 @@
             app:layout_constraintEnd_toEndOf="@+id/iv_Green_edit"
             app:layout_constraintStart_toStartOf="@+id/iv_Green_edit"
             app:layout_constraintTop_toBottomOf="@+id/iv_Green_edit" />
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#D60606"
+            app:layout_constraintBottom_toTopOf="@+id/iv_avatar_sheet_n"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/up" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

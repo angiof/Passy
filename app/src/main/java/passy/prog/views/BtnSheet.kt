@@ -19,6 +19,8 @@ import passy.prog.databinding.SheeDialogBinding
 import passy.prog.databinding.SheetMainBinding
 import passy.prog.databinding.SheetPasswordBinding
 import passy.prog.db.EntityPassword
+import passy.prog.utils.UtilsFuns
+import passy.prog.utils.utils
 import passy.prog.viewmodel.ViewModelPassword
 
 open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
@@ -31,7 +33,7 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
     }
 
 
-    @RequiresApi(Build.VERSION_CODES.M)
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,7 +44,7 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
         return bindingFragSheet.root
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun saveClick() {
         bindingFragSheet.ivRedEdit .setOnClickListener {
             colors = "r"
@@ -57,11 +59,16 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
             bindingFragSheet.btnSave.setBackgroundColor(it.context.getColor(R.color.softGreen))
         }
         bindingFragSheet.btnSave.setOnClickListener {
+
+            val utils = UtilsFuns()
+            val utilsData= utils.getdataFromDevice()
             val descrizione=bindingFragSheet.edDescrizione.text.toString()
             val loghin = bindingFragSheet.txtUser.text.toString()
             val password = bindingFragSheet.txtPassword.text.toString()
-            viewModel.insertPasswordViewModel(EntityPassword(0,descrizione, loghin, password, colors))
+            viewModel.insertPasswordViewModel(EntityPassword(0,descrizione, loghin, password, colors,utilsData
+            ))
             viewModel.mostraToas(requireActivity(), loghin + password)
+            dismiss()
         }
     }
 
