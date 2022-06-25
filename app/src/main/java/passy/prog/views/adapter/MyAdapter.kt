@@ -22,6 +22,7 @@ import kotlinx.coroutines.*
 import passy.prog.R
 import passy.prog.databinding.LyListaItemsBinding
 import passy.prog.db.EntityPassword
+import passy.prog.utils.UtilsFuns
 
 
 class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
@@ -29,6 +30,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
     private var dataset: MutableList<EntityPassword> = mutableListOf()
     val viewDialog: View = View.inflate(context, R.layout.custom_, null)
     val jobPadres: CoroutineScope by lazy { CoroutineScope(Dispatchers.Main) }
+    private var baseFuns: UtilsFuns = UtilsFuns()
 
     @OptIn(DelicateCoroutinesApi::class)
     inner class PasswordViewHolder(
@@ -37,11 +39,10 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
         RecyclerView.ViewHolder(binding.root) {
         @RequiresApi(Build.VERSION_CODES.M)
         @SuppressLint("ResourceAsColor")
-        fun binder(entityPassword: EntityPassword)  {
+        fun binder(entityPassword: EntityPassword) {
             binding.apply {
                 this.labelLoghin.text = entityPassword.loghin
                 this.labelPassword.text = entityPassword.password
-
 
                 when (entityPassword.color) {
                     "n" -> binding.viewLayout.setBackgroundColor(R.color.purple_7002)
@@ -49,40 +50,10 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                     "r" -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.redsoft2))
                     null -> binding.viewLayout.setBackgroundColor(R.color.softGreen)
                 }
-                when (entityPassword.descrizione) {
-                    "Lavoro" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_jobs)
 
-                    "Giochi" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_jositick_inset)
-                    "Importante" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_imm)
+                baseFuns.AdapterFuns().setDefaultAvatar(binding.ivAvatar)
 
-                    "Uso_Personale" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_prifile2)
-                    "Posta" -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_email)
-
-                    else -> binding.ivAvatar.setBackgroundResource(R.drawable.ic_google_svgrepo_com)
-                }
-                if (entityPassword.loghin!!.contains("accenture", true)) {
-                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_acure_icon)
-                } else if (entityPassword.loghin.contains("microsoft", true)) {
-                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_microsoft)
-                } else if (entityPassword.loghin.contains("ig", true)) {
-                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_instagram)
-                } else if (entityPassword.loghin.contains("fb", true)) {
-                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_facebook_f__1_)
-                } else if (entityPassword.loghin.contains("git", true)) {
-                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_github)
-                } else if (entityPassword.loghin.contains("gitlab", true)) {
-                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_gitlab)
-                } else if (entityPassword.loghin.contains("apple", true)) {
-                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_apple_brands)
-                } else if (entityPassword.loghin.contains("android", true)) {
-                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_android_brands)
-                } else if (entityPassword.loghin.contains("paypal", true)) {
-                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_paypal)
-                } else if (entityPassword.loghin.contains("koltin", true)) {
-                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_kotlin)
-                } else if (entityPassword.loghin.contains("oracle", true)) {
-                    binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_java)
-                }
+                baseFuns.AdapterFuns().setAssets(entityPassword = entityPassword, binding.ivAvatar)
 
                 this.btncopy.let { it ->
                     it.setOnClickListener {
@@ -113,7 +84,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                             entityPassword.descrizione
                         viewDialog.findViewById<TextView>(R.id.password_dialog).text =
                             entityPassword.password
-                        imagecontrol(entityPassword)
+                        setCustomDialogAssets(entityPassword)
                         viewDialog.findViewById<TextView>(R.id.texttest).text =
                             entityPassword.loghin
                         viewDialog.findViewById<View>(R.id.edit).setOnClickListener {
@@ -186,66 +157,32 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
         }
     }
 
-    fun imagecontrol(entityPassword: EntityPassword) {
-        val pipo = viewDialog.findViewById<ImageView>(R.id.avatardialog)
+    fun setCustomDialogAssets(entityPassword: EntityPassword) {
+        val asset = viewDialog.findViewById<ImageView>(R.id.avatardialog)
         if (entityPassword.loghin!!.contains("accenture", true)) {
-            pipo.setBackgroundResource(R.drawable.ic_acure_icon)
+            asset.setBackgroundResource(R.drawable.ic_acure_icon)
         } else if (entityPassword.loghin.contains("microsoft", true)) {
-            pipo.setBackgroundResource(R.drawable.ic_icons8_microsoft)
+            asset.setBackgroundResource(R.drawable.ic_icons8_microsoft)
         } else if (entityPassword.loghin.contains("ig", true)) {
-            pipo.setBackgroundResource(R.drawable.ic_icons8_instagram)
+            asset.setBackgroundResource(R.drawable.ic_icons8_instagram)
         } else if (entityPassword.loghin.contains("fb", true)) {
-            pipo.setBackgroundResource(R.drawable.ic_icons8_facebook_f__1_)
+            asset.setBackgroundResource(R.drawable.ic_icons8_facebook_f__1_)
         } else if (entityPassword.loghin.contains("git", true)) {
-            pipo.setBackgroundResource(R.drawable.ic_icons8_github)
+            asset.setBackgroundResource(R.drawable.ic_icons8_github)
         } else if (entityPassword.loghin.contains("gitlab", true)) {
-            pipo.setBackgroundResource(R.drawable.ic_icons8_gitlab)
+            asset.setBackgroundResource(R.drawable.ic_icons8_gitlab)
         } else if (entityPassword.loghin.contains("apple", true)) {
-            pipo.setBackgroundResource(R.drawable.ic_apple_brands)
+            asset.setBackgroundResource(R.drawable.ic_apple_brands)
         } else if (entityPassword.loghin.contains("android", true)) {
-            pipo.setBackgroundResource(R.drawable.ic_android_brands)
+            asset.setBackgroundResource(R.drawable.ic_android_brands)
         } else if (entityPassword.loghin.contains("paypal", true)) {
-            pipo.setBackgroundResource(R.drawable.ic_icons8_paypal)
+            asset.setBackgroundResource(R.drawable.ic_icons8_paypal)
         } else if (entityPassword.loghin.contains("koltin", true)) {
-            pipo.setBackgroundResource(R.drawable.ic_icons8_kotlin)
+            asset.setBackgroundResource(R.drawable.ic_icons8_kotlin)
         } else if (entityPassword.loghin.contains("oracle", true)) {
-            pipo.setBackgroundResource(R.drawable.ic_icons8_java)
+            asset.setBackgroundResource(R.drawable.ic_icons8_java)
         } else {
-            pipo.setBackgroundResource(R.drawable.ic_prifile2)
-        }
-    }
-
-
-    fun assetControl(
-        context: Context,
-        entityPassword: EntityPassword,
-        binding: LyListaItemsBinding,
-        viewDialog: View
-    ) {
-
-
-        if (entityPassword.loghin!!.contains("accenture", true)) {
-            binding.ivAvatar.setBackgroundResource(R.drawable.ic_acure_icon)
-        } else if (entityPassword.loghin.contains("microsoft", true)) {
-            binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_microsoft)
-        } else if (entityPassword.loghin.contains("ig", true)) {
-            binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_instagram)
-        } else if (entityPassword.loghin.contains("fb", true)) {
-            binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_facebook_f__1_)
-        } else if (entityPassword.loghin.contains("git", true)) {
-            binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_github)
-        } else if (entityPassword.loghin.contains("gitlab", true)) {
-            binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_gitlab)
-        } else if (entityPassword.loghin.contains("apple", true)) {
-            binding.ivAvatar.setBackgroundResource(R.drawable.ic_apple_brands)
-        } else if (entityPassword.loghin.contains("android", true)) {
-            binding.ivAvatar.setBackgroundResource(R.drawable.ic_android_brands)
-        } else if (entityPassword.loghin.contains("paypal", true)) {
-            binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_paypal)
-        } else if (entityPassword.loghin.contains("koltin", true)) {
-            binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_kotlin)
-        } else if (entityPassword.loghin.contains("oracle", true)) {
-            binding.ivAvatar.setBackgroundResource(R.drawable.ic_icons8_java)
+            asset.setBackgroundResource(R.drawable.ic_prifile2)
         }
     }
 

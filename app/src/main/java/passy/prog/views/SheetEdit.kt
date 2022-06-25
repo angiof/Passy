@@ -1,5 +1,4 @@
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,11 +7,8 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import passy.prog.R
 import passy.prog.databinding.EditSheetBinding
 import passy.prog.db.EntityPassword
 import passy.prog.utils.UtilsFuns
@@ -45,6 +41,7 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
         val password = p.getParam(requireActivity(), "p").toString()
         val loghin = p.getParam(requireActivity(), "l").toString()
         val color = p.getParam(requireActivity(), "c").toString().let {
+        val desc = p.getParam(requireActivity(), "desc").toString()
             colorete = if (it.isNullOrEmpty()) {
                 null.toString()
             } else {
@@ -75,7 +72,7 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
 
                 viewModel.updatePassword(
                     EntityPassword(
-                       id,pd,labelLoghin,labelPassword,colorete, data.getdataFromDevice()
+                        id, pd, labelLoghin, labelPassword, colorete, data.getdataFromDevice()
                     )
                 )
             }
@@ -86,5 +83,5 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
         return bindingFragSheet2.root
     }
 
-    fun getColors(): String =colorete
+    fun getColors(): String = colorete
 }
