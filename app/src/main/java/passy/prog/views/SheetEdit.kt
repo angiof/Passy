@@ -9,9 +9,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import passy.prog.R
 import passy.prog.databinding.EditSheetBinding
 import passy.prog.db.EntityPassword
+import passy.prog.utils.ARANCIA
+import passy.prog.utils.ROSSO
 import passy.prog.utils.UtilsFuns
+import passy.prog.utils.VERDE
 import passy.prog.viewmodel.ViewModelPassword
 import passy.prog.views.PersistentData
 import java.util.*
@@ -50,13 +54,28 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
         }
 
         bindingFragSheet2.ivRedEdit.setOnClickListener {
-            colorete = "r"
+            colorete = ROSSO
+            bindingFragSheet2.run {
+                txtPassword.setTextColor(it.context.getColor(R.color.redsoft2))
+                txtUser.setTextColor(it.context.getColor(R.color.redsoft2))
+                desc.setTextColor(it.context.getColor(R.color.redsoft2))
+            }
         }
         bindingFragSheet2.ivBlue.setOnClickListener {
-            colorete = "n"
+            colorete = ARANCIA
+            bindingFragSheet2.run {
+                txtPassword.setTextColor(it.context.getColor(R.color.materialonrange))
+                txtUser.setTextColor(it.context.getColor(R.color.materialonrange))
+                desc.setTextColor(it.context.getColor(R.color.materialonrange))
+            }
         }
         bindingFragSheet2.ivGreenEdit.setOnClickListener {
-            colorete = "g"
+            colorete = VERDE
+            bindingFragSheet2.run {
+                txtPassword.setTextColor(it.context.getColor(R.color.softGreen2))
+                txtUser.setTextColor(it.context.getColor(R.color.softGreen2))
+                desc.setTextColor(it.context.getColor(R.color.softGreen2))
+            }
         }
         bindingFragSheet2.desc.setText(descrizione)
         bindingFragSheet2.txtUser.setText(loghin)

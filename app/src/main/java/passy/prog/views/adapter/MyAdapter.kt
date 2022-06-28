@@ -22,7 +22,10 @@ import kotlinx.coroutines.*
 import passy.prog.R
 import passy.prog.databinding.LyListaItemsBinding
 import passy.prog.db.EntityPassword
+import passy.prog.utils.ARANCIA
+import passy.prog.utils.ROSSO
 import passy.prog.utils.UtilsFuns
+import passy.prog.utils.VERDE
 
 
 class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
@@ -44,9 +47,9 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                 this.labelPassword.text = entityPassword.password
 
                 when (entityPassword.color) {
-                    "n" -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.materialonrange))
-                    "g" -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.softGreen2))
-                    "r" -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.redsoft2))
+                    ARANCIA -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.materialonrange))
+                    VERDE-> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.softGreen2))
+                    ROSSO -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.redsoft2))
                     null -> binding.viewLayout.setBackgroundColor(R.color.softGreen)
                 }
 

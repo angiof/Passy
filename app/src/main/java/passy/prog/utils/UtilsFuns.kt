@@ -11,7 +11,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
-import kotlinx.coroutines.launch
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.runBlocking
 import passy.prog.R
 import passy.prog.db.EntityPassword
@@ -22,6 +22,10 @@ import java.time.LocalDateTime
 import java.util.*
 
 typealias utils = UtilsFuns
+//colors vals
+const val ROSSO: String = "Rosso"
+const val VERDE: String = "Verde"
+const val ARANCIA: String = "Arancia"
 
 
 open class UtilsFuns {
@@ -58,8 +62,6 @@ open class UtilsFuns {
         }
         dialog.show()
     }
-
-
 
 
     inner class AdapterFuns() {
@@ -119,13 +121,37 @@ open class UtilsFuns {
 
     }
 
-     class PassyFeatures() {
+    inner class PassyFeatures() {
 
+        fun onChangeColorFields(
+            color: Color?,  tv_log: Loghin, tv_password: Password,
+            tv_des: Descrizione
+        ) {
+            when (color) {
+                "r" -> {
+                    tv_log.setTextColor(tv_log.context.resources.getColor(R.color.redsoft2))
+                    tv_password.setTextColor(tv_log.context.resources.getColor(R.color.redsoft2,))
+                    tv_password.setTextColor(tv_log.context.resources.getColor(R.color.redsoft2,))
+                    tv_log.setTextColor(tv_log.context.resources.getColor(R.color.redsoft2))
+                    tv_log.setTextColor(tv_log.context.resources.getColor(R.color.redsoft2))
+                }
+                "g"->{
+                    tv_des.setTextColor(tv_log.context.resources.getColor(R.color.softGreen2))
+                    tv_password.setTextColor(tv_log.context.resources.getColor(R.color.softGreen2))
+                    tv_des.setTextColor(tv_log.context.resources.getColor(R.color.softGreen2))
+                }
+                "n"->{
+                    tv_des.setTextColor(tv_log.context.resources.getColor(R.color.materialonrange))
+                    tv_password.setTextColor(tv_log.context.resources.getColor(R.color.materialonrange))
+                    tv_des.setTextColor(tv_log.context.resources.getColor(R.color.materialonrange))
+                }
+            }
+        }
     }
 
     class PassyCheckers() {
 
-         fun onPasswordCheck(ctx: Context, password: String, loghin: String): Boolean {
+        fun onPasswordCheck(ctx: Context, password: String, loghin: String): Boolean {
             return if (password.isEmpty() and password.isEmpty()) {
                 Toast.makeText(
                     ctx,
@@ -139,18 +165,20 @@ open class UtilsFuns {
         }
     }
 
-   inner class DatePicker() {
+    inner class DatePicker() {
 
         fun getDateString(date: Date?, format: String?, locale: Locale?): String? {
             val formatter: DateFormat = SimpleDateFormat(format, locale)
             return formatter.format(date)
         }
 
-       fun getData():String?{
-           val data = UtilsFuns().DatePicker().getDateString(Date(), "dd/MM/yyyy", Locale.ITALY).toString()
-           val time = UtilsFuns().DatePicker().getDateString(Date(),  "HH:mm", Locale.ITALY).toString()
-           return "$data/$time"
-       }
+        fun getData(): String? {
+            val data = UtilsFuns().DatePicker().getDateString(Date(), "dd/MM/yyyy", Locale.ITALY)
+                .toString()
+            val time =
+                UtilsFuns().DatePicker().getDateString(Date(), "HH:mm", Locale.ITALY).toString()
+            return "$data/$time"
+        }
 
         @RequiresApi(Build.VERSION_CODES.O)
         open fun getdataFromDevice(): String {
@@ -165,5 +193,12 @@ open class UtilsFuns {
             return myLdt.toString()
         }
     }
+
 }
+typealias Loghin = TextInputEditText
+typealias Password = TextInputEditText
+typealias Descrizione = TextInputEditText
+typealias Color = String?
+
+
 
