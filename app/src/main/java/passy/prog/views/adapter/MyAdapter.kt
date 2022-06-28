@@ -79,8 +79,13 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                         val dialog = builder.create()
                         viewDialog.findViewById<TextView>(R.id.label_data).text =
                             entityPassword.data
+                        if (entityPassword.descrizione.isNullOrEmpty()){
+                        viewDialog.findViewById<TextView>(R.id.lb_descrizione).visibility = View.GONE
+                        viewDialog.findViewById<TextView>(R.id.tv_descrizione).visibility = View.GONE
+                        }else{
                         viewDialog.findViewById<TextView>(R.id.tv_descrizione).text =
                             entityPassword.descrizione
+                        }
                         viewDialog.findViewById<TextView>(R.id.password_dialog).text =
                             entityPassword.password
                         setCustomDialogAssets(entityPassword)
