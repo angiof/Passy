@@ -53,10 +53,6 @@ open class UtilsFuns {
         val dialog = builder.create()
         viewDialog.findViewById<View>(R.id.edit).setOnClickListener {
 
-            launch {
-                // a.delateLisatiner(entityPassword)
-
-            }
             Log.d("dialog", "premuto edit ")
             dialog.dismiss()
         }
@@ -154,9 +150,7 @@ open class UtilsFuns {
            val data = UtilsFuns().DatePicker().getDateString(Date(), "dd/MM/yyyy", Locale.ITALY).toString()
            val time = UtilsFuns().DatePicker().getDateString(Date(),  "HH:mm", Locale.ITALY).toString()
            return "$data/$time"
-
        }
-
 
         @RequiresApi(Build.VERSION_CODES.O)
         open fun getdataFromDevice(): String {
@@ -171,6 +165,5 @@ open class UtilsFuns {
             return myLdt.toString()
         }
     }
-
 }
 
