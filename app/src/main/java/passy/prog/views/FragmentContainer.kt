@@ -75,6 +75,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
                 p.saveParam(requireActivity(), "l", entityPassword.loghin)
                 p.saveParam(requireActivity(), "p", entityPassword.password)
                 p.saveParam(requireActivity(), "c", entityPassword.color)
+                p.saveParam(requireActivity(), "desc", entityPassword.descrizione)
 
                 sheet2.show(requireActivity().supportFragmentManager, "sheet2")
 
