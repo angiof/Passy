@@ -70,24 +70,7 @@
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
             tools:layout_editor_absoluteY="163dp"></ImageButton>
 
-        <Spinner
-            android:id="@+id/spinner"
-            style="@style/Widget.AppCompat.Spinner.Underlined"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/spin"
-            android:entries="@array/avatar_password"
-            android:prompt="@string/spintitle"
-            android:scrollbarSize="8dp"
-            android:spinnerMode="dropdown"
-            android:textAlignment="center"
-            android:textDirection="firstStrong"
-            android:textSize="20sp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></Spinner>
+
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -99,6 +82,8 @@
 
             app:layout_constraintBottom_toTopOf="@+id/iv_avatar_sheet_n"
             app:layout_constraintEnd_toEndOf="parent"
+            app:startIconDrawable="@drawable/ic_baseline_info"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/up">
 
@@ -112,10 +97,7 @@
                 android:imeOptions="actionNext"
                 android:textSize="24sp"
                 app:boxStrokeWidth="8dp"
-
                 >
-
-
             </com.google.android.material.textfield.TextInputEditText>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -160,7 +142,8 @@
             app:layout_constraintEnd_toEndOf="@+id/txt_loghin"
             app:layout_constraintStart_toStartOf="@+id/txt_loghin"
             app:layout_constraintTop_toBottomOf="@+id/txt_loghin"
-            app:startIconDrawable="@drawable/ic_cancello">
+            app:startIconDrawable="@drawable/ic_cancello"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_password"

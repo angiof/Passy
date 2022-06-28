@@ -14,6 +14,7 @@ import passy.prog.db.EntityPassword
 import passy.prog.utils.UtilsFuns
 import passy.prog.viewmodel.ViewModelPassword
 import passy.prog.views.PersistentData
+import java.util.*
 
 
 class BtnSheetEdit : BottomSheetDialogFragment() {
@@ -23,7 +24,6 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
         EditSheetBinding.inflate(
             layoutInflater
         )
-
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -34,14 +34,14 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProvider(this)[ViewModelPassword::class.java]
-        val data = UtilsFuns()
+        val data = UtilsFuns().DatePicker().getData()
 
         val p = PersistentData()
+        val descrizione = p.getParam(requireActivity(), "desc").toString()
         val id = p.getParam(requireActivity(), "id")!!.toInt()
         val password = p.getParam(requireActivity(), "p").toString()
         val loghin = p.getParam(requireActivity(), "l").toString()
         val color = p.getParam(requireActivity(), "c").toString().let {
-        val desc = p.getParam(requireActivity(), "desc").toString()
             colorete = if (it.isNullOrEmpty()) {
                 null.toString()
             } else {
@@ -58,7 +58,7 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
         bindingFragSheet2.ivGreenEdit.setOnClickListener {
             colorete = "g"
         }
-
+        bindingFragSheet2.desc.setText(descrizione)
         bindingFragSheet2.txtUser.setText(loghin)
         bindingFragSheet2.txtPassword.setText(password)
 
@@ -66,22 +66,25 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
             //sett fields
             val labelPassword = bindingFragSheet2.txtPassword.text.toString()
             val labelLoghin = bindingFragSheet2.txtUser.text.toString()
-            val pd = bindingFragSheet2.desc.text.toString()
+            val descrizione = bindingFragSheet2.desc.text.toString()
 
             GlobalScope.launch {
 
                 viewModel.updatePassword(
                     EntityPassword(
-                        id, pd, labelLoghin, labelPassword, colorete, data.getdataFromDevice()
+                        id,
+                        descrizione,
+                        labelLoghin,
+                        labelPassword,
+                        colorete,
+                        data
                     )
                 )
             }
-
             dismiss()
         }
 
         return bindingFragSheet2.root
     }
 
-    fun getColors(): String = colorete
 }

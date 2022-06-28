@@ -6,6 +6,7 @@
     <string name="insertitle">\t\tINSERIRE NUOVA PASSWORD</string>
     <string name="spintitle">categoria</string>
     <string name="modifica">modifica</string>
+    <string name="desc_ita">descrizione</string>
 
 
     <string-array name="colori_spinner">

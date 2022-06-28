@@ -18,15 +18,6 @@
         android:layout_height="match_parent"
         app:layoutDescription="@xml/shee_dialog_xml_constraintlayout3_scene">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/up"
-            android:layout_width="0dp"
-            android:layout_height="80dp"
-            android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_red_edit"
@@ -73,7 +64,6 @@
             tools:layout_editor_absoluteY="163dp"></ImageButton>
 
 
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txt_loghin"
             android:layout_width="match_parent"
@@ -83,7 +73,7 @@
             app:boxStrokeWidth="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_avatar_sheet_n"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
             app:startIconDrawable="@drawable/ic_user">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -108,13 +98,12 @@
             android:id="@+id/txt_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             app:circularflow_radiusInDP="6dp"
             app:layout_constraintEnd_toEndOf="@+id/txt_loghin"
             app:layout_constraintStart_toStartOf="@+id/txt_loghin"
             app:layout_constraintTop_toBottomOf="@+id/txt_loghin"
-            app:startIconDrawable="@drawable/ic_cancello"
-            >
+            app:startIconDrawable="@drawable/ic_cancello">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_password"
                 android:layout_width="match_parent"
@@ -162,14 +151,22 @@
             app:layout_constraintStart_toStartOf="@+id/iv_Green_edit"
             app:layout_constraintTop_toBottomOf="@+id/iv_Green_edit" />
 
-        <TextView
-            android:id="@+id/desc"
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#D60606"
-            app:layout_constraintBottom_toTopOf="@+id/iv_avatar_sheet_n"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/up" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconDrawable="@drawable/ic_baseline_info">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_text_finder"
+                android:hint="@string/desc_ita" />
+        </com.google.android.material.textfield.TextInputLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

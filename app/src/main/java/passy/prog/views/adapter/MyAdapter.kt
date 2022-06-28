@@ -29,7 +29,6 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
     ListAdapter<EntityPassword, MyAdapter.PasswordViewHolder>(DiffCallBack()) {
     private var dataset: MutableList<EntityPassword> = mutableListOf()
     val viewDialog: View = View.inflate(context, R.layout.custom_, null)
-    val jobPadres: CoroutineScope by lazy { CoroutineScope(Dispatchers.Main) }
     private var baseFuns: UtilsFuns = UtilsFuns()
 
     @OptIn(DelicateCoroutinesApi::class)
@@ -45,7 +44,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                 this.labelPassword.text = entityPassword.password
 
                 when (entityPassword.color) {
-                    "n" -> binding.viewLayout.setBackgroundColor(R.color.purple_7002)
+                    "n" -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.materialonrange))
                     "g" -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.softGreen2))
                     "r" -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.redsoft2))
                     null -> binding.viewLayout.setBackgroundColor(R.color.softGreen)
@@ -182,7 +181,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
         } else if (entityPassword.loghin.contains("oracle", true)) {
             asset.setBackgroundResource(R.drawable.ic_icons8_java)
         } else {
-            asset.setBackgroundResource(R.drawable.ic_prifile2)
+            asset.setBackgroundResource(R.drawable.ic_vpn)
         }
     }
 

@@ -2,7 +2,6 @@ package passy.prog.views
 
 import BtnSheetEdit
 import android.annotation.SuppressLint
-import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -27,7 +26,6 @@ import passy.prog.db.EntityPassword
 import passy.prog.utils.utils
 import passy.prog.viewmodel.ViewModelPassword
 import passy.prog.views.adapter.MyAdapter
-import java.time.LocalDateTime
 
 class FragmentContainer : Fragment(R.layout.fragment_container) {
     val fragment: FragError = FragError()
