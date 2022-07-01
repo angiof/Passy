@@ -61,7 +61,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-            tools:layout_editor_absoluteY="163dp"></ImageButton>
+            tools:layout_editor_absoluteY="163dp" />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -82,15 +82,15 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_text_finder"
                 android:fontFamily="@font/roboto_bold"
-                android:hint="inserire nick"
+                android:hint="login"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
                 android:letterSpacing="0.1"
                 android:nextFocusForward="@id/txt_pass"
                 android:textAlignment="textStart"
-                android:textColor="#FF4B26"
                 android:textColorHint="#C7BDBD"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
