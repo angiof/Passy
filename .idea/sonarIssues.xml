@@ -13,12 +13,32 @@
             <set />
           </value>
         </entry>
+        <entry key="$USER_HOME$/Desktop/FRASI/app/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Desktop/FRASI/app/src/main/java/com/example/frasi/ui/views/viste/fragments/home/HomeFragment.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Desktop/FRASI/app/src/main/res/layout/button_dialogs.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../NotesVIewModel/app/src/main/java/com/example/notesviewmodel/views/views/MainActivity.kt">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../NotesVIewModel/app/src/main/res/layout/activity_main.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/.gradle/7.0.2/executionHistory/executionHistory.bin">
           <value>
             <set />
           </value>
@@ -279,21 +299,6 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../data/app/src/main/res/layout/activity_main.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/Desktop/FRASI/app/src/main/AndroidManifest.xml">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/Desktop/FRASI/app/src/main/java/com/example/frasi/ui/views/viste/fragments/home/HomeFragment.kt">
-          <value>
-            <set />
-          </value>
-        </entry>
-        <entry key="$USER_HOME$/Desktop/FRASI/app/src/main/res/layout/button_dialogs.xml">
           <value>
             <set />
           </value>

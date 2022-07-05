@@ -7,6 +7,26 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\honor\\Documents\\key di progetto x\\angelokey.jks')
+            storePassword 'angelo'
+            keyAlias 'angelo'
+            keyPassword 'angelo'
+        }
+        release {
+            storeFile file('C:\\Users\\honor\\Documents\\key di progetto x\\angelokey.jks')
+            storePassword 'angelo'
+            keyAlias 'angelo'
+            keyPassword 'angelo'
+        }
+        rel {
+            storeFile file('C:\\Users\\honor\\Documents\\key di progetto x\\angelokey.jks')
+            storePassword 'angelo'
+            keyAlias 'angelo'
+            keyPassword 'angelo'
+        }
+    }
     compileSdk 31
 
     defaultConfig {
@@ -24,8 +44,11 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
