@@ -1,3 +1,5 @@
+package passy.prog.views
+
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
@@ -17,8 +19,6 @@ import passy.prog.utils.ROSSO
 import passy.prog.utils.UtilsFuns
 import passy.prog.utils.VERDE
 import passy.prog.viewmodel.ViewModelPassword
-import passy.prog.views.PersistentData
-import java.util.*
 
 
 class BtnSheetEdit : BottomSheetDialogFragment() {
@@ -88,19 +88,23 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
             val descrizione = bindingFragSheet2.desc.text.toString()
 
             GlobalScope.launch {
+                if (UtilsFuns.PassyCheckers()
+                        .onPasswordCheck(it.context, password = labelPassword, labelLoghin)
+                ) {
 
-                viewModel.updatePassword(
-                    EntityPassword(
-                        id,
-                        descrizione,
-                        labelLoghin,
-                        labelPassword,
-                        colorete,
-                        data
+                    viewModel.updatePassword(
+                        EntityPassword(
+                            id,
+                            descrizione,
+                            labelLoghin,
+                            labelPassword,
+                            colorete,
+                            data
+                        )
                     )
-                )
+                }
+                dismiss()
             }
-            dismiss()
         }
 
         return bindingFragSheet2.root

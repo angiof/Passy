@@ -83,7 +83,6 @@
         app:fabAnimationMode="slide"
         app:fabCradleMargin="20dp"
         app:fabAlignmentMode="end"
-        app:menu="@menu/menu_avatar"
         app:fabCradleRoundedCornerRadius="20dp"
         app:fabCradleVerticalOffset="2dp"
         app:hideOnScroll="true"

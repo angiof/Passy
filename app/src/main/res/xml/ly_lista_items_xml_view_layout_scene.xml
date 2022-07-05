@@ -10,7 +10,6 @@
        <KeyFrameSet>
        </KeyFrameSet>
         <OnClick motion:targetId="@id/textView5" />
-        <OnClick motion:targetId="@+id/label_password" />
     </Transition>
 
     <ConstraintSet android:id="@+id/start">

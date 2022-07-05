@@ -2,7 +2,7 @@ package passy.prog.views
 
 import android.content.Context
 import com.google.gson.Gson
-class PersistentData(){
+class PersistentData {
     fun saveParam(c: Context, key: String?, value: Any?) {
         val preferences = c.getSharedPreferences("code", Context.MODE_PRIVATE)
         val editor = preferences.edit()

@@ -11,13 +11,11 @@
     android:padding="5dp"
     >
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutDescription="@xml/shee_dialog_xml_constraintlayout3_scene">
-
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_red_edit"
@@ -112,7 +110,7 @@
                 android:background="@drawable/bg_text_finder"
 
                 android:fontFamily="@font/roboto_bold"
-                android:hint="inserire password"
+                android:hint="password"
                 android:imeOptions="actionDone"
                 android:letterSpacing="0.5"
                 android:maxLines="1"

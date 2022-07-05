@@ -154,7 +154,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
 
     interface OnCardButtonsClick {
         suspend fun onDelateCard(entityPassword: EntityPassword)
-        suspend fun OpenShowSheetButon(entityPassword: EntityPassword)
+        suspend fun openShowSheetButon(entityPassword: EntityPassword)
         suspend fun onUpdatePassword(entityPassword: EntityPassword)
     }
 
@@ -184,7 +184,7 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
             asset.setBackgroundResource(R.drawable.ic_android_brands)
         } else if (entityPassword.loghin.contains("paypal", true)) {
             asset.setBackgroundResource(R.drawable.ic_icons8_paypal)
-        } else if (entityPassword.loghin.contains("koltin", true)) {
+        } else if (entityPassword.loghin.contains("kotlin", true)) {
             asset.setBackgroundResource(R.drawable.ic_icons8_kotlin)
         } else if (entityPassword.loghin.contains("oracle", true)) {
             asset.setBackgroundResource(R.drawable.ic_icons8_java)

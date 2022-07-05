@@ -2,28 +2,30 @@ package passy.prog.views
 
 import android.os.Build
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
+import com.example.passycorefeatures.UtilsXX
 import passy.prog.R
+import passy.prog.utils.UtilsFuns
 import java.util.concurrent.Executor
 
 open class MainActivity : AppCompatActivity() {
 
+    private val utilsFuns by lazy {
+        UtilsFuns().PassySettings(this@MainActivity).settingThemeMode()
+    }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.getDefaultNightMode())
+        utilsFuns
         face()
+
     }
 
     @RequiresApi(Build.VERSION_CODES.P)

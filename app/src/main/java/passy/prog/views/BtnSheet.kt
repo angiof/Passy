@@ -8,7 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import passy.prog.R
 import passy.prog.databinding.SheetMainBinding
 import passy.prog.db.EntityPassword
@@ -62,7 +65,7 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
                 txtUser.setTextColor(g.context.getColor(R.color.softGreen))
             }
         }
-        bindingFragSheet.ivRedEdit.setOnClickListener { it ->
+        bindingFragSheet.ivRedEdit.setOnClickListener {
             colors = ROSSO
             if (colors == ROSSO) {
                 bindingFragSheet.run {
@@ -72,8 +75,9 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
                 }
             }
 
-            bindingFragSheet.btnSave.setOnClickListener {
-
+        }
+        bindingFragSheet.btnSave.setOnClickListener {
+            lifecycleScope.launch(Dispatchers.IO) {
                 val data = UtilsFuns().DatePicker().getData()
                 val descrizione = bindingFragSheet.edDescrizione.text.toString()
                 val loghin = bindingFragSheet.txtUser.text.toString()

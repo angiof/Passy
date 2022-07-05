@@ -10,7 +10,6 @@
        <KeyFrameSet>
        </KeyFrameSet>
         <OnClick motion:targetId="@+id/iv_avatar_sheet_n" />
-        <OnClick motion:targetId="@+id/txt_loghin" />
     </Transition>
 
     <ConstraintSet android:id="@+id/start">

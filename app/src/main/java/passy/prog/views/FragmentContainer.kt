@@ -1,6 +1,5 @@
 package passy.prog.views
 
-import BtnSheetEdit
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
@@ -9,6 +8,7 @@ import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.LayoutMode
@@ -59,7 +59,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
 
 
         val adapter = MyAdapter(object : MyAdapter.OnCardButtonsClick {
-            override suspend fun OpenShowSheetButon(entityPassword: EntityPassword) {
+            override suspend fun openShowSheetButon(entityPassword: EntityPassword) {
                 //showSheet()
             }
 
@@ -69,7 +69,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
                 // dialogs(entityPassword)
                 val sheet2 = BtnSheetEdit()
 
-                val p: PersistentData = PersistentData()
+                val p = PersistentData()
 
                 p.saveParam(requireActivity(), "id", entityPassword.id)
                 p.saveParam(requireActivity(), "l", entityPassword.loghin)
@@ -134,7 +134,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
     @RequiresApi(Build.VERSION_CODES.M)
     private fun fabInsert() {
         binding.fbFrag.setOnClickListener {
-            val sheet2: BTnSheetDialogFragment = BTnSheetDialogFragment()
+            val sheet2 = BTnSheetDialogFragment()
             sheet2.show(requireActivity().supportFragmentManager, "sheet")
         }
     }
@@ -162,7 +162,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
                 val k: String? = bindSheetLayout2.txtLoghin.editText?.text.toString()
                 val p: String? = bindSheetLayout2.txtPassword.text?.toString()
 
-                GlobalScope.launch {
+                lifecycleScope.launch(Dispatchers.IO) {
                     viewModel.updatePassword(
                         EntityPassword(
                             entityPassword.id,

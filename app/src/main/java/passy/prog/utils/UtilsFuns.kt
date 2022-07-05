@@ -2,6 +2,7 @@ package passy.prog.utils
 
 import android.app.Activity
 import android.content.Context
+import android.content.res.Configuration
 import android.icu.util.Calendar
 import android.os.Build
 import android.util.Log
@@ -11,7 +12,10 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.textfield.TextInputEditText
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import passy.prog.R
 import passy.prog.db.EntityPassword
@@ -22,6 +26,7 @@ import java.time.LocalDateTime
 import java.util.*
 
 typealias utils = UtilsFuns
+
 //colors vals
 const val ROSSO: String = "Rosso"
 const val VERDE: String = "Verde"
@@ -29,6 +34,7 @@ const val ARANCIA: String = "Arancia"
 
 
 open class UtilsFuns {
+
 
     fun hideToolbarAndStatusBar(context: Context) {
         (context as MainActivity).supportActionBar!!.hide()
@@ -64,7 +70,7 @@ open class UtilsFuns {
     }
 
 
-    inner class AdapterFuns() {
+    inner class AdapterFuns {
 
         fun setDefaultAvatar(ImageView: ImageView): Any =
             ImageView.setBackgroundResource(R.drawable.ic_vpn)
@@ -89,7 +95,7 @@ open class UtilsFuns {
                 ) or (entityPassword.descrizione.contains("facebook", true))
             ) {
                 imageView.setBackgroundResource(R.drawable.ic_icons8_facebook_f__1_)
-            } else if (entityPassword.descrizione?.contains("git", true)) {
+            } else if (entityPassword.descrizione.contains("git", true)) {
                 imageView.setBackgroundResource(R.drawable.ic_icons8_github)
             } else if (entityPassword.descrizione?.contains("gitlab", true)) {
                 imageView.setBackgroundResource(R.drawable.ic_icons8_gitlab)
@@ -121,26 +127,26 @@ open class UtilsFuns {
 
     }
 
-    inner class PassyFeatures() {
+    inner class PassyFeatures {
 
         fun onChangeColorFields(
-            color: Color?,  tv_log: Loghin, tv_password: Password,
+            color: Color?, tv_log: Loghin, tv_password: Password,
             tv_des: Descrizione
         ) {
             when (color) {
                 "r" -> {
                     tv_log.setTextColor(tv_log.context.resources.getColor(R.color.redsoft2))
-                    tv_password.setTextColor(tv_log.context.resources.getColor(R.color.redsoft2,))
-                    tv_password.setTextColor(tv_log.context.resources.getColor(R.color.redsoft2,))
+                    tv_password.setTextColor(tv_log.context.resources.getColor(R.color.redsoft2))
+                    tv_password.setTextColor(tv_log.context.resources.getColor(R.color.redsoft2))
                     tv_log.setTextColor(tv_log.context.resources.getColor(R.color.redsoft2))
                     tv_log.setTextColor(tv_log.context.resources.getColor(R.color.redsoft2))
                 }
-                "g"->{
+                "g" -> {
                     tv_des.setTextColor(tv_log.context.resources.getColor(R.color.softGreen2))
                     tv_password.setTextColor(tv_log.context.resources.getColor(R.color.softGreen2))
                     tv_des.setTextColor(tv_log.context.resources.getColor(R.color.softGreen2))
                 }
-                "n"->{
+                "n" -> {
                     tv_des.setTextColor(tv_log.context.resources.getColor(R.color.materialonrange))
                     tv_password.setTextColor(tv_log.context.resources.getColor(R.color.materialonrange))
                     tv_des.setTextColor(tv_log.context.resources.getColor(R.color.materialonrange))
@@ -149,10 +155,10 @@ open class UtilsFuns {
         }
     }
 
-    class PassyCheckers() {
+    class PassyCheckers {
 
-        fun onPasswordCheck(ctx: Context, password: String, loghin: String): Boolean {
-            return if (password.isEmpty() and password.isEmpty()) {
+        fun onPasswordCheck(ctx: Context, password: String, loghin: String): Boolean  = runBlocking(Dispatchers.Main){
+            return@runBlocking if (password.isEmpty() and password.isEmpty()) {
                 Toast.makeText(
                     ctx,
                     "password or loghin cannot be empaty",
@@ -165,11 +171,32 @@ open class UtilsFuns {
         }
     }
 
-    inner class DatePicker() {
+    inner class PassySettings(val ctx: Context) {
 
-        fun getDateString(date: Date?, format: String?, locale: Locale?): String? {
+        private fun getThemeClor() {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.getDefaultNightMode())
+        }
+
+        fun settingThemeMode() {
+            when (ctx.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
+                Configuration.UI_MODE_NIGHT_YES -> {
+                    getThemeClor()
+                }
+                Configuration.UI_MODE_NIGHT_NO -> {
+                    getThemeClor()
+                }
+                Configuration.UI_MODE_NIGHT_UNDEFINED -> {
+                    getThemeClor()
+                }
+            }
+        }
+    }
+
+    inner class DatePicker {
+
+        private fun getDateString(date: Date?, format: String?, locale: Locale?): String? {
             val formatter: DateFormat = SimpleDateFormat(format, locale)
-            return formatter.format(date)
+            return date?.let { formatter.format(it) }
         }
 
         fun getData(): String? {
