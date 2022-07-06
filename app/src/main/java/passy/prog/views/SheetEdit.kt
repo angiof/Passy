@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import passy.prog.R
@@ -87,11 +89,10 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
             val labelLoghin = bindingFragSheet2.txtUser.text.toString()
             val descrizione = bindingFragSheet2.desc.text.toString()
 
-            GlobalScope.launch {
+            lifecycleScope.launch(Dispatchers.IO) {
                 if (UtilsFuns.PassyCheckers()
                         .onPasswordCheck(it.context, password = labelPassword, labelLoghin)
                 ) {
-
                     viewModel.updatePassword(
                         EntityPassword(
                             id,

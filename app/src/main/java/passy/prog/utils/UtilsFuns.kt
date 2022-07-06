@@ -207,18 +207,6 @@ open class UtilsFuns {
             return "$data/$time"
         }
 
-        @RequiresApi(Build.VERSION_CODES.O)
-        open fun getdataFromDevice(): String {
-            val c = Calendar.getInstance()
-            val year = c.get(Calendar.YEAR)
-            val month = c.get(Calendar.MONTH)
-            val day = c.get(Calendar.DAY_OF_MONTH)
-
-            val hour = c.get(Calendar.HOUR_OF_DAY)
-            val minute = c.get(Calendar.MINUTE)
-            val myLdt = LocalDateTime.of(year, month, day, hour, minute)
-            return myLdt.toString()
-        }
     }
 
 }

@@ -13,6 +13,7 @@ android {
             storePassword 'angelo'
             keyAlias 'angelo'
             keyPassword 'angelo'
+
         }
         release {
             storeFile file('C:\\Users\\honor\\Documents\\key di progetto x\\angelokey.jks')
@@ -45,11 +46,15 @@ android {
     buildTypes {
         release {
             minifyEnabled true
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-        release {
             signingConfig signingConfigs.release
         }
+        debug {
+            debuggable true
+        }
+
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
