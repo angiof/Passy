@@ -1,12 +1,14 @@
 package passy.prog.views
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -24,6 +26,7 @@ import passy.prog.viewmodel.ViewModelPassword
 
 open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
     var colors: String? = null
+    var frag: Fragment? = null
 
     private lateinit var viewModel: ViewModelPassword
     private val bindingFragSheet: SheetMainBinding by lazy {
@@ -94,6 +97,11 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
                 dismiss()
             }
         }
+    }
+
+    override fun onAttach(context: Context) {
+        frag = this
+        super.onAttach(context)
     }
 }
 

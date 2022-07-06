@@ -3,27 +3,28 @@ package passy.prog.utils
 import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
-import android.icu.util.Calendar
-import android.os.Build
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.biometric.BiometricManager
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import com.google.android.gms.common.api.internal.LifecycleCallback.getFragment
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import passy.prog.R
 import passy.prog.db.EntityPassword
+import passy.prog.views.BTnSheetDialogFragment
 import passy.prog.views.MainActivity
 import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.*
+import java.util.concurrent.Executor
 
 typealias utils = UtilsFuns
 
@@ -157,16 +158,45 @@ open class UtilsFuns {
 
     class PassyCheckers {
 
-        fun onPasswordCheck(ctx: Context, password: String, loghin: String): Boolean  = runBlocking(Dispatchers.Main){
-            return@runBlocking if (password.isEmpty() and password.isEmpty()) {
-                Toast.makeText(
-                    ctx,
-                    "password or loghin cannot be empaty",
-                    Toast.LENGTH_SHORT
-                ).show()
-                false
-            } else {
-                true
+
+        fun onPasswordCheck(ctx: Context, password: String, loghin: String): Boolean =
+            runBlocking(Dispatchers.Main) {
+                return@runBlocking if (password.isEmpty() and password.isEmpty()) {
+                    Toast.makeText(
+                        ctx,
+                        "password or loghin cannot be empaty",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    false
+                } else {
+                    true
+                }
+            }
+    }
+
+    open class  FragReciverSettings(val fragment: Fragment)
+
+
+    open class PassyCheckersBiometrick(val ctx: Activity) {
+
+         fun biometricAvailable(): Boolean {
+
+            val biometricManager = BiometricManager.from(ctx)
+            return when (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG or BiometricManager.Authenticators.BIOMETRIC_WEAK)) {
+                BiometricManager.BIOMETRIC_SUCCESS -> {
+                    true
+                }
+                BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
+                    Toast.makeText(ctx, "not found HW ", Toast.LENGTH_SHORT).show()
+                    ctx.finish()
+                    false
+                }
+                BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
+                    ctx.finish()
+                    Toast.makeText(ctx, "not found HW ", Toast.LENGTH_SHORT).show()
+                    false
+                }
+                else -> false
             }
         }
     }
@@ -206,6 +236,7 @@ open class UtilsFuns {
                 UtilsFuns().DatePicker().getDateString(Date(), "HH:mm", Locale.ITALY).toString()
             return "$data/$time"
         }
+
 
     }
 

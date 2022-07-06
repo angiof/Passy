@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
 import androidx.core.content.ContextCompat
-import com.example.passycorefeatures.UtilsXX
 import passy.prog.R
 import passy.prog.utils.UtilsFuns
 import java.util.concurrent.Executor
@@ -18,6 +17,12 @@ open class MainActivity : AppCompatActivity() {
     private val utilsFuns by lazy {
         UtilsFuns().PassySettings(this@MainActivity).settingThemeMode()
     }
+
+    companion object {
+        val ecco: Companion get() = MainActivity
+    }
+
+    private val utilsBiometrick by lazy { UtilsFuns.PassyCheckersBiometrick(this@MainActivity) }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,29 +82,8 @@ open class MainActivity : AppCompatActivity() {
                 .setNegativeButtonText("non sono io")
                 .setAllowedAuthenticators(BIOMETRIC_STRONG or BiometricManager.Authenticators.BIOMETRIC_WEAK)
                 .build()
-        if (biometricAvailable()) {
+        if (utilsBiometrick.biometricAvailable()) {
             biometricPrompt.authenticate(prontInfo)
-        }
-    }
-
-    private fun biometricAvailable(): Boolean {
-
-        val biometricManager = BiometricManager.from(this)
-        return when (biometricManager.canAuthenticate(BIOMETRIC_STRONG or BiometricManager.Authenticators.BIOMETRIC_WEAK)) {
-            BiometricManager.BIOMETRIC_SUCCESS -> {
-                true
-            }
-            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
-                Toast.makeText(applicationContext, "not found HW ", Toast.LENGTH_SHORT).show()
-                finish()
-                false
-            }
-            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
-                finish()
-                Toast.makeText(applicationContext, "not found HW ", Toast.LENGTH_SHORT).show()
-                false
-            }
-            else -> false
         }
     }
 }
