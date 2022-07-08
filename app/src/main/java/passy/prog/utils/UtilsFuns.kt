@@ -11,20 +11,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.google.android.gms.common.api.internal.LifecycleCallback.getFragment
+import com.example.passycorefeatures.UtilsXX
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import passy.prog.R
 import passy.prog.db.EntityPassword
-import passy.prog.views.BTnSheetDialogFragment
 import passy.prog.views.MainActivity
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.concurrent.Executor
 
 typealias utils = UtilsFuns
 
@@ -44,6 +41,7 @@ open class UtilsFuns {
 // Remember that you should never show the action bar if the
 // status bar is hidden, so hide that too if necessary.
         context.actionBar?.hide()
+
 
     }
 
@@ -174,12 +172,12 @@ open class UtilsFuns {
             }
     }
 
-    open class  FragReciverSettings(val fragment: Fragment)
+    open class FragReciverSettings(val fragment: Fragment)
 
 
     open class PassyCheckersBiometrick(val ctx: Activity) {
 
-         fun biometricAvailable(): Boolean {
+        fun biometricAvailable(): Boolean {
 
             val biometricManager = BiometricManager.from(ctx)
             return when (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG or BiometricManager.Authenticators.BIOMETRIC_WEAK)) {

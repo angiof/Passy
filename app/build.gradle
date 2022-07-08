@@ -139,7 +139,6 @@ dependencies {
 
     implementation "androidx.biometric:biometric:1.1.0"
 
-    implementation 'com.github.angiof:PassyCore:1.0.0'
 
 
 }
