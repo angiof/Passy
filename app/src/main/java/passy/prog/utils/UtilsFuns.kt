@@ -12,7 +12,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
 import androidx.fragment.app.Fragment
-import com.example.passycorefeatures.UtilsXX
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -99,7 +98,7 @@ open class UtilsFuns {
             } else if (entityPassword.descrizione?.contains("gitlab", true)) {
                 imageView.setBackgroundResource(R.drawable.ic_icons8_gitlab)
             } else if (entityPassword.loghin.contains("apple", true) or
-                entityPassword.loghin.contains("iclaud", true) or
+                entityPassword.loghin.contains("icloud", true) or
                 (entityPassword.descrizione?.contains("apple") == true or
                         (entityPassword.descrizione?.contains("iclaud", true)) or
                         (entityPassword.descrizione?.contains("mac")) or
