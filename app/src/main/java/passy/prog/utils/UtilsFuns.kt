@@ -112,7 +112,7 @@ open class UtilsFuns {
                 imageView.setBackgroundResource(R.drawable.ic_android_brands)
             } else if (entityPassword.descrizione.contains("paypal", true)) {
                 imageView.setBackgroundResource(R.drawable.ic_icons8_paypal)
-            } else if (entityPassword.loghin.contains("koltin", true)) {
+            } else if (entityPassword.loghin.contains("kotlin", true)) {
                 imageView.setBackgroundResource(R.drawable.ic_icons8_kotlin)
             } else if (entityPassword.descrizione.contains("oracle", true)) {
                 imageView.setBackgroundResource(R.drawable.ic_icons8_java)
@@ -233,8 +233,6 @@ open class UtilsFuns {
                 UtilsFuns().DatePicker().getDateString(Date(), "HH:mm", Locale.ITALY).toString()
             return "$data/$time"
         }
-
-
     }
 
 }
