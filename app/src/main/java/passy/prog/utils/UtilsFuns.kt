@@ -121,6 +121,9 @@ open class UtilsFuns {
             ) {
                 imageView.setBackgroundResource(R.drawable.ic_google_svgrepo_com)
             }
+            else if(entityPassword.descrizione.contains("italo")){
+                imageView.setBackgroundResource(R.drawable.ic_italo)
+            }
         }
 
     }
