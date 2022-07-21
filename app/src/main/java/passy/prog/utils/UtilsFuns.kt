@@ -29,7 +29,6 @@ const val ROSSO: String = "Rosso"
 const val VERDE: String = "Verde"
 const val ARANCIA: String = "Arancia"
 
-
 open class UtilsFuns {
 
 
@@ -94,23 +93,26 @@ open class UtilsFuns {
             ) {
                 imageView.setBackgroundResource(R.drawable.ic_icons8_facebook_f__1_)
             } else if (entityPassword.descrizione.contains("git", true)) {
-                imageView.setBackgroundResource(R.drawable.ic_icons8_github)
-            } else if (entityPassword.descrizione?.contains("gitlab", true)) {
-                imageView.setBackgroundResource(R.drawable.ic_icons8_gitlab)
+                if (entityPassword.descrizione.contains("lab")) {
+                    imageView.setBackgroundResource(R.drawable.ic_icons8_gitlab)
+                } else {
+                    imageView.setBackgroundResource(R.drawable.ic_icons8_github)
+                }
             } else if (entityPassword.loghin.contains("apple", true) or
                 entityPassword.loghin.contains("icloud", true) or
                 (entityPassword.descrizione?.contains("apple") == true or
                         (entityPassword.descrizione?.contains("iclaud", true)) or
                         (entityPassword.descrizione?.contains("mac")) or
-                        (entityPassword.descrizione?.contains("iphone", true))
-                        )
+                        (entityPassword.descrizione?.contains("iphone", true)))
             ) {
                 imageView.setBackgroundResource(R.drawable.ic_apple_brands)
             } else if (entityPassword.loghin.contains("android", true) or
                 (entityPassword.descrizione?.contains("telefono"))
             ) {
                 imageView.setBackgroundResource(R.drawable.ic_android_brands)
-            } else if (entityPassword.descrizione.contains("paypal", true)) {
+            } else if (entityPassword.descrizione.contains("paypal", true) and
+                (entityPassword.loghin?.contains("@"))
+            ) {
                 imageView.setBackgroundResource(R.drawable.ic_icons8_paypal)
             } else if (entityPassword.loghin.contains("kotlin", true)) {
                 imageView.setBackgroundResource(R.drawable.ic_icons8_kotlin)
@@ -120,12 +122,10 @@ open class UtilsFuns {
                 (entityPassword.descrizione.contains("gmail"))
             ) {
                 imageView.setBackgroundResource(R.drawable.ic_google_svgrepo_com)
-            }
-            else if(entityPassword.descrizione.contains("italo")){
+            } else if (entityPassword.descrizione.contains("italo")) {
                 imageView.setBackgroundResource(R.drawable.ic_italo)
             }
         }
-
     }
 
     inner class PassyFeatures {

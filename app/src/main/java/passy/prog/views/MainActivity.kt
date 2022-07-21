@@ -61,13 +61,12 @@ open class MainActivity : AppCompatActivity() {
                 executor,
                 object : androidx.biometric.BiometricPrompt.AuthenticationCallback() {
                     override fun onAuthenticationSucceeded(result: androidx.biometric.BiometricPrompt.AuthenticationResult) {
-                        Toast.makeText(this@MainActivity, "fatto", Toast.LENGTH_SHORT).show()
                         super.onAuthenticationSucceeded(result)
                     }
 
                     override fun onAuthenticationFailed() {
                         finishAffinity()
-                        Toast.makeText(this@MainActivity, "sto cazzo", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@MainActivity, "riprovare chiudi e riapro l'app , pulisci il sensore", Toast.LENGTH_SHORT).show()
                         super.onAuthenticationFailed()
                     }
 
