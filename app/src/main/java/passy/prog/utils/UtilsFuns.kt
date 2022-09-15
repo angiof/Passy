@@ -3,16 +3,11 @@ package passy.prog.utils
 import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
-import android.util.Log
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
-import androidx.fragment.app.Fragment
-import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import passy.prog.R
@@ -31,7 +26,6 @@ const val ARANCIA: String = "Arancia"
 
 open class UtilsFuns {
 
-
     fun hideToolbarAndStatusBar(context: Context) {
         (context as MainActivity).supportActionBar!!.hide()
         // Hide the status bar.
@@ -39,40 +33,14 @@ open class UtilsFuns {
 // Remember that you should never show the action bar if the
 // status bar is hidden, so hide that too if necessary.
         context.actionBar?.hide()
-
-
     }
-
-
-    fun Context.hideKeyboard(view: View) {
-        val inputMethodManager =
-            getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-    }
-
-
-    fun showDialogSettings(context: Context, entityPassword: EntityPassword) = runBlocking {
-
-        val viewDialog = View.inflate(context, R.layout.custom_, null)
-        val builder = AlertDialog.Builder(context)
-        builder.setCancelable(false)
-        builder.setView(viewDialog)
-        val dialog = builder.create()
-        viewDialog.findViewById<View>(R.id.edit).setOnClickListener {
-
-            Log.d("dialog", "premuto edit ")
-            dialog.dismiss()
-        }
-        dialog.show()
-    }
-
 
     inner class AdapterFuns {
 
         fun setDefaultAvatar(ImageView: ImageView): Any =
             ImageView.setBackgroundResource(R.drawable.ic_vpn)
 
-        fun setAssets(entityPassword: EntityPassword, imageView: ImageView) {
+         fun setAssets(entityPassword: EntityPassword, imageView: ImageView) {
             if (entityPassword.loghin!!.contains("accenture", true) or
                 entityPassword.descrizione!!.contains("accenture")
             ) {
@@ -126,40 +94,12 @@ open class UtilsFuns {
                 imageView.setBackgroundResource(R.drawable.ic_italo)
             }
         }
-    }
 
-    inner class PassyFeatures {
-
-        fun onChangeColorFields(
-            color: Color?, tv_log: Loghin, tv_password: Password,
-            tv_des: Descrizione
-        ) {
-            when (color) {
-                "r" -> {
-                    tv_log.setTextColor(tv_log.context.resources.getColor(R.color.redsoft2))
-                    tv_password.setTextColor(tv_log.context.resources.getColor(R.color.redsoft2))
-                    tv_password.setTextColor(tv_log.context.resources.getColor(R.color.redsoft2))
-                    tv_log.setTextColor(tv_log.context.resources.getColor(R.color.redsoft2))
-                    tv_log.setTextColor(tv_log.context.resources.getColor(R.color.redsoft2))
-                }
-                "g" -> {
-                    tv_des.setTextColor(tv_log.context.resources.getColor(R.color.softGreen2))
-                    tv_password.setTextColor(tv_log.context.resources.getColor(R.color.softGreen2))
-                    tv_des.setTextColor(tv_log.context.resources.getColor(R.color.softGreen2))
-                }
-                "n" -> {
-                    tv_des.setTextColor(tv_log.context.resources.getColor(R.color.materialonrange))
-                    tv_password.setTextColor(tv_log.context.resources.getColor(R.color.materialonrange))
-                    tv_des.setTextColor(tv_log.context.resources.getColor(R.color.materialonrange))
-                }
-            }
-        }
     }
 
     class PassyCheckers {
 
-
-        fun onPasswordCheck(ctx: Context, password: String, loghin: String): Boolean =
+        fun onPasswordCheck(ctx: Context, password: String): Boolean =
             runBlocking(Dispatchers.Main) {
                 return@runBlocking if (password.isEmpty() and password.isEmpty()) {
                     Toast.makeText(
@@ -174,13 +114,10 @@ open class UtilsFuns {
             }
     }
 
-    open class FragReciverSettings(val fragment: Fragment)
-
 
     open class PassyCheckersBiometrick(val ctx: Activity) {
 
         fun biometricAvailable(): Boolean {
-
             val biometricManager = BiometricManager.from(ctx)
             return when (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG or BiometricManager.Authenticators.BIOMETRIC_WEAK)) {
                 BiometricManager.BIOMETRIC_SUCCESS -> {
@@ -206,7 +143,6 @@ open class UtilsFuns {
         private fun getThemeClor() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.getDefaultNightMode())
         }
-
         fun settingThemeMode() {
             when (ctx.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
                 Configuration.UI_MODE_NIGHT_YES -> {
@@ -228,8 +164,7 @@ open class UtilsFuns {
             val formatter: DateFormat = SimpleDateFormat(format, locale)
             return date?.let { formatter.format(it) }
         }
-
-        fun getData(): String? {
+        fun getData(): String {
             val data = UtilsFuns().DatePicker().getDateString(Date(), "dd/MM/yyyy", Locale.ITALY)
                 .toString()
             val time =
@@ -237,12 +172,8 @@ open class UtilsFuns {
             return "$data/$time"
         }
     }
-
 }
-typealias Loghin = TextInputEditText
-typealias Password = TextInputEditText
-typealias Descrizione = TextInputEditText
-typealias Color = String?
+
 
 
 

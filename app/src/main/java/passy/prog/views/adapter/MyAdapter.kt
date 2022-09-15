@@ -16,7 +16,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.*
 import passy.prog.R
@@ -29,8 +28,7 @@ import passy.prog.utils.VERDE
 
 
 class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
-    ListAdapter<EntityPassword, MyAdapter.PasswordViewHolder>(DiffCallBack()) {
-    private var dataset: MutableList<EntityPassword> = mutableListOf()
+    androidx.recyclerview.widget.ListAdapter<EntityPassword, MyAdapter.PasswordViewHolder>(DiffCallBack()) {
     val viewDialog: View = View.inflate(context, R.layout.custom_, null)
     private var baseFuns: UtilsFuns = UtilsFuns()
 
@@ -48,21 +46,21 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
 
                 when (entityPassword.color) {
                     ARANCIA -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.materialonrange))
-                    VERDE-> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.softGreen2))
+                    VERDE -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.softGreen2))
                     ROSSO -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.redsoft2))
                     null -> binding.viewLayout.setBackgroundColor(R.color.softGreen)
                 }
-
                 baseFuns.AdapterFuns().setDefaultAvatar(binding.ivAvatar)
-
-                baseFuns.AdapterFuns().setAssets(entityPassword = entityPassword, binding.ivAvatar)
-
-                this.btncopy.let { it ->
-                    it.setOnClickListener {
-                        it.context.copyToClipboard(this.labelPassword.text.toString(), it.context)
-                    }
-                }
-
+                baseFuns.AdapterFuns()
+                    .setAssets(entityPassword = entityPassword, binding.ivAvatar)
+                        this.btncopy.let { it ->
+                            it.setOnClickListener {
+                                it.context.copyToClipboard(
+                                    this.labelPassword.text.toString(),
+                                    it.context
+                                )
+                            }
+                        }
                 this.materialCardVIew.setOnClickListener { card ->
                     Toast.makeText(card.context, "biometrico", Toast.LENGTH_SHORT).show()
                     if (this.labelPassword.visibility == View.VISIBLE) {
@@ -82,16 +80,21 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                         val dialog = builder.create()
                         viewDialog.findViewById<TextView>(R.id.label_data).text =
                             entityPassword.data
-                        if (entityPassword.descrizione.isNullOrEmpty()){
-                        viewDialog.findViewById<TextView>(R.id.lb_descrizione).visibility = View.GONE
-                        viewDialog.findViewById<TextView>(R.id.tv_descrizione).visibility = View.GONE
-                        }else{
-                        viewDialog.findViewById<TextView>(R.id.tv_descrizione).text =
-                            entityPassword.descrizione
+                        if (entityPassword.descrizione.isNullOrEmpty()) {
+                            viewDialog.findViewById<TextView>(R.id.lb_descrizione).visibility =
+                                View.GONE
+                            viewDialog.findViewById<TextView>(R.id.tv_descrizione).visibility =
+                                View.GONE
+                        } else {
+                            viewDialog.findViewById<TextView>(R.id.tv_descrizione).text =
+                                entityPassword.descrizione
                         }
                         viewDialog.findViewById<TextView>(R.id.password_dialog).text =
                             entityPassword.password
-                        setCustomDialogAssets(entityPassword)
+                        val avatardialog: ImageView = viewDialog.findViewById(R.id.avatardialog)
+
+                        baseFuns.AdapterFuns().setAssets(entityPassword, avatardialog)
+
                         viewDialog.findViewById<TextView>(R.id.texttest).text =
                             entityPassword.loghin
                         viewDialog.findViewById<View>(R.id.edit).setOnClickListener {
@@ -100,20 +103,25 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                                 (viewDialog.parent as ViewGroup).removeView(viewDialog) // <- fix
                             }
                             builder.setView(viewDialog)
-                            GlobalScope.launch {
-                                onCardButtonsClick.onUpdatePassword(entityPassword)
-                                object {
-                                    val entityPassword = entityPassword
+                            runBlocking {
+                                launch {
+                                    withContext(Dispatchers.IO){
+                                    onCardButtonsClick.onUpdatePassword(entityPassword)
+
+                                    }
                                 }
                             }
                             Log.d("dialog", "premuto edit ")
                             dialog.dismiss()
                         }
-
                         viewDialog.findViewById<View>(R.id.delate).setOnClickListener {
-                            GlobalScope.launch {
-                                onCardButtonsClick.onDelateCard(entityPassword)
-                                dialog.dismiss()
+                            runBlocking {
+                                launch {
+                                    withContext(Dispatchers.IO) {
+                                        onCardButtonsClick.onDelateCard(entityPassword)
+                                        dialog.dismiss()
+                                    }
+                                }
                             }
                         }
                         viewDialog.findViewById<ImageView>(R.id.closeview).setOnClickListener {
@@ -158,42 +166,6 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
         suspend fun onUpdatePassword(entityPassword: EntityPassword)
     }
 
-    fun run(position: Int) = runBlocking {
-        launch(Dispatchers.IO) {
-            onCardButtonsClick.onDelateCard(dataset[position])
-        }
-    }
-
-    fun setCustomDialogAssets(entityPassword: EntityPassword) {
-        val asset = viewDialog.findViewById<ImageView>(R.id.avatardialog)
-        if (entityPassword.loghin!!.contains("accenture", true)) {
-            asset.setBackgroundResource(R.drawable.ic_acure_icon)
-        } else if (entityPassword.loghin.contains("microsoft", true)) {
-            asset.setBackgroundResource(R.drawable.ic_icons8_microsoft)
-        } else if (entityPassword.loghin.contains("ig", true)) {
-            asset.setBackgroundResource(R.drawable.ic_icons8_instagram)
-        } else if (entityPassword.loghin.contains("fb", true)) {
-            asset.setBackgroundResource(R.drawable.ic_icons8_facebook_f__1_)
-        } else if (entityPassword.loghin.contains("git", true)) {
-            asset.setBackgroundResource(R.drawable.ic_icons8_github)
-        } else if (entityPassword.loghin.contains("gitlab", true)) {
-            asset.setBackgroundResource(R.drawable.ic_icons8_gitlab)
-        } else if (entityPassword.loghin.contains("apple", true)) {
-            asset.setBackgroundResource(R.drawable.ic_apple_brands)
-        } else if (entityPassword.loghin.contains("android", true)) {
-            asset.setBackgroundResource(R.drawable.ic_android_brands)
-        } else if (entityPassword.loghin.contains("paypal", true)) {
-            asset.setBackgroundResource(R.drawable.ic_icons8_paypal)
-        } else if (entityPassword.loghin.contains("kotlin", true)) {
-            asset.setBackgroundResource(R.drawable.ic_icons8_kotlin)
-        } else if (entityPassword.loghin.contains("oracle", true)) {
-            asset.setBackgroundResource(R.drawable.ic_icons8_java)
-        } else {
-            asset.setBackgroundResource(R.drawable.ic_vpn)
-        }
-    }
-
-
     @SuppressLint("ServiceCast")
     fun Context.copyToClipboard(text: CharSequence, context: Context) {
         val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -201,6 +173,4 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
         clipboard.setPrimaryClip(clip)
     }
-
-
 }

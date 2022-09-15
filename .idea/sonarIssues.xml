@@ -48,6 +48,66 @@
             <set />
           </value>
         </entry>
+        <entry key="$USER_HOME$/AndroidStudioProjects/RETROMOOCK/app/src/main/java/com/example/retromoock/views/Adapter.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AndroidStudioProjects/RETROMOOCK/app/src/main/java/com/example/retromoock/views/MainActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AndroidStudioProjects/RETROMOOCK/app/src/main/java/com/example/retromoock/views/models/ViewModelLista.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AndroidStudioProjects/RETROMOOCK/app/src/main/java/com/example/retromoock/views/network/client2/ClientRetro.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AndroidStudioProjects/RETROMOOCK/app/src/main/res/layout/activity_main.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AndroidStudioProjects/RETROMOOCK/app/src/main/res/layout/lista_frasi.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AndroidStudioProjects/fullmvm/app/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AndroidStudioProjects/fullmvm/app/src/main/java/com/example/fullmvm/MainActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AndroidStudioProjects/fullmvm/app/src/main/java/com/example/fullmvm/models/FraseLocalProvider.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AndroidStudioProjects/fullmvm/app/src/main/java/com/example/fullmvm/models/FrasiModels.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AndroidStudioProjects/fullmvm/app/src/main/java/com/example/fullmvm/models/ViewModelFrase.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/AndroidStudioProjects/fullmvm/app/src/main/res/layout/activity_main.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$USER_HOME$/Desktop/FRASI/app/src/main/AndroidManifest.xml">
           <value>
             <set />
@@ -84,6 +144,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/passy/prog/BuildConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/build/generated/source/buildConfig/release/passy/prog/BuildConfig.java">
           <value>
             <set />
           </value>

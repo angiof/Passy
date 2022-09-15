@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import passy.prog.R
 import passy.prog.databinding.EditSheetBinding
@@ -91,7 +90,7 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
 
             lifecycleScope.launch(Dispatchers.IO) {
                 if (UtilsFuns.PassyCheckers()
-                        .onPasswordCheck(it.context, password = labelPassword, labelLoghin)
+                        .onPasswordCheck(it.context, password = labelPassword)
                 ) {
                     viewModel.updatePassword(
                         EntityPassword(

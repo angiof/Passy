@@ -86,7 +86,7 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
                 val loghin = bindingFragSheet.txtUser.text.toString()
                 val password = bindingFragSheet.txtPassword.text.toString()
                 if (UtilsFuns.PassyCheckers()
-                        .onPasswordCheck(it.context, password = password, loghin)
+                        .onPasswordCheck(it.context, password = password)
                 ) {
                     viewModel.insertPasswordViewModel(
                         EntityPassword(

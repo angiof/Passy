@@ -28,12 +28,7 @@ import passy.prog.viewmodel.ViewModelPassword
 import passy.prog.views.adapter.MyAdapter
 
 class FragmentContainer : Fragment(R.layout.fragment_container) {
-    val fragment: FragError = FragError()
-    val ctx: FragmentContainer get() = this@FragmentContainer
 
-
-    //curoines
-    private val coroutineScopeInsert: CoroutineScope by lazy { CoroutineScope(Dispatchers.Default) }
     private lateinit var viewModel: ViewModelPassword
     private lateinit var binding: passy.prog.databinding.FragmentContainerBinding
     var colors: String? = null
