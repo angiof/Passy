@@ -32,16 +32,6 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
 
     private lateinit var viewModel: ViewModelPassword
     private lateinit var binding: FragmentContainerBinding
-    private val bindSheetLayout: SheeDialogBinding by lazy {
-        SheeDialogBinding.inflate(
-            layoutInflater
-        )
-    }
-    private val bindSheetLayout2: SheeDialogBinding by lazy {
-        SheeDialogBinding.inflate(
-            layoutInflater
-        )
-    }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -107,24 +97,6 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
 
     }
 
-
-    @RequiresApi(Build.VERSION_CODES.M)
-    @SuppressLint("ResourceAsColor")
-    private fun showSheet() {
-        var ic_signature: String? = null
-
-        MaterialDialog(requireContext(), BottomSheet(LayoutMode.MATCH_PARENT)).show {
-            cornerRadius(18f)
-            customView(view = bindSheetLayout.root, scrollable = true)
-            title(passy.prog.R.string.insertitle)
-            bindSheetLayout.txtUser.setText("")
-            bindSheetLayout.txtPassword.setText("")
-            with(bindSheetLayout.spinner) {
-                this.prompt = getString(R.string.app_name)
-            }
-        }
-    }
-
     @RequiresApi(Build.VERSION_CODES.M)
     private fun fabInsert() {
         binding.fbFrag.setOnClickListener {
@@ -139,37 +111,4 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
         fabInsert()
     }
 
-
-    fun dialogs(entityPassword: EntityPassword): MaterialDialog {
-        SheeDialogBinding.inflate(layoutInflater)
-        val s = MaterialDialog(requireContext(), BottomSheet(LayoutMode.WRAP_CONTENT)).show {
-            customView(view = bindSheetLayout2.root, scrollable = true)
-            cornerRadius(res = R.dimen.md_dialog_default_corner_radius)
-
-            bindSheetLayout2.txtLoghin.editText?.setText(entityPassword.loghin)
-                .toString()
-
-            bindSheetLayout2.txtPassword.setText(entityPassword.loghin).toString()
-
-            bindSheetLayout2.btnSave.setOnClickListener {
-
-                val k: String? = bindSheetLayout2.txtLoghin.editText?.text.toString()
-                val p: String? = bindSheetLayout2.txtPassword.text?.toString()
-
-                lifecycleScope.launch(Dispatchers.IO) {
-                    viewModel.updatePassword(
-                        EntityPassword(
-                            entityPassword.id,
-                            null,
-                            k,
-                            p,
-                        )
-                    )
-                }
-                dismiss()
-            }
-
-        }
-        return s
-    }
 }

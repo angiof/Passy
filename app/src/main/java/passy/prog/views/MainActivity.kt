@@ -16,19 +16,12 @@ import java.util.concurrent.Executor
 
 open class MainActivity : AppCompatActivity() {
 
-    private val utilsFuns by lazy {
-        UtilsFuns().PassySettings(this@MainActivity).settingThemeMode()
-    }
-
-
-
     private val utilsBiometrick by lazy { UtilsFuns.PassyCheckersBiometrick(this@MainActivity) }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        utilsFuns
         face()
 
     }
