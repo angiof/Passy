@@ -32,7 +32,6 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
     val viewDialog: View = View.inflate(context, R.layout.custom_, null)
     private var baseFuns: UtilsFuns = UtilsFuns()
 
-    @OptIn(DelicateCoroutinesApi::class)
     inner class PasswordViewHolder(
         private val binding: LyListaItemsBinding
     ) :

@@ -14,28 +14,16 @@ open class ViewModelPassword(application: Application) : AndroidViewModel(applic
 
     private val repositorioFromViewModel: Repositorio = Repositorio(application)
 
-
     fun insertPasswordViewModel(entityPassword: EntityPassword) =
         viewModelScope.launch {
             repositorioFromViewModel.insetPasswordFromRepo(entityPassword)
         }
     val lista: LiveData<MutableList<EntityPassword>> = repositorioFromViewModel.stampaTUTToRepo
 
-    fun hidebtnFRomRepo(view: View) {
-        repositorioFromViewModel.hidebtn(view)
-    }
-
     fun cancellaTutto(entityPassword: EntityPassword) {
         repositorioFromViewModel.cancellaPAsswordFromRepo(entityPassword)
     }
 
-    fun btnhide2(context: Context) {
-        repositorioFromViewModel.viess(context)
-    }
-
-    fun mostraToas(activity: Activity,messaggio: String){
-        repositorioFromViewModel.mostraToas(activity ,messaggio)
-    }
     fun updatePassword(entityPassword: EntityPassword){
         repositorioFromViewModel.updatePasswordFromRepo(entityPassword)
     }

@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -30,8 +31,7 @@ import passy.prog.views.adapter.MyAdapter
 class FragmentContainer : Fragment(R.layout.fragment_container) {
 
     private lateinit var viewModel: ViewModelPassword
-    private lateinit var binding: passy.prog.databinding.FragmentContainerBinding
-    var colors: String? = null
+    private lateinit var binding: FragmentContainerBinding
     private val bindSheetLayout: SheeDialogBinding by lazy {
         SheeDialogBinding.inflate(
             layoutInflater
@@ -51,7 +51,6 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
 
         viewModel = ViewModelProvider(this)[ViewModelPassword::class.java]
         binding = FragmentContainerBinding.bind(view)
-
 
         val adapter = MyAdapter(object : MyAdapter.OnCardButtonsClick {
             override suspend fun openShowSheetButon(entityPassword: EntityPassword) {
@@ -167,14 +166,10 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
                         )
                     )
                 }
-
                 dismiss()
             }
 
         }
         return s
     }
-
-
-
 }

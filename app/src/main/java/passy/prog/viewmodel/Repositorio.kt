@@ -13,28 +13,19 @@ import passy.prog.R
 import passy.prog.db.DaoPasswords
 import passy.prog.db.DbPAssword
 import passy.prog.db.EntityPassword
+import passy.prog.views.MainActivity
 
 class Repositorio(context: Context) {
-
-
     //instanzia la dao qui nella repo con tutte le sue funzini
     private var daoPasswordsRepositorio: DaoPasswords =
         DbPAssword.getDatabse(context).passwordDaos()
-
-    fun mostraToas(activity: Activity, messaggio: String) {
-        val toas3 = Toast.makeText(activity, messaggio, Toast.LENGTH_SHORT).show()
-    }
-
-
     //liveData collegata alla querry scelta che stampa tutte le tabelle del db
     val stampaTUTToRepo: LiveData<MutableList<EntityPassword>> =
         daoPasswordsRepositorio.getAllPAsswordFromDb()
 
-
     fun cancellaPAsswordFromRepo(entityPassword: EntityPassword) {
         daoPasswordsRepositorio.delatePassword(entityPassword)
     }
-
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
@@ -43,12 +34,6 @@ class Repositorio(context: Context) {
     }
     //repositorio di FIngerPrint
 
-
-    fun hidebtn(view: View) {
-        view.visibility = View.GONE
-    }
-
-
     @SuppressLint("InflateParams")
     fun viess(context: Context) {
         val view = LayoutInflater.from(context).inflate(R.layout.fragment_container, null, false)
@@ -56,10 +41,7 @@ class Repositorio(context: Context) {
         btn.visibility = View.GONE
     }
 
-
     fun updatePasswordFromRepo(entityPassword: EntityPassword) {
         daoPasswordsRepositorio.updatePassword(entityPassword)
     }
-
-
 }

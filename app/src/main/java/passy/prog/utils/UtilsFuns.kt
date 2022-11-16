@@ -40,7 +40,7 @@ open class UtilsFuns {
         fun setDefaultAvatar(ImageView: ImageView): Any =
             ImageView.setBackgroundResource(R.drawable.ic_vpn)
 
-         fun setAssets(entityPassword: EntityPassword, imageView: ImageView) {
+        fun setAssets(entityPassword: EntityPassword, imageView: ImageView) {
             if (entityPassword.loghin!!.contains("accenture", true) or
                 entityPassword.descrizione!!.contains("accenture")
             ) {
@@ -143,6 +143,7 @@ open class UtilsFuns {
         private fun getThemeClor() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.getDefaultNightMode())
         }
+
         fun settingThemeMode() {
             when (ctx.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
                 Configuration.UI_MODE_NIGHT_YES -> {
@@ -164,6 +165,7 @@ open class UtilsFuns {
             val formatter: DateFormat = SimpleDateFormat(format, locale)
             return date?.let { formatter.format(it) }
         }
+
         fun getData(): String {
             val data = UtilsFuns().DatePicker().getDateString(Date(), "dd/MM/yyyy", Locale.ITALY)
                 .toString()
@@ -172,6 +174,21 @@ open class UtilsFuns {
             return "$data/$time"
         }
     }
+    class  ColorsEditSheetBarsFields{
+        enum class ColorsEdits {
+            VERDE, ARANCIA, ROSSO;
+
+            fun getColors(): String {
+                return when (this) {
+                    VERDE ->"verde"
+                    ARANCIA ->"arancia"
+                    ROSSO ->"rosso"
+                }
+            }
+        }
+    }
+
+
 }
 
 

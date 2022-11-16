@@ -1,5 +1,7 @@
 package passy.prog.views
 
+import android.app.Activity
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
@@ -18,9 +20,7 @@ open class MainActivity : AppCompatActivity() {
         UtilsFuns().PassySettings(this@MainActivity).settingThemeMode()
     }
 
-    companion object {
-        val ecco: Companion get() = MainActivity
-    }
+
 
     private val utilsBiometrick by lazy { UtilsFuns.PassyCheckersBiometrick(this@MainActivity) }
 
