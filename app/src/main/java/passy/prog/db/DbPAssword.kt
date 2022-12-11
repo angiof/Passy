@@ -4,14 +4,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import net.sqlcipher.database.SupportFactory
+import passy.prog.utils.UtilsFuns
 
-@Database(entities = [EntityPassword::class], version = 1, exportSchema = false)
+@Database(entities = [EntityPassword::class], version = 1, exportSchema = true)
 abstract class DbPAssword : RoomDatabase() {
 
     abstract fun passwordDaos(): DaoPasswords
 
-    //singleton intanzia varie instanzie di esso nello stesso tempo
     companion object {
+
         //instanzia questo db e informa ai altri trad che questa intanzia esiste
         @Volatile
         private var INSTANCE: DbPAssword? = null
@@ -25,6 +27,7 @@ abstract class DbPAssword : RoomDatabase() {
                     DbPAssword::class.java,
                     "dbPassword"
                 )
+                    .openHelperFactory(SupportFactory("kk".toByteArray()))
                     .build()
                 INSTANCE = instance
                 instance

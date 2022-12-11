@@ -2,17 +2,18 @@ package passy.prog.utils
 
 import android.app.Activity
 import android.content.Context
-import android.content.res.Configuration
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
+import androidx.fragment.app.Fragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import passy.prog.R
 import passy.prog.db.EntityPassword
+import passy.prog.views.BtnSheetEdit
 import passy.prog.views.MainActivity
+import passy.prog.views.PersistentData
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,10 +29,7 @@ open class UtilsFuns {
 
     fun hideToolbarAndStatusBar(context: Context) {
         (context as MainActivity).supportActionBar!!.hide()
-        // Hide the status bar.
         context.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-// Remember that you should never show the action bar if the
-// status bar is hidden, so hide that too if necessary.
         context.actionBar?.hide()
     }
 
@@ -41,22 +39,27 @@ open class UtilsFuns {
             ImageView.setBackgroundResource(R.drawable.ic_vpn)
 
         fun setAssets(entityPassword: EntityPassword, imageView: ImageView) {
-            if (entityPassword.loghin!!.contains("accenture", true) or
-                entityPassword.descrizione!!.contains("accenture")
+            if (entityPassword.loghin!!.contains(
+                    "accenture",
+                    true
+                ) or entityPassword.descrizione!!.contains("accenture")
             ) {
                 imageView.setBackgroundResource(R.drawable.ic_acure_icon)
-            } else if (entityPassword.loghin.contains("microsoft", true)
-                or (entityPassword.loghin.contains("live")
-                        or entityPassword.loghin.contains("hotmail"))
+            } else if (entityPassword.loghin.contains(
+                    "microsoft",
+                    true
+                ) or (entityPassword.loghin.contains("live") or
+                        entityPassword.loghin.contains("hotmail"))
             ) {
                 imageView.setBackgroundResource(R.drawable.ic_icons8_microsoft)
-            } else if (entityPassword.loghin.contains("ig", true) ||
-                entityPassword.descrizione.contains("ig")
+            } else if (entityPassword.loghin.contains(
+                    "ig",
+                    true
+                ) || entityPassword.descrizione.contains("ig")
             ) {
                 imageView.setBackgroundResource(R.drawable.ic_icons8_instagram)
             } else if (entityPassword.loghin.contains(
-                    "fb",
-                    true
+                    "fb", true
                 ) or (entityPassword.descrizione.contains("facebook", true))
             ) {
                 imageView.setBackgroundResource(R.drawable.ic_icons8_facebook_f__1_)
@@ -94,7 +97,6 @@ open class UtilsFuns {
                 imageView.setBackgroundResource(R.drawable.ic_italo)
             }
         }
-
     }
 
     class PassyCheckers {
@@ -103,9 +105,7 @@ open class UtilsFuns {
             runBlocking(Dispatchers.Main) {
                 return@runBlocking if (password.isEmpty() and password.isEmpty()) {
                     Toast.makeText(
-                        ctx,
-                        "password or loghin cannot be empaty",
-                        Toast.LENGTH_SHORT
+                        ctx, "password or loghin cannot be empaty", Toast.LENGTH_SHORT
                     ).show()
                     false
                 } else {
@@ -138,27 +138,6 @@ open class UtilsFuns {
         }
     }
 
-    inner class PassySettings(val ctx: Context) {
-
-        private fun getThemeClor() {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.getDefaultNightMode())
-        }
-
-        fun settingThemeMode() {
-            when (ctx.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
-                Configuration.UI_MODE_NIGHT_YES -> {
-                    getThemeClor()
-                }
-                Configuration.UI_MODE_NIGHT_NO -> {
-                    getThemeClor()
-                }
-                Configuration.UI_MODE_NIGHT_UNDEFINED -> {
-                    getThemeClor()
-                }
-            }
-        }
-    }
-
     inner class DatePicker {
 
         private fun getDateString(date: Date?, format: String?, locale: Locale?): String? {
@@ -174,21 +153,19 @@ open class UtilsFuns {
             return "$data/$time"
         }
     }
-    class  ColorsEditSheetBarsFields{
-        enum class ColorsEdits {
-            VERDE, ARANCIA, ROSSO;
 
-            fun getColors(): String {
-                return when (this) {
-                    VERDE ->"verde"
-                    ARANCIA ->"arancia"
-                    ROSSO ->"rosso"
-                }
-            }
+     class FragemntSheetSendEntiti(val ctx: Fragment) {
+        fun sender(entityPassword: EntityPassword) {
+            val sheet2 = BtnSheetEdit()
+            val p = PersistentData()
+            p.saveParam(ctx.requireActivity(), "id", entityPassword.id)
+            p.saveParam(ctx.requireActivity(), "l", entityPassword.loghin)
+            p.saveParam(ctx.requireActivity(), "p", entityPassword.password)
+            p.saveParam(ctx.requireActivity(), "c", entityPassword.color)
+            p.saveParam(ctx.requireActivity(), "desc", entityPassword.descrizione)
+            sheet2.show(ctx.requireActivity().supportFragmentManager, "sheet2")
         }
     }
-
-
 }
 
 

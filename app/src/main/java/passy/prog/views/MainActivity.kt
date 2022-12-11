@@ -1,7 +1,5 @@
 package passy.prog.views
 
-import android.app.Activity
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
@@ -53,13 +51,14 @@ open class MainActivity : AppCompatActivity() {
                 this,
                 executor,
                 object : androidx.biometric.BiometricPrompt.AuthenticationCallback() {
-                    override fun onAuthenticationSucceeded(result: androidx.biometric.BiometricPrompt.AuthenticationResult) {
-                        super.onAuthenticationSucceeded(result)
-                    }
 
                     override fun onAuthenticationFailed() {
                         finishAffinity()
-                        Toast.makeText(this@MainActivity, "riprovare chiudi e riapro l'app , pulisci il sensore", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@MainActivity,
+                            "riprovare chiudi e riapro l'app , pulisci il sensore",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         super.onAuthenticationFailed()
                     }
 

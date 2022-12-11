@@ -5,25 +5,15 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.afollestad.materialdialogs.LayoutMode
-import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.bottomsheets.BottomSheet
-import com.afollestad.materialdialogs.customview.customView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import passy.prog.R
 import passy.prog.databinding.FragmentContainerBinding
-import passy.prog.databinding.SheeDialogBinding
 import passy.prog.db.EntityPassword
+import passy.prog.utils.UtilsFuns
 import passy.prog.utils.utils
 import passy.prog.viewmodel.ViewModelPassword
 import passy.prog.views.adapter.MyAdapter
@@ -44,32 +34,15 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
 
         val adapter = MyAdapter(object : MyAdapter.OnCardButtonsClick {
             override suspend fun openShowSheetButon(entityPassword: EntityPassword) {
-                //showSheet()
             }
 
             @SuppressLint("SetTextI18n")
             override suspend fun onUpdatePassword(entityPassword: EntityPassword) {
 
-                // dialogs(entityPassword)
-                val sheet2 = BtnSheetEdit()
-
-                val p = PersistentData()
-
-                p.saveParam(requireActivity(), "id", entityPassword.id)
-                p.saveParam(requireActivity(), "l", entityPassword.loghin)
-                p.saveParam(requireActivity(), "p", entityPassword.password)
-                p.saveParam(requireActivity(), "c", entityPassword.color)
-                p.saveParam(requireActivity(), "desc", entityPassword.descrizione)
-                sheet2.show(requireActivity().supportFragmentManager, "sheet2")
-
-
-                //  fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView2, sheet2)?.commit()
-
-
+                UtilsFuns.FragemntSheetSendEntiti(
+                    this@FragmentContainer
+                ).sender(entityPassword)
             }
-
-            // viewModel.updatePassword(entityPassword)
-
 
             override suspend fun onDelateCard(entityPassword: EntityPassword) {
                 viewModel.cancellaTutto(entityPassword)
@@ -93,8 +66,6 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
                 binding.lottie0.visibility = View.GONE
             }
         }
-
-
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -110,5 +81,4 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
         super.onResume()
         fabInsert()
     }
-
 }

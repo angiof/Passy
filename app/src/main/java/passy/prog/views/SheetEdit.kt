@@ -46,7 +46,7 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
         val id = p.getParam(requireActivity(), "id")!!.toInt()
         val password = p.getParam(requireActivity(), "p").toString()
         val loghin = p.getParam(requireActivity(), "l").toString()
-        val color = p.getParam(requireActivity(), "c").toString().let {
+        p.getParam(requireActivity(), "c").toString().let {
             colorete = if (it.isNullOrEmpty()) {
                 null.toString()
             } else {
@@ -106,7 +106,6 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
                 dismiss()
             }
         }
-
         return bindingFragSheet2.root
     }
 

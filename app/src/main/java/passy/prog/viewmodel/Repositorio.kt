@@ -34,13 +34,6 @@ class Repositorio(context: Context) {
     }
     //repositorio di FIngerPrint
 
-    @SuppressLint("InflateParams")
-    fun viess(context: Context) {
-        val view = LayoutInflater.from(context).inflate(R.layout.fragment_container, null, false)
-        val btn = view.findViewById<FloatingActionButton>(R.id.fb_frag)
-        btn.visibility = View.GONE
-    }
-
     fun updatePasswordFromRepo(entityPassword: EntityPassword) {
         daoPasswordsRepositorio.updatePassword(entityPassword)
     }
