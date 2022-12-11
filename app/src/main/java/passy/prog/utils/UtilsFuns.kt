@@ -18,7 +18,6 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-typealias utils = UtilsFuns
 //colors vals
 const val ROSSO: String = "Rosso"
 const val VERDE: String = "Verde"

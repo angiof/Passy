@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -18,16 +19,17 @@ import passy.prog.viewmodel.ViewModelPassword
 import passy.prog.views.adapter.MyAdapter
 
 class FragmentContainer : Fragment(R.layout.fragment_container) {
-
-    private lateinit var binding: FragmentContainerBinding
     private val viewModel: ViewModelPassword by viewModels()
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         UtilsFuns().hideToolbarAndStatusBar(requireActivity())
+        val binding: FragmentContainerBinding? =
+            DataBindingUtil.setContentView(requireActivity(), R.layout.fragment_container)
 
-        binding = FragmentContainerBinding.bind(view)
+            binding?.fab = this
+
 
         val adapter = MyAdapter(object : MyAdapter.OnCardButtonsClick {
             override suspend fun openShowSheetButon(entityPassword: EntityPassword) {
@@ -46,8 +48,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
             }
 
         }, requireActivity())
-        binding = FragmentContainerBinding.bind(view)
-        binding.recyclerView.apply {
+        binding!!.recyclerView.apply {
             val decorationSpan = DividerItemDecoration(requireContext(), LinearLayout.VERTICAL)
             addItemDecoration(decorationSpan)
             this.adapter = adapter
@@ -64,17 +65,14 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
-    private fun fabInsert() {
-        binding.fbFrag.setOnClickListener {
-            val sheet2 = BTnSheetDialogFragment()
-            sheet2.show(requireActivity().supportFragmentManager, "sheet")
-        }
+    fun fabInsert() {
+        val sheet2 = BTnSheetDialogFragment()
+        sheet2.show(requireActivity().supportFragmentManager, "sheet")
+
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onResume() {
         super.onResume()
-        fabInsert()
     }
 }
