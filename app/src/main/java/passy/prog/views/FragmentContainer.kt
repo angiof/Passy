@@ -7,29 +7,26 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import passy.prog.R
 import passy.prog.databinding.FragmentContainerBinding
 import passy.prog.db.EntityPassword
 import passy.prog.utils.UtilsFuns
-import passy.prog.utils.utils
 import passy.prog.viewmodel.ViewModelPassword
 import passy.prog.views.adapter.MyAdapter
 
 class FragmentContainer : Fragment(R.layout.fragment_container) {
 
-    private lateinit var viewModel: ViewModelPassword
     private lateinit var binding: FragmentContainerBinding
+    private val viewModel: ViewModelPassword by viewModels()
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val utils: utils = utils()
-        utils.hideToolbarAndStatusBar(view.context)
+        UtilsFuns().hideToolbarAndStatusBar(requireActivity())
 
-        viewModel = ViewModelProvider(this)[ViewModelPassword::class.java]
         binding = FragmentContainerBinding.bind(view)
 
         val adapter = MyAdapter(object : MyAdapter.OnCardButtonsClick {
@@ -57,7 +54,6 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
         }
-        ViewModelProvider(this)[ViewModelPassword::class.java]
         viewModel.lista.observe(requireActivity()) {
             adapter.submitList(it)
             if (it.size == 0) {

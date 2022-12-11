@@ -13,9 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="4dp"
-        android:text="jfjfjjfjfjfj"
         android:textColor="@color/redsoft2"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/avatardialog"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -49,7 +48,7 @@
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/lb_descrizione"
         app:layout_constraintStart_toStartOf="@+id/lb_descrizione"
-        app:layout_constraintTop_toBottomOf="@+id/lb_descrizione"></TextView>
+        app:layout_constraintTop_toBottomOf="@+id/lb_descrizione" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/edit"

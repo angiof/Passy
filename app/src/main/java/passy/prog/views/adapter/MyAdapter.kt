@@ -110,7 +110,6 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                                     }
                                 }
                             }
-                            Log.d("dialog", "premuto edit ")
                             dialog.dismiss()
                         }
                         viewDialog.findViewById<View>(R.id.delate).setOnClickListener {

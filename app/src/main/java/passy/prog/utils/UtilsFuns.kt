@@ -19,7 +19,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 typealias utils = UtilsFuns
-
 //colors vals
 const val ROSSO: String = "Rosso"
 const val VERDE: String = "Verde"
@@ -71,10 +70,10 @@ open class UtilsFuns {
                 }
             } else if (entityPassword.loghin.contains("apple", true) or
                 entityPassword.loghin.contains("icloud", true) or
-                (entityPassword.descrizione?.contains("apple") == true or
-                        (entityPassword.descrizione?.contains("iclaud", true)) or
-                        (entityPassword.descrizione?.contains("mac")) or
-                        (entityPassword.descrizione?.contains("iphone", true)))
+                (entityPassword.descrizione.contains("apple") == true or
+                 (entityPassword.descrizione.contains("iclaud", true)) or
+                 (entityPassword.descrizione.contains("mac")) or
+                 (entityPassword.descrizione.contains("iphone", true)))
             ) {
                 imageView.setBackgroundResource(R.drawable.ic_apple_brands)
             } else if (entityPassword.loghin.contains("android", true) or
@@ -113,7 +112,6 @@ open class UtilsFuns {
                 }
             }
     }
-
 
     open class PassyCheckersBiometrick(val ctx: Activity) {
 
