@@ -4,12 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-
         <variable
             name="fab"
             type="passy.prog.views.FragmentContainer" />
-
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
