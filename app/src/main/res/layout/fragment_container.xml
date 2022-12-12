@@ -12,9 +12,6 @@
             name="fab"
             type="passy.prog.views.FragmentContainer" />
 
-
-
-
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -114,7 +111,7 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fb_frag"
             android:clickable="true"
-            android:onClick="@{()->fab.fabInsert()}"
+            android:onClick="@{()->fab.clickInsert()}"
             app:hideOnScroll="true"
             android:src="@drawable/adder"
             android:layout_marginBottom="8dp"
@@ -124,7 +121,6 @@
             app:layout_anchor="@id/bottomAppBar"
             app:maxImageSize="35dp"
             android:tint="@color/black"
-
             />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

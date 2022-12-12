@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.Dispatchers
@@ -15,15 +15,12 @@ import kotlinx.coroutines.launch
 import passy.prog.R
 import passy.prog.databinding.EditSheetBinding
 import passy.prog.db.EntityPassword
-import passy.prog.utils.ARANCIA
-import passy.prog.utils.ROSSO
-import passy.prog.utils.UtilsFuns
-import passy.prog.utils.VERDE
+import passy.prog.utils.*
 import passy.prog.viewmodel.ViewModelPassword
 
 
-class BtnSheetEdit : BottomSheetDialogFragment() {
-    private lateinit var viewModel: ViewModelPassword
+class BtnSheetEdit : BottomSheetDialogFragment(), OncllickBtnSheetEdit {
+    private val viewModel: ViewModelPassword by viewModels()
     private lateinit var colorete: String
     private val bindingFragSheet2: EditSheetBinding by lazy {
         EditSheetBinding.inflate(
@@ -38,8 +35,10 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this)[ViewModelPassword::class.java]
-        val data = UtilsFuns().DatePicker().getData()
+        bindingFragSheet2.red = this
+        bindingFragSheet2.giallo = this
+        bindingFragSheet2.verde = this
+        bindingFragSheet2.save = this
 
         val p = PersistentData()
         val descrizione = p.getParam(requireActivity(), "desc").toString()
@@ -47,66 +46,75 @@ class BtnSheetEdit : BottomSheetDialogFragment() {
         val password = p.getParam(requireActivity(), "p").toString()
         val loghin = p.getParam(requireActivity(), "l").toString()
         p.getParam(requireActivity(), "c").toString().let {
-            colorete = if (it.isNullOrEmpty()) {
+            colorete = it.ifEmpty {
                 null.toString()
-            } else {
-                it
             }
         }
 
-        bindingFragSheet2.ivRedEdit.setOnClickListener {
-            colorete = ROSSO
-            bindingFragSheet2.run {
-                txtPassword.setTextColor(it.context.getColor(R.color.redsoft2))
-                txtUser.setTextColor(it.context.getColor(R.color.redsoft2))
-                desc.setTextColor(it.context.getColor(R.color.redsoft2))
-            }
-        }
-        bindingFragSheet2.ivBlue.setOnClickListener {
-            colorete = ARANCIA
-            bindingFragSheet2.run {
-                txtPassword.setTextColor(it.context.getColor(R.color.materialonrange))
-                txtUser.setTextColor(it.context.getColor(R.color.materialonrange))
-                desc.setTextColor(it.context.getColor(R.color.materialonrange))
-            }
-        }
-        bindingFragSheet2.ivGreenEdit.setOnClickListener {
-            colorete = VERDE
-            bindingFragSheet2.run {
-                txtPassword.setTextColor(it.context.getColor(R.color.softGreen2))
-                txtUser.setTextColor(it.context.getColor(R.color.softGreen2))
-                desc.setTextColor(it.context.getColor(R.color.softGreen2))
-            }
-        }
         bindingFragSheet2.desc.setText(descrizione)
         bindingFragSheet2.txtUser.setText(loghin)
         bindingFragSheet2.txtPassword.setText(password)
 
-        bindingFragSheet2.btnSave.setOnClickListener {
-            //sett fields
-            val labelPassword = bindingFragSheet2.txtPassword.text.toString()
-            val labelLoghin = bindingFragSheet2.txtUser.text.toString()
-            val descrizione = bindingFragSheet2.desc.text.toString()
-
-            lifecycleScope.launch(Dispatchers.IO) {
-                if (UtilsFuns.PassyCheckers()
-                        .onPasswordCheck(it.context, password = labelPassword)
-                ) {
-                    viewModel.updatePassword(
-                        EntityPassword(
-                            id,
-                            descrizione,
-                            labelLoghin,
-                            labelPassword,
-                            colorete,
-                            data
-                        )
-                    )
-                }
-                dismiss()
-            }
-        }
+        //sett fields
         return bindingFragSheet2.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun btnRedCirlce() {
+        colorete = ROSSO
+        bindingFragSheet2.run {
+            txtPassword.setTextColor(requireContext().getColor(R.color.redsoft2))
+            txtUser.setTextColor(requireContext().getColor(R.color.redsoft2))
+            desc.setTextColor(requireContext().getColor(R.color.redsoft2))
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun btnYelowCirlce() {
+        colorete = ARANCIA
+        bindingFragSheet2.run {
+            txtPassword.setTextColor(requireContext().getColor(R.color.materialonrange))
+            txtUser.setTextColor(requireContext().getColor(R.color.materialonrange))
+            desc.setTextColor(requireContext().getColor(R.color.materialonrange))
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun btnGreenCirlce() {
+        colorete = VERDE
+        bindingFragSheet2.run {
+            txtPassword.setTextColor(requireContext().getColor(R.color.softGreen2))
+            txtUser.setTextColor(requireContext().getColor(R.color.softGreen2))
+            desc.setTextColor(requireContext().getColor(R.color.softGreen2))
+        }
+    }
+
+    override fun btnSave() {
+
+        val labelPassword = bindingFragSheet2.txtPassword.text.toString()
+        val labelLoghin = bindingFragSheet2.txtUser.text.toString()
+        val descrizione = bindingFragSheet2.desc.text.toString()
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            if (UtilsFuns.PassyCheckers()
+                    .onPasswordCheck(
+                        ctx = requireContext(),
+                        password = labelPassword
+                    )
+            ) {
+                viewModel.updatePassword(
+                    EntityPassword(
+                        id = id,
+                        descrizione = descrizione,
+                        loghin = labelLoghin,
+                        password = labelPassword,
+                        color = colorete,
+                        data = UtilsFuns().DatePicker().getData()
+                    )
+                )
+            }
+            dismiss()
+        }
+    }
 }
+

@@ -14,11 +14,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import passy.prog.R
 import passy.prog.databinding.FragmentContainerBinding
 import passy.prog.db.EntityPassword
+import passy.prog.utils.OnCickFragmentContainer
 import passy.prog.utils.UtilsFuns
 import passy.prog.viewmodel.ViewModelPassword
 import passy.prog.views.adapter.MyAdapter
 
-class FragmentContainer : Fragment(R.layout.fragment_container) {
+class FragmentContainer : Fragment(R.layout.fragment_container), OnCickFragmentContainer {
     private val viewModel: ViewModelPassword by viewModels()
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -28,7 +29,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
         val binding: FragmentContainerBinding? =
             DataBindingUtil.setContentView(requireActivity(), R.layout.fragment_container)
 
-            binding?.fab = this
+        binding?.fab = this
 
 
         val adapter = MyAdapter(object : MyAdapter.OnCardButtonsClick {
@@ -65,14 +66,13 @@ class FragmentContainer : Fragment(R.layout.fragment_container) {
         }
     }
 
-    fun fabInsert() {
-        val sheet2 = BTnSheetDialogFragment()
-        sheet2.show(requireActivity().supportFragmentManager, "sheet")
-
-    }
-
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onResume() {
         super.onResume()
+    }
+
+    override fun clickInsert() {
+        val sheet2 = BTnSheetDialogFragment()
+        sheet2.show(requireActivity().supportFragmentManager, "sheet")
     }
 }
