@@ -1,15 +1,12 @@
 package passy.prog.views
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.Dispatchers
@@ -17,18 +14,12 @@ import kotlinx.coroutines.launch
 import passy.prog.R
 import passy.prog.databinding.SheetMainBinding
 import passy.prog.db.EntityPassword
-import passy.prog.utils.ARANCIA
-import passy.prog.utils.ROSSO
-import passy.prog.utils.UtilsFuns
-import passy.prog.utils.VERDE
+import passy.prog.utils.*
 import passy.prog.viewmodel.ViewModelPassword
 
-
-open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
+open class BTnSheetDialogFragment : BottomSheetDialogFragment(), OnClickCheetInsert {
     var colors: String? = null
-    var frag: Fragment? = null
-
-    private lateinit var viewModel: ViewModelPassword
+    private val viewModel: ViewModelPassword by viewModels()
     private val bindingFragSheet: SheetMainBinding by lazy {
         SheetMainBinding.inflate(
             layoutInflater
@@ -42,66 +33,67 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this)[ViewModelPassword::class.java]
-        saveClick()
+        bindingFragSheet.onClicks = this
         return bindingFragSheet.root
     }
 
-    @SuppressLint("ServiceCast")
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun saveClick() {
-        bindingFragSheet.ivBlue.setOnClickListener { n ->
-            colors = ARANCIA
-            if (colors == ARANCIA) {
-                bindingFragSheet.run {
-                    txtPassword.setTextColor(n.context.getColor(R.color.materialonrange))
-                    edDescrizione.setTextColor(n.context.getColor(R.color.materialonrange))
-                    txtUser.setTextColor(n.context.getColor(R.color.materialonrange))
-                }
-            }
-        }
-        bindingFragSheet.ivGreenEdit.setOnClickListener { g ->
-            colors = VERDE
-            with(bindingFragSheet) {
-                txtPassword.setTextColor(requireContext().getColor(R.color.softGreen))
-                edDescrizione.setTextColor(g.context.getColor(R.color.softGreen))
-                txtUser.setTextColor(g.context.getColor(R.color.softGreen))
-            }
-        }
-        bindingFragSheet.ivRedEdit.setOnClickListener {
-            colors = ROSSO
-            if (colors == ROSSO) {
-                bindingFragSheet.run {
-                    txtPassword.setTextColor(it.context.getColor(R.color.redsoft2))
-                    edDescrizione.setTextColor(it.context.getColor(R.color.redsoft2))
-                    txtUser.setTextColor(it.context.getColor(R.color.redsoft2))
-                }
-            }
 
-        }
-        bindingFragSheet.btnSave.setOnClickListener {
-            lifecycleScope.launch(Dispatchers.IO) {
-                val data = UtilsFuns().DatePicker().getData()
-                val descrizione = bindingFragSheet.edDescrizione.text.toString()
-                val loghin = bindingFragSheet.txtUser.text.toString()
-                val password = bindingFragSheet.txtPassword.text.toString()
-                if (UtilsFuns.PassyCheckers()
-                        .onPasswordCheck(it.context, password = password)
-                ) {
-                    viewModel.insertPasswordViewModel(
-                        EntityPassword(
-                            0, descrizione, loghin, password, colors, data.toString()
-                        )
-                    )
-                }
-                dismiss()
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun btnRedCirlce() {
+        colors = ROSSO
+        if (colors == ROSSO) {
+            bindingFragSheet.run {
+                txtPassword.setTextColor(requireContext().getColor(R.color.redsoft2))
+                edDescrizione.setTextColor(requireContext().getColor(R.color.redsoft2))
+                txtUser.setTextColor(requireContext().getColor(R.color.redsoft2))
             }
         }
     }
 
-    override fun onAttach(context: Context) {
-        frag = this
-        super.onAttach(context)
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun btnYelowCirlce() {
+        colors = ARANCIA
+        if (colors == ARANCIA) {
+            bindingFragSheet.run {
+                txtPassword.setTextColor(requireContext().getColor(R.color.materialonrange))
+                edDescrizione.setTextColor(requireContext().getColor(R.color.materialonrange))
+                txtUser.setTextColor(requireContext().getColor(R.color.materialonrange))
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun btnGreenCirlce() {
+        colors = VERDE
+        with(bindingFragSheet) {
+            txtPassword.setTextColor(requireContext().getColor(R.color.softGreen))
+            edDescrizione.setTextColor(requireContext().getColor(R.color.softGreen))
+            txtUser.setTextColor(requireContext().getColor(R.color.softGreen))
+        }
+    }
+
+    override fun btnSave() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            val data = UtilsFuns().DatePicker().getData()
+            val descrizione = bindingFragSheet.edDescrizione.text.toString()
+            val loghin = bindingFragSheet.txtUser.text.toString()
+            val password = bindingFragSheet.txtPassword.text.toString()
+            if (UtilsFuns.PassyCheckers()
+                    .onPasswordCheck(requireContext(), password = password)
+            ) {
+                viewModel.insertPasswordViewModel(
+                    entityPassword = EntityPassword(
+                        0,
+                        descrizione = descrizione,
+                        loghin = loghin,
+                        password = password,
+                        color = colors,
+                        data = data
+                    )
+                )
+            }
+            dismiss()
+        }
     }
 }
 

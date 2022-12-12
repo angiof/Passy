@@ -5,10 +5,8 @@
 
     <data>
 
-        <variable
-            name="passa"
-            type="passy.prog.utils.FragSheetUtils" /> <variable
 
+        <variable
             name="fab"
             type="passy.prog.views.FragmentContainer" />
 

@@ -1,4 +1,4 @@
-package passy.prog.views
+package passy.prog.utils
 
 import android.content.Context
 import com.google.gson.Gson

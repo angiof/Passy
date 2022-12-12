@@ -29,7 +29,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container), OnCickFragmentC
         val binding: FragmentContainerBinding? =
             DataBindingUtil.setContentView(requireActivity(), R.layout.fragment_container)
 
-        binding?.fab = this
+         binding?.fab = this
 
 
         val adapter = MyAdapter(object : MyAdapter.OnCardButtonsClick {

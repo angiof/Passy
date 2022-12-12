@@ -4,9 +4,17 @@ interface OnCickFragmentContainer {
     fun clickInsert()
 }
 
-interface OncllickBtnSheetEdit {
+interface OnClickCheet {
     fun btnRedCirlce()
     fun btnYelowCirlce()
     fun btnGreenCirlce()
     fun btnSave()
 }
+
+interface OnClickCheetInsert {
+    fun btnRedCirlce()
+    fun btnYelowCirlce()
+    fun btnGreenCirlce()
+    fun btnSave()
+}
+

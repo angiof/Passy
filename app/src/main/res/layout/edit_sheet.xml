@@ -8,20 +8,20 @@
 
         <variable
             name="red"
-            type="passy.prog.utils.OncllickBtnSheetEdit" />
+            type="passy.prog.utils.OnClickCheet" />
 
         <variable
 
             name="giallo"
-            type="passy.prog.utils.OncllickBtnSheetEdit" />
+            type="passy.prog.utils.OnClickCheet" />
 
         <variable
             name="verde"
-            type="passy.prog.utils.OncllickBtnSheetEdit" />
+            type="passy.prog.utils.OnClickCheet" />
 
         <variable
             name="save"
-            type="passy.prog.utils.OncllickBtnSheetEdit" />
+            type="passy.prog.utils.OnClickCheet" />
 
     </data>
 

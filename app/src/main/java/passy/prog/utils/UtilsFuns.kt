@@ -13,7 +13,6 @@ import passy.prog.R
 import passy.prog.db.EntityPassword
 import passy.prog.views.BtnSheetEdit
 import passy.prog.views.MainActivity
-import passy.prog.views.PersistentData
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -70,9 +69,9 @@ open class UtilsFuns {
             } else if (entityPassword.loghin.contains("apple", true) or
                 entityPassword.loghin.contains("icloud", true) or
                 (entityPassword.descrizione.contains("apple") == true or
-                 (entityPassword.descrizione.contains("iclaud", true)) or
-                 (entityPassword.descrizione.contains("mac")) or
-                 (entityPassword.descrizione.contains("iphone", true)))
+                        (entityPassword.descrizione.contains("iclaud", true)) or
+                        (entityPassword.descrizione.contains("mac")) or
+                        (entityPassword.descrizione.contains("iphone", true)))
             ) {
                 imageView.setBackgroundResource(R.drawable.ic_apple_brands)
             } else if (entityPassword.loghin.contains("android", true) or
@@ -116,7 +115,10 @@ open class UtilsFuns {
 
         fun biometricAvailable(): Boolean {
             val biometricManager = BiometricManager.from(ctx)
-            return when (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG or BiometricManager.Authenticators.BIOMETRIC_WEAK)) {
+            return when (biometricManager.canAuthenticate(
+                BiometricManager.Authenticators.BIOMETRIC_STRONG or
+                        BiometricManager.Authenticators.BIOMETRIC_WEAK
+            )) {
                 BiometricManager.BIOMETRIC_SUCCESS -> {
                     true
                 }
@@ -151,7 +153,7 @@ open class UtilsFuns {
         }
     }
 
-     class FragemntSheetSendEntiti(val ctx: Fragment) {
+    class FragemntSheetSendEntiti(val ctx: Fragment) {
         fun sender(entityPassword: EntityPassword) {
             val sheet2 = BtnSheetEdit()
             val p = PersistentData()

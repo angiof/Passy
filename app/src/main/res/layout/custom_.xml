@@ -7,149 +7,149 @@
     android:background="@drawable/shape_dialogs"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/label_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="4dp"
-        android:textColor="@color/redsoft2"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/avatardialog"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/label_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/redsoft2"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/avatardialog"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </TextView>
+        </TextView>
 
-    <TextView
-        android:id="@+id/lb_descrizione"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto_bold"
-        android:text="Descrizione"
-        android:textColor="@color/softpurple"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="@+id/texttest"
-        app:layout_constraintStart_toStartOf="@+id/texttest"
-        app:layout_constraintTop_toBottomOf="@+id/texttest">
+        <TextView
+            android:id="@+id/lb_descrizione"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Descrizione"
+            android:textColor="@color/softpurple"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="@+id/texttest"
+            app:layout_constraintStart_toStartOf="@+id/texttest"
+            app:layout_constraintTop_toBottomOf="@+id/texttest">
 
-    </TextView>
+        </TextView>
 
-    <TextView
-        android:id="@+id/tv_descrizione"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto_bold"
-        android:text="dsjafjndsjadsj"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="@+id/lb_descrizione"
-        app:layout_constraintStart_toStartOf="@+id/lb_descrizione"
-        app:layout_constraintTop_toBottomOf="@+id/lb_descrizione" />
+        <TextView
+            android:id="@+id/tv_descrizione"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="dsjafjndsjadsj"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="@+id/lb_descrizione"
+            app:layout_constraintStart_toStartOf="@+id/lb_descrizione"
+            app:layout_constraintTop_toBottomOf="@+id/lb_descrizione" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/edit"
-        android:layout_width="wrap_content"
-        android:layout_height="47dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/bg_text_finder"
-        android:fontFamily="@font/roboto_bold"
-        android:imeOptions="actionNext"
-        android:inputType="textEmailAddress"
-        android:letterSpacing="0.1"
-        android:nextFocusForward="@id/txt_pass"
-        android:text="EDIT"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:backgroundTint="@color/softpurple"
-        app:layout_constraintEnd_toEndOf="@+id/password_dialog"
-        app:layout_constraintStart_toStartOf="@id/password_dialog"
-        app:layout_constraintTop_toBottomOf="@+id/password_dialog" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="47dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_text_finder"
+            android:fontFamily="@font/roboto_bold"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:letterSpacing="0.1"
+            android:nextFocusForward="@id/txt_pass"
+            android:text="EDIT"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:backgroundTint="@color/softpurple"
+            app:layout_constraintEnd_toEndOf="@+id/password_dialog"
+            app:layout_constraintStart_toStartOf="@id/password_dialog"
+            app:layout_constraintTop_toBottomOf="@+id/password_dialog" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/delate"
-        android:layout_width="wrap_content"
-        android:layout_height="47dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/bg_text_finder"
-        android:fontFamily="@font/roboto_bold"
-        android:imeOptions="actionNext"
-        android:inputType="textEmailAddress"
-        android:letterSpacing="0.1"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/delate"
+            android:layout_width="wrap_content"
+            android:layout_height="47dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_text_finder"
+            android:fontFamily="@font/roboto_bold"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:letterSpacing="0.1"
 
-        android:nextFocusForward="@id/txt_pass"
-        android:text="DELATE"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:backgroundTint="@color/redsoft"
-        app:layout_constraintEnd_toEndOf="@+id/edit"
-        app:layout_constraintStart_toStartOf="@+id/edit"
-        app:layout_constraintTop_toBottomOf="@+id/edit" />
+            android:nextFocusForward="@id/txt_pass"
+            android:text="DELATE"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:backgroundTint="@color/redsoft"
+            app:layout_constraintEnd_toEndOf="@+id/edit"
+            app:layout_constraintStart_toStartOf="@+id/edit"
+            app:layout_constraintTop_toBottomOf="@+id/edit" />
 
-    <TextView
-        android:id="@+id/texttest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto_bold"
-        android:text="sdjfdsfdsk"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="@+id/avatardialog"
-        app:layout_constraintStart_toStartOf="@+id/avatardialog"
-        app:layout_constraintTop_toBottomOf="@+id/avatardialog" />
+        <TextView
+            android:id="@+id/texttest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="sdjfdsfdsk"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="@+id/avatardialog"
+            app:layout_constraintStart_toStartOf="@+id/avatardialog"
+            app:layout_constraintTop_toBottomOf="@+id/avatardialog" />
 
-    <ImageView
-        android:id="@+id/closeview"
-        android:layout_width="60dp"
-        android:layout_height="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_close_24" />
+        <ImageView
+            android:id="@+id/closeview"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_close_24" />
 
-    <ImageView
-        android:id="@+id/avatardialog"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/avatardialog"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Password"
-        android:textAlignment="center"
-        android:fontFamily="@font/roboto_bold"
-        android:textColor="@color/softpurple"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="@+id/tv_descrizione"
-        app:layout_constraintStart_toStartOf="@+id/tv_descrizione"
-        app:layout_constraintTop_toBottomOf="@+id/tv_descrizione" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Password"
+            android:textAlignment="center"
+            android:textColor="@color/softpurple"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_descrizione"
+            app:layout_constraintStart_toStartOf="@+id/tv_descrizione"
+            app:layout_constraintTop_toBottomOf="@+id/tv_descrizione" />
 
-    <TextView
-        android:id="@+id/password_dialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto_bold"
-        android:letterSpacing="0.1"
-        android:text="pajadjafj"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <TextView
+            android:id="@+id/password_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_bold"
+            android:letterSpacing="0.1"
+            android:text="pajadjafj"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
