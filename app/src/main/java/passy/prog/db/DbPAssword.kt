@@ -27,7 +27,7 @@ abstract class DbPAssword : RoomDatabase() {
                     DbPAssword::class.java,
                     "dbPassword"
                 )
-                    .openHelperFactory(SupportFactory("kk".toByteArray()))
+                    //.openHelperFactory(SupportFactory("kk".toByteArray()))
                     .build()
                 INSTANCE = instance
                 instance

@@ -16,6 +16,7 @@ import passy.prog.databinding.FragmentContainerBinding
 import passy.prog.db.EntityPassword
 import passy.prog.utils.OnCickFragmentContainer
 import passy.prog.utils.UtilsFuns
+import passy.prog.utils.sendDescriptionToSheet
 import passy.prog.viewmodel.ViewModelPassword
 import passy.prog.views.adapter.MyAdapter
 
@@ -29,19 +30,15 @@ class FragmentContainer : Fragment(R.layout.fragment_container), OnCickFragmentC
         val binding: FragmentContainerBinding? =
             DataBindingUtil.setContentView(requireActivity(), R.layout.fragment_container)
 
-         binding?.fab = this
-
+        binding?.fab = this
 
         val adapter = MyAdapter(object : MyAdapter.OnCardButtonsClick {
             override suspend fun openShowSheetButon(entityPassword: EntityPassword) {
             }
 
-            @SuppressLint("SetTextI18n")
             override suspend fun onUpdatePassword(entityPassword: EntityPassword) {
+                sendDescriptionToSheet(entityPassword = entityPassword)
 
-                UtilsFuns.FragemntSheetSendEntiti(
-                    this@FragmentContainer
-                ).sender(entityPassword)
             }
 
             override suspend fun onDelateCard(entityPassword: EntityPassword) {

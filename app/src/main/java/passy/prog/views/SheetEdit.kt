@@ -20,7 +20,6 @@ import passy.prog.viewmodel.ViewModelPassword
 
 
 class BtnSheetEdit : BottomSheetDialogFragment(), OnClickCheet {
-    val p = PersistentData()
     private val viewModel: ViewModelPassword by viewModels()
     private lateinit var colorete: String
     private val bindingFragSheet2: EditSheetBinding by lazy {
@@ -40,8 +39,7 @@ class BtnSheetEdit : BottomSheetDialogFragment(), OnClickCheet {
         bindingFragSheet2.giallo = this
         bindingFragSheet2.verde = this
         bindingFragSheet2.save = this
-        //sett fields
-        setFields()
+        setFields(bindingFragSheet2)
         return bindingFragSheet2.root
     }
 
@@ -90,7 +88,7 @@ class BtnSheetEdit : BottomSheetDialogFragment(), OnClickCheet {
             ) {
                 viewModel.updatePassword(
                     EntityPassword(
-                        id = PersistentData().getParam(requireContext(), "id")!!.toInt(),
+                        id = 10,
                         descrizione = descrizione,
                         loghin = labelLoghin,
                         password = labelPassword,
@@ -101,20 +99,6 @@ class BtnSheetEdit : BottomSheetDialogFragment(), OnClickCheet {
             }
             dismiss()
         }
-    }
-
-    fun setFields() {
-        val descrizione = p.getParam(requireActivity(), "desc").toString()
-        val password = p.getParam(requireActivity(), "p").toString()
-        val loghin = p.getParam(requireActivity(), "l").toString()
-        p.getParam(requireActivity(), "c").toString().let {
-            colorete = it.ifEmpty {
-                null.toString()
-            }
-        }
-        bindingFragSheet2.desc.setText(descrizione)
-        bindingFragSheet2.txtUser.setText(loghin)
-        bindingFragSheet2.txtPassword.setText(password)
     }
 }
 

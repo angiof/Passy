@@ -6,16 +6,16 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.biometric.BiometricManager
-import androidx.fragment.app.Fragment
+import androidx.core.content.ContextCompat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import passy.prog.R
 import passy.prog.db.EntityPassword
-import passy.prog.views.BtnSheetEdit
 import passy.prog.views.MainActivity
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.Executor
 
 //colors vals
 const val ROSSO: String = "Rosso"
@@ -153,19 +153,51 @@ open class UtilsFuns {
         }
     }
 
-    class FragemntSheetSendEntiti(val ctx: Fragment) {
-        fun sender(entityPassword: EntityPassword) {
-            val sheet2 = BtnSheetEdit()
-            val p = PersistentData()
-            p.saveParam(ctx.requireActivity(), "id", entityPassword.id)
-            p.saveParam(ctx.requireActivity(), "l", entityPassword.loghin)
-            p.saveParam(ctx.requireActivity(), "p", entityPassword.password)
-            p.saveParam(ctx.requireActivity(), "c", entityPassword.color)
-            p.saveParam(ctx.requireActivity(), "desc", entityPassword.descrizione)
-            sheet2.show(ctx.requireActivity().supportFragmentManager, "sheet2")
-        }
+
+}
+
+
+fun MainActivity.face() {
+    val executor: Executor = ContextCompat.getMainExecutor(this)
+    val biometricPrompt: androidx.biometric.BiometricPrompt =
+        androidx.biometric.BiometricPrompt(
+            this,
+            executor,
+            object : androidx.biometric.BiometricPrompt.AuthenticationCallback() {
+
+                override fun onAuthenticationFailed() {
+                    finishAffinity()
+                    Toast.makeText(
+                        applicationContext,
+                        "riprovare chiudi e riapro l'app , pulisci il sensore",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    super.onAuthenticationFailed()
+                }
+
+                override fun onAuthenticationError(
+                    errorCode: Int,
+                    errString: CharSequence
+                ) {
+                    finishAffinity()
+
+                    super.onAuthenticationError(errorCode, errString)
+                }
+            })
+    val prontInfo: androidx.biometric.BiometricPrompt.PromptInfo =
+        androidx.biometric.BiometricPrompt.PromptInfo.Builder().setTitle("protezione")
+            .setNegativeButtonText("non sono io")
+            .setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_STRONG or BiometricManager.Authenticators.BIOMETRIC_WEAK)
+            .build()
+    if (utilsBiometrick.biometricAvailable()) {
+        biometricPrompt.authenticate(prontInfo)
     }
 }
+
+
+
+
+
 
 
 
