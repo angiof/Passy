@@ -8,6 +8,9 @@ buildscript {
         mavenCentral()
         maven { url 'https://jitpack.io'
             }
+        flatDir {
+            dirs 'app/libs'
+        }
 
         maven { url 'https://dl.bintray.com/spark/maven' }
     }
