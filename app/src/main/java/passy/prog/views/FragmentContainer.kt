@@ -1,6 +1,5 @@
 package passy.prog.views
 
-import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -42,7 +41,7 @@ class FragmentContainer : Fragment(R.layout.fragment_container), OnCickFragmentC
             }
 
             override suspend fun onDelateCard(entityPassword: EntityPassword) {
-                viewModel.cancellaTutto(entityPassword)
+                viewModel.cancellaTutto(entityPassword = entityPassword)
             }
 
         }, requireActivity())

@@ -28,8 +28,6 @@ class BtnSheetEdit : BottomSheetDialogFragment(), OnClickCheet {
         )
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -88,7 +86,7 @@ class BtnSheetEdit : BottomSheetDialogFragment(), OnClickCheet {
             ) {
                 viewModel.updatePassword(
                     EntityPassword(
-                        id = 10,
+                        id = setId(),
                         descrizione = descrizione,
                         loghin = labelLoghin,
                         password = labelPassword,

@@ -20,7 +20,7 @@ fun FragmentContainer.sendDescriptionToSheet(entityPassword: EntityPassword) {
 }
 
 
-fun BtnSheetEdit.setFields(bindingFragSheet2 : EditSheetBinding) {
+fun BtnSheetEdit.setFields(bindingFragSheet2: EditSheetBinding) {
     // Recuperiamo il bundle dai arguments del fragment
     val bundle = arguments
 // Recuperiamo l'oggetto dal bundle
@@ -28,4 +28,10 @@ fun BtnSheetEdit.setFields(bindingFragSheet2 : EditSheetBinding) {
     bindingFragSheet2.desc.setText(oggetto.descrizione)
     bindingFragSheet2.txtUser.setText(oggetto.loghin)
     bindingFragSheet2.txtPassword.setText(oggetto.password)
+}
+
+fun BtnSheetEdit.setId(): Int {
+    val bundle = arguments
+    val oggetto = bundle?.getParcelable<EntityPassword>("0") as EntityPassword
+    return oggetto.id
 }
