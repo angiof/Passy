@@ -159,10 +159,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_text_finder"
-
                     android:fontFamily="@font/roboto_bold"
+                    android:imeOptions="actionDone"
                     android:hint="Password"
-                    android:imeOptions="flagNoEnterAction"
                     android:letterSpacing="0.5"
                     android:maxLines="1"
                     android:password="true"

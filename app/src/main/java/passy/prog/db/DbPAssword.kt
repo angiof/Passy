@@ -8,7 +8,7 @@ import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
 import passy.prog.utils.UtilsFuns
 
-@Database(entities = [EntityPassword::class], version = 1, exportSchema = true)
+@Database(entities = [EntityPassword::class], version = 1, exportSchema = false)
 abstract class DbPAssword : RoomDatabase() {
 
     abstract fun passwordDaos(): DaoPasswords

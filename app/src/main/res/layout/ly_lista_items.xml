@@ -66,6 +66,7 @@
                 android:fontFamily="@font/roboto_bold"
                 android:letterSpacing="0.1"
                 android:text="show password"
+
                 android:textAlignment="viewStart"
                 android:textColor="@color/white"
                 android:textSize="24sp"

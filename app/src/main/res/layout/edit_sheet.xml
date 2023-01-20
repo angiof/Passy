@@ -130,13 +130,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_text_finder"
-
                     android:fontFamily="@font/roboto_bold"
+
                     android:hint="password"
                     android:imeOptions="actionDone"
                     android:letterSpacing="0.5"
                     android:maxLines="1"
                     android:password="true"
+                    android:singleLine="true"
                     android:textAlignment="center"
                     android:textColorHint="#C7BDBD"
                     android:textSize="24sp" />
@@ -186,6 +187,7 @@
                     android:id="@+id/desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
                     android:background="@drawable/bg_text_finder"
                     android:hint="@string/desc_ita" />
             </com.google.android.material.textfield.TextInputLayout>

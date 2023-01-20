@@ -18,14 +18,14 @@ open class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //face()
+        face()
 
     }
 
     override fun onResume() {
         //  idFInger()
         super.onResume()
-        //face()
+        face()
     }
 
 

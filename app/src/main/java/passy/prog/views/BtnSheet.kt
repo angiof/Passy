@@ -1,5 +1,6 @@
 package passy.prog.views
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -94,6 +95,11 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment(), OnClickCheetIns
             }
             dismiss()
         }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        bindingFragSheet.txtPassword.onEditor(bindingFragSheet.txtPassword)
     }
 }
 

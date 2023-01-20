@@ -1,11 +1,14 @@
 package passy.prog.views
 
-import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.TextView.OnEditorActionListener
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -98,5 +101,11 @@ class BtnSheetEdit : BottomSheetDialogFragment(), OnClickCheet {
             dismiss()
         }
     }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        bindingFragSheet2.txtPassword.onEditor(bindingFragSheet2.txtPassword)
+    }
+
 }
 
