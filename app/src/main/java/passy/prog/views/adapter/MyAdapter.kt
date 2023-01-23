@@ -6,7 +6,6 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +20,7 @@ import kotlinx.coroutines.*
 import passy.prog.R
 import passy.prog.databinding.LyListaItemsBinding
 import passy.prog.db.EntityPassword
-import passy.prog.utils.ARANCIA
+import passy.prog.utils.BLUE
 import passy.prog.utils.ROSSO
 import passy.prog.utils.UtilsFuns
 import passy.prog.utils.VERDE
@@ -44,9 +43,9 @@ class MyAdapter(val onCardButtonsClick: OnCardButtonsClick, context: Context) :
                 this.labelPassword.text = entityPassword.password
 
                 when (entityPassword.color) {
-                    ARANCIA -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.materialonrange))
+                    BLUE -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.materail_blue))
                     VERDE -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.softGreen2))
-                    ROSSO -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.redsoft2))
+                    ROSSO -> binding.viewLayout.setBackgroundColor(this.root.context.getColor(R.color.griggio_materil))
                     null -> binding.viewLayout.setBackgroundColor(R.color.softGreen)
                 }
                 baseFuns.AdapterFuns().setDefaultAvatar(binding.ivAvatar)

@@ -79,7 +79,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-                tools:layout_editor_absoluteY="163dp"></ImageButton>
+                tools:layout_editor_absoluteY="163dp" />
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -107,7 +107,8 @@
                     android:inputType="textNoSuggestions"
                     android:textColor="@color/white"
                     android:textSize="24sp"
-                    app:boxStrokeWidth="8dp"></com.google.android.material.textfield.TextInputEditText>
+                    android:textColorHint="@color/softpurple"
+                    app:boxStrokeWidth="8dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -137,7 +138,7 @@
                     android:nextFocusForward="@id/txt_pass"
                     android:textAlignment="textStart"
                     android:textColor="@color/white"
-                    android:textColorHint="#C7BDBD"
+                    android:textColorHint="@color/softpurple"
                     android:textSize="24sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -160,16 +161,17 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_text_finder"
                     android:fontFamily="@font/roboto_bold"
+                    android:hint="password"
                     android:imeOptions="actionDone"
-                    android:hint="Password"
                     android:letterSpacing="0.5"
                     android:maxLines="1"
                     android:password="true"
-
+                    android:singleLine="true"
                     android:textAlignment="center"
+                    android:textColorHint="@color/softpurple"
                     android:textColor="@color/white"
-                    android:textColorHint="#C7BDBD"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    />
 
             </com.google.android.material.textfield.TextInputLayout>
 

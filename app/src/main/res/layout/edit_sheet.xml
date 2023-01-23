@@ -140,7 +140,8 @@
                     android:singleLine="true"
                     android:textAlignment="center"
                     android:textColorHint="#C7BDBD"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    />
 
             </com.google.android.material.textfield.TextInputLayout>
 

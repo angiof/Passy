@@ -6,9 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
-import android.widget.TextView.OnEditorActionListener
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -24,7 +21,7 @@ import passy.prog.viewmodel.ViewModelPassword
 
 class BtnSheetEdit : BottomSheetDialogFragment(), OnClickCheet {
     private val viewModel: ViewModelPassword by viewModels()
-    private lateinit var colorete: String
+    private  var colorete: String? = null
     private val bindingFragSheet2: EditSheetBinding by lazy {
         EditSheetBinding.inflate(
             layoutInflater
@@ -48,19 +45,19 @@ class BtnSheetEdit : BottomSheetDialogFragment(), OnClickCheet {
     override fun btnRedCirlce() {
         colorete = ROSSO
         bindingFragSheet2.run {
-            txtPassword.setTextColor(requireContext().getColor(R.color.redsoft2))
-            txtUser.setTextColor(requireContext().getColor(R.color.redsoft2))
-            desc.setTextColor(requireContext().getColor(R.color.redsoft2))
+            txtPassword.setTextColor(requireContext().getColor(R.color.griggio_materil))
+            txtUser.setTextColor(requireContext().getColor(R.color.griggio_materil))
+            desc.setTextColor(requireContext().getColor(R.color.griggio_materil))
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun btnYelowCirlce() {
-        colorete = ARANCIA
+        colorete = BLUE
         bindingFragSheet2.run {
-            txtPassword.setTextColor(requireContext().getColor(R.color.materialonrange))
-            txtUser.setTextColor(requireContext().getColor(R.color.materialonrange))
-            desc.setTextColor(requireContext().getColor(R.color.materialonrange))
+            txtPassword.setTextColor(requireContext().getColor(R.color.materail_blue))
+            txtUser.setTextColor(requireContext().getColor(R.color.materail_blue))
+            desc.setTextColor(requireContext().getColor(R.color.materail_blue))
         }
     }
 
@@ -93,7 +90,7 @@ class BtnSheetEdit : BottomSheetDialogFragment(), OnClickCheet {
                         descrizione = descrizione,
                         loghin = labelLoghin,
                         password = labelPassword,
-                        color = colorete,
+                        color = colorete?: VERDE,
                         data = UtilsFuns().DatePicker().getData()
                     )
                 )
@@ -106,6 +103,5 @@ class BtnSheetEdit : BottomSheetDialogFragment(), OnClickCheet {
         super.onAttach(context)
         bindingFragSheet2.txtPassword.onEditor(bindingFragSheet2.txtPassword)
     }
-
 }
 

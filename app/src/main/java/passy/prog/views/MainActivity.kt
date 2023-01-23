@@ -1,11 +1,12 @@
 package passy.prog.views
 
-import android.os.Build
 import android.os.Bundle
-import androidx.annotation.RequiresApi
+import android.window.OnBackInvokedDispatcher
 import androidx.appcompat.app.AppCompatActivity
 import passy.prog.R
 import passy.prog.utils.UtilsFuns
+import passy.prog.utils.blockScreenShots
+import passy.prog.utils.checkRootAndCloseApp
 import passy.prog.utils.face
 
 open class MainActivity : AppCompatActivity() {
@@ -14,30 +15,29 @@ open class MainActivity : AppCompatActivity() {
         UtilsFuns.PassyCheckersBiometrick(this@MainActivity)
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        blockScreenShots(this)
         setContentView(R.layout.activity_main)
+        checkRootAndCloseApp(this)
         face()
-
     }
 
     override fun onResume() {
-        //  idFInger()
         super.onResume()
         face()
     }
 
-
-    override fun onBackPressed() {
+    override fun getOnBackInvokedDispatcher():
+        OnBackInvokedDispatcher {
         finishAffinity()
         finish()
-        super.onBackPressed()
+        return super.getOnBackInvokedDispatcher()
+
     }
 
     override fun onStop() {
         super.onStop()
         finish()
     }
-
 }

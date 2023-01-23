@@ -84,6 +84,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:text="PASSWORD"
                 android:textSize="20sp"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="@+id/label_loghin"
                 app:layout_constraintHorizontal_bias="0.489"
                 app:layout_constraintStart_toStartOf="@+id/label_loghin"

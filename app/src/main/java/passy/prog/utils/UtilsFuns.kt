@@ -2,7 +2,10 @@ package passy.prog.utils
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.biometric.BiometricManager
@@ -11,6 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import passy.prog.R
 import passy.prog.db.EntityPassword
+import passy.prog.root.DeviceUtils
 import passy.prog.views.MainActivity
 import java.text.DateFormat
 import java.text.SimpleDateFormat
@@ -20,7 +24,7 @@ import java.util.concurrent.Executor
 //colors vals
 const val ROSSO: String = "Rosso"
 const val VERDE: String = "Verde"
-const val ARANCIA: String = "Arancia"
+const val BLUE: String = "Arancia"
 
 open class UtilsFuns {
 
@@ -193,6 +197,31 @@ fun MainActivity.face() {
         biometricPrompt.authenticate(prontInfo)
     }
 }
+
+
+fun blockScreenShots(mainActivity: MainActivity) {
+    mainActivity.window.setFlags(
+        WindowManager.LayoutParams.FLAG_SECURE,
+        WindowManager.LayoutParams.FLAG_SECURE
+    )
+
+}
+
+fun MainActivity.checkRootAndCloseApp(mainActivity: MainActivity) {
+    if (DeviceUtils().isRootAvailable()) {
+        Toast.makeText(mainActivity, getString(R.string.device_root),
+            Toast.LENGTH_SHORT).show()
+        val intent = Intent(Intent.ACTION_MAIN)
+        intent.addCategory(Intent.CATEGORY_HOME)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+        finish()
+    } else {
+        Toast.makeText(mainActivity, "free root", Toast.LENGTH_SHORT).show()
+        Log.d("free","${DeviceUtils().isRootAvailable()}")
+    }
+}
+
 
 
 

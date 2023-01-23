@@ -10,8 +10,9 @@
     <color name="white">#FFFFFF</color>
     <color name="softGreen">#00695c</color>
     <color name="softGreen2">#33691e</color>
-    <color name="redsoft">#dd2c00</color>
-    <color name="redsoft2">#bb002f</color>
-    <color name="materialonrange">#e65100</color>
-    <color name="softpurple">#6750A4</color>
+    <color name="redsoft">#616161</color>
+    <color name="griggio_materil">#616161</color>
+    <color name="materail_blue">#231B92</color>
+    <color name="materail_blue_text">#295FFF</color>
+    <color name="softpurple">#673AB7</color>
 </resources>

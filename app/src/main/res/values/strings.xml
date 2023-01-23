@@ -7,6 +7,8 @@
     <string name="spintitle">categoria</string>
     <string name="modifica">modifica</string>
     <string name="desc_ita">descrizione</string>
+    <string name="device_root">questo device è stato modificato l\'app non può avviarsi</string>
+    <string name="ultima_modifica">Ultima Modifica</string>
 
 
     <string-array name="colori_spinner">
