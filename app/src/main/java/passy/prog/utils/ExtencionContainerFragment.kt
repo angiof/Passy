@@ -5,9 +5,14 @@ import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView.OnEditorActionListener
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
+import passy.prog.R
 import passy.prog.databinding.EditSheetBinding
 import passy.prog.db.EntityPassword
+import passy.prog.views.BTnSheetDialogFragment
 import passy.prog.views.BtnSheetEdit
 import passy.prog.views.FragmentContainer
 
@@ -52,3 +57,75 @@ fun TextInputEditText.onEditor(TextInputEditTextInput: TextInputEditText) =
         }
         false
     })
+
+fun changeStartIcon(
+    txtPassword: TextInputLayout,
+    txtUser:TextInputLayout,
+    txtDescrizione:TextInputLayout,
+    colors: String,
+    bTnSheetDialogFragment: Fragment
+) {
+    when (colors) {
+        BLUE -> {
+            txtPassword.setStartIconTintList(
+                ContextCompat.getColorStateList(
+                    bTnSheetDialogFragment.requireContext(),
+                    R.color.materail_blue_text
+                )
+            );
+            txtUser.setStartIconTintList(
+                ContextCompat.getColorStateList(
+                    bTnSheetDialogFragment.requireContext(),
+                    R.color.materail_blue_text
+                )
+            );
+            txtDescrizione.setStartIconTintList(
+                ContextCompat.getColorStateList(
+                    bTnSheetDialogFragment.requireContext(),
+                    R.color.materail_blue_text
+                )
+            );
+        }
+        VERDE -> {
+            txtPassword.setStartIconTintList(
+                ContextCompat.getColorStateList(
+                    bTnSheetDialogFragment.requireContext(),
+                    R.color.softGreen
+                )
+            );
+            txtUser.setStartIconTintList(
+                ContextCompat.getColorStateList(
+                    bTnSheetDialogFragment.requireContext(),
+                    R.color.softGreen
+                )
+            );
+            txtDescrizione.setStartIconTintList(
+                ContextCompat.getColorStateList(
+                    bTnSheetDialogFragment.requireContext(),
+                    R.color.softGreen
+                )
+            );
+        }
+        ROSSO -> {
+            txtPassword.setStartIconTintList(
+                ContextCompat.getColorStateList(
+                    bTnSheetDialogFragment.requireContext(),
+                    R.color.griggio_materil
+                )
+            );
+            txtUser.setStartIconTintList(
+                ContextCompat.getColorStateList(
+                    bTnSheetDialogFragment.requireContext(),
+                    R.color.griggio_materil
+                )
+            );
+            txtDescrizione.setStartIconTintList(
+                ContextCompat.getColorStateList(
+                    bTnSheetDialogFragment.requireContext(),
+                    R.color.griggio_materil
+                )
+            );
+        }
+    }
+}
+

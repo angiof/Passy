@@ -7,9 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -51,25 +49,14 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment(), OnClickCheetIns
                 txtPassword.setTextColor(requireContext().getColor(R.color.griggio_materil))
                 edDescrizione.setTextColor(requireContext().getColor(R.color.griggio_materil))
                 txtUser.setTextColor(requireContext().getColor(R.color.griggio_materil))
+                changeStartIcon(
+                    txtPassword = bindingFragSheet.txtPass,
+                    txtUser = txtLoghin,
+                    txtDescrizione = descrzioneLayout,
+                    colors = colors ?: "",
+                    this@BTnSheetDialogFragment
+                )
 
-                txtPass.setStartIconTintList(
-                    ContextCompat.getColorStateList(
-                        requireContext(),
-                        R.color.griggio_materil
-                    )
-                );
-                txtLoghin.setStartIconTintList(
-                    ContextCompat.getColorStateList(
-                        requireContext(),
-                        R.color.griggio_materil
-                    )
-                );
-                descrzioneLayout.setStartIconTintList(
-                    ContextCompat.getColorStateList(
-                        requireContext(),
-                        R.color.griggio_materil
-                    )
-                );
             }
         }
     }
@@ -83,27 +70,13 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment(), OnClickCheetIns
                 txtPassword.setTextColor(requireContext().getColor(R.color.materail_blue_text))
                 edDescrizione.setTextColor(requireContext().getColor(R.color.materail_blue_text))
                 txtUser.setTextColor(requireContext().getColor(R.color.materail_blue_text))
-
-                txtPass.setStartIconTintList(
-                    ContextCompat.getColorStateList(
-                        requireContext(),
-                        R.color.materail_blue_text
-                    )
-                );
-                txtLoghin.setStartIconTintList(
-                    ContextCompat.getColorStateList(
-                        requireContext(),
-                        R.color.materail_blue_text
-                    )
-                );
-                descrzioneLayout.setStartIconTintList(
-                    ContextCompat.getColorStateList(
-                        requireContext(),
-                        R.color.materail_blue_text
-                    )
-                );
-
-
+                changeStartIcon(
+                    txtPassword = bindingFragSheet.txtPass,
+                    txtUser = txtLoghin,
+                    txtDescrizione = descrzioneLayout,
+                    colors = colors ?: "",
+                    this@BTnSheetDialogFragment
+                )
             }
         }
     }
@@ -115,25 +88,13 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment(), OnClickCheetIns
             txtPassword.setTextColor(requireContext().getColor(R.color.softGreen))
             edDescrizione.setTextColor(requireContext().getColor(R.color.softGreen))
             txtUser.setTextColor(requireContext().getColor(R.color.softGreen))
-
-            txtPass.setStartIconTintList(
-                ContextCompat.getColorStateList(
-                    requireContext(),
-                    R.color.softGreen
-                )
-            );
-            txtLoghin.setStartIconTintList(
-                ContextCompat.getColorStateList(
-                    requireContext(),
-                    R.color.softGreen
-                )
-            );
-            descrzioneLayout.setStartIconTintList(
-                ContextCompat.getColorStateList(
-                    requireContext(),
-                    R.color.softGreen
-                )
-            );
+            changeStartIcon(
+                txtPassword = bindingFragSheet.txtPass,
+                txtUser = txtLoghin,
+                txtDescrizione = descrzioneLayout,
+                colors = colors ?: "",
+                this@BTnSheetDialogFragment
+            )
         }
     }
 
@@ -165,6 +126,7 @@ open class BTnSheetDialogFragment : BottomSheetDialogFragment(), OnClickCheetIns
         super.onAttach(context)
         bindingFragSheet.txtPassword.onEditor(bindingFragSheet.txtPassword)
     }
+
 }
 
 

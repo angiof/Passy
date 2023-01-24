@@ -8,6 +8,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
 import androidx.core.content.ContextCompat
 import kotlinx.coroutines.Dispatchers
@@ -96,6 +97,8 @@ open class UtilsFuns {
                 imageView.setBackgroundResource(R.drawable.ic_google_svgrepo_com)
             } else if (entityPassword.descrizione.contains("italo")) {
                 imageView.setBackgroundResource(R.drawable.ic_italo)
+            } else {
+                imageView.visibility = View.GONE
             }
         }
     }
@@ -204,13 +207,14 @@ fun blockScreenShots(mainActivity: MainActivity) {
         WindowManager.LayoutParams.FLAG_SECURE,
         WindowManager.LayoutParams.FLAG_SECURE
     )
-
 }
 
 fun MainActivity.checkRootAndCloseApp(mainActivity: MainActivity) {
     if (DeviceUtils().isRootAvailable()) {
-        Toast.makeText(mainActivity, getString(R.string.device_root),
-            Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            mainActivity, getString(R.string.device_root),
+            Toast.LENGTH_SHORT
+        ).show()
         val intent = Intent(Intent.ACTION_MAIN)
         intent.addCategory(Intent.CATEGORY_HOME)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -218,8 +222,13 @@ fun MainActivity.checkRootAndCloseApp(mainActivity: MainActivity) {
         finish()
     } else {
         Toast.makeText(mainActivity, "free root", Toast.LENGTH_SHORT).show()
-        Log.d("free","${DeviceUtils().isRootAvailable()}")
+        Log.d("free", "${DeviceUtils().isRootAvailable()}")
     }
+}
+
+fun MainActivity.forceToDayMode() {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
 }
 
 

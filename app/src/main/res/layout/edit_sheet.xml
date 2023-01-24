@@ -190,7 +190,8 @@
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:background="@drawable/bg_text_finder"
-                    android:hint="@string/desc_ita" />
+                    android:hint="@string/desc_ita"
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

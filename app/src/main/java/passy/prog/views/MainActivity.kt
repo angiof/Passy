@@ -3,11 +3,9 @@ package passy.prog.views
 import android.os.Bundle
 import android.window.OnBackInvokedDispatcher
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import passy.prog.R
-import passy.prog.utils.UtilsFuns
-import passy.prog.utils.blockScreenShots
-import passy.prog.utils.checkRootAndCloseApp
-import passy.prog.utils.face
+import passy.prog.utils.*
 
 open class MainActivity : AppCompatActivity() {
 
@@ -17,6 +15,7 @@ open class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        forceToDayMode()
         blockScreenShots(this)
         setContentView(R.layout.activity_main)
         checkRootAndCloseApp(this)

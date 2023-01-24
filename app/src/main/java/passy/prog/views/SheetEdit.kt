@@ -21,7 +21,7 @@ import passy.prog.viewmodel.ViewModelPassword
 
 class BtnSheetEdit : BottomSheetDialogFragment(), OnClickCheet {
     private val viewModel: ViewModelPassword by viewModels()
-    private  var colorete: String? = null
+    private var colorete: String? = null
     private val bindingFragSheet2: EditSheetBinding by lazy {
         EditSheetBinding.inflate(
             layoutInflater
@@ -48,7 +48,13 @@ class BtnSheetEdit : BottomSheetDialogFragment(), OnClickCheet {
             txtPassword.setTextColor(requireContext().getColor(R.color.griggio_materil))
             txtUser.setTextColor(requireContext().getColor(R.color.griggio_materil))
             desc.setTextColor(requireContext().getColor(R.color.griggio_materil))
-        }
+            changeStartIcon(
+                txtPassword = txtPass,
+                txtUser = txtLoghin,
+                txtDescrizione = textInputLayout,
+                colors = colorete?:"",
+                this@BtnSheetEdit
+            )        }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -58,6 +64,13 @@ class BtnSheetEdit : BottomSheetDialogFragment(), OnClickCheet {
             txtPassword.setTextColor(requireContext().getColor(R.color.materail_blue))
             txtUser.setTextColor(requireContext().getColor(R.color.materail_blue))
             desc.setTextColor(requireContext().getColor(R.color.materail_blue))
+            changeStartIcon(
+                txtPassword = txtPass,
+                txtUser = txtLoghin,
+                txtDescrizione = textInputLayout,
+                colors = colorete?:"",
+                this@BtnSheetEdit
+            )
         }
     }
 
@@ -68,6 +81,13 @@ class BtnSheetEdit : BottomSheetDialogFragment(), OnClickCheet {
             txtPassword.setTextColor(requireContext().getColor(R.color.softGreen2))
             txtUser.setTextColor(requireContext().getColor(R.color.softGreen2))
             desc.setTextColor(requireContext().getColor(R.color.softGreen2))
+            changeStartIcon(
+                txtPassword = txtPass,
+                txtUser = txtLoghin,
+                txtDescrizione = textInputLayout,
+                colors = colorete?:"",
+                this@BtnSheetEdit
+            )
         }
     }
 
@@ -90,7 +110,7 @@ class BtnSheetEdit : BottomSheetDialogFragment(), OnClickCheet {
                         descrizione = descrizione,
                         loghin = labelLoghin,
                         password = labelPassword,
-                        color = colorete?: VERDE,
+                        color = colorete ?: VERDE,
                         data = UtilsFuns().DatePicker().getData()
                     )
                 )
